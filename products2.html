@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== PREMIUM DARK THEME VARIABLES ===== */
+        :root {
+            --primary-dark: #121212;
+            --secondary-dark: #1e1e1e;
+            --card-dark: #252525;
+            --accent-royal: #4169E1;
+            --accent-gold: #d4af37;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 10% 20%, rgba(65, 105, 225, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+
+        /* ===== BACK BUTTON STYLES ===== */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--glass-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: var(--glass-border);
+            color: var(--text-primary);
+            transform: translateX(-3px);
+        }
+
+        .back-button i {
+            margin-right: 6px;
+            font-size: 14px;
+        }
+
+        /* ===== PRODUCT BANNER SECTION ===== */
+        .product-banner {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border-bottom: 1px solid var(--glass-border);
+            padding: 2.5rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .banner-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== PRODUCT CARD STYLES ===== */
+        .product-card {
+            background-color: var(--card-dark);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(65, 105, 225, 0.2);
+            border-color: var(--accent-royal);
+        }
+
+        .product-image {
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .buy-button {
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            color: var(--primary-dark);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(99, 102, 241, 0.4);
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+        }
+
+        /* ===== PREMIUM SECTION STYLES ===== */
+        .premium-section {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .premium-button {
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.5);
+        }
+
+        .premium-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .premium-button:hover::before {
+            transform: translateX(0);
+        }
+
+        /* ===== LAYOUT STYLES ===== */
+        .content-width {
+            max-width: 75%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .content-width {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-width {
+                max-width: 95%;
+            }
+        }
+
+        .section-spacing {
+            padding: 4rem 0;
+        }
+
+        /* ===== FOOTER STYLES ===== */
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* ===== TOAST NOTIFICATION STYLES ===== */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        .custom-toast {
+            background-color: var(--card-dark);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .custom-toast i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            .banner-title {
+                font-size: 2rem;
+            }
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Product Banner Section -->
+    <header class="product-banner">
+        <!-- Back to Tools Button -->
+        <a href="premium-workspace.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Tools
+        </a>
+
+        <div class="content-width">
+            <h1 class="banner-title">Premium Products</h1>
+            <p class="banner-subtitle">Exclusive access to our premium collection for Pro members</p>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="py-16 section-spacing">
+        <div class="content-width">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Our Premium Products</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Professionally crafted prompt bundles for various industries and use cases</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 product-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/6366f1/ffffff?text=Business+Bundle" alt="Business & Marketing Prompt Bundle">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Business & Marketing Bundle</h3>
+                        <p class="product-description">150+ expertly crafted prompts for business strategy, marketing campaigns, and growth hacking. Perfect for entrepreneurs and marketing professionals.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$29.99</span>
+                            <button class="buy-button" onclick="buyProduct('business-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/8b5cf6/ffffff?text=Content+Creator+Bundle" alt="Content Creator Prompt Bundle">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Content Creator Bundle</h3>
+                        <p class="product-description">200+ prompts for social media, blog posts, video scripts, and content strategy. Elevate your content game across all platforms.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$24.99</span>
+                            <button class="buy-button" onclick="buyProduct('content-creator-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/0ea5e9/ffffff?text=Tech+Bundle" alt="Tech & AI Prompt Bundle">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Tech & AI Bundle</h3>
+                        <p class="product-description">175+ specialized prompts for developers, data scientists, and AI professionals. Includes coding, automation, and technical documentation templates.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$34.99</span>
+                            <button class="buy-button" onclick="buyProduct('tech-ai-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/10b981/ffffff?text=Education+Bundle" alt="Education & Learning Prompt Bundle">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Education & Learning Bundle</h3>
+                        <p class="product-description">125+ prompts for educators, course creators, and students. Includes lesson planning, study guides, and educational content templates.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$19.99</span>
+                            <button class="buy-button" onclick="buyProduct('education-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/ec4899/ffffff?text=Creative+Bundle" alt="Creative Writing Prompt Bundle">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Creative Writing Bundle</h3>
+                        <p class="product-description">150+ prompts for fiction writers, poets, and storytellers. Includes character development, plot outlines, and world-building templates.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$22.99</span>
+                            <button class="buy-button" onclick="buyProduct('creative-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/f59e0b/ffffff?text=Ultimate+Bundle" alt="Ultimate Prompt Bundle">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Ultimate Bundle</h3>
+                        <p class="product-description">900+ prompts covering all categories with resell rights. The complete collection for professionals who want it all. Best value for money.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$49.99</span>
+                            <button class="buy-button" onclick="buyProduct('ultimate-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-400 mb-4">Need a custom bundle or have questions?</p>
+                <a href="mailto:support@example.com" class="premium-button text-white px-8 py-3 rounded-lg text-lg font-medium inline-flex items-center">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section class="py-20 section-spacing">
+        <div class="premium-section py-16 md:py-20">
+            <div class="content-width relative z-10">
+                <div class="text-center text-white">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Unlock 900+ Premium AI Prompts</h2>
+                    <p class="text-lg mb-8 max-w-2xl mx-auto">Includes Resell Rights — repackage and sell as your own prompt bundle</p>
+                    <a href="https://stackedmarket.gumroad.com/l/AIPromptBundle" target="_blank"
+                        class="premium-button text-white px-10 py-4 rounded-xl text-lg font-bold text-center transition duration-150 ease-in-out inline-flex items-center justify-center mx-auto">
+                        <i class="fas fa-lock mr-2"></i> Only $15
+                    </a>
+                    <p class="mt-6 text-sm">Includes resell rights. Use for your business or resell as your own.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimal Footer -->
+    <footer class="footer">
+        <div class="content-width">
+            <p class="text-gray-400 text-sm">© 2023 PromptMaster AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        /**
+         * Placeholder function for buying products
+         * This function will be connected with 2Checkout payment processing in the future
+         * Currently shows a toast notification and logs the product ID to console
+         *
+         * @param {string} productId - The ID of the product being purchased
+         */
+        function buyProduct(productId) {
+            // Log the product ID for debugging purposes
+            console.log(`Product ID: ${productId}`);
+
+            // Show a toast notification instead of alert
+            showToast(`Thank you for your interest in ${productId}! This is a placeholder function. Payment processing will be implemented soon.`, 'success');
+
+            // Future implementation will redirect to 2Checkout payment page:
+            // window.location.href = `https://checkout.2checkout.com/checkout/purchase?productId=${productId}`;
+        }
+
+        /**
+         * Show a toast notification
+         * This function creates and displays a toast notification with the specified message and type
+         *
+         * @param {string} message - The message to display in the toast
+         * @param {string} type - The type of toast (success, warning, error, info)
+         */
+        function showToast(message, type = 'info') {
+            // Get toast container
+            const toastContainer = document.getElementById('toastContainer');
+
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast';
+
+            // Set icon based on type
+            let icon = 'fas fa-info-circle';
+            if (type === 'success') icon = 'fas fa-check-circle';
+            if (type === 'warning') icon = 'fas fa-exclamation-triangle';
+            if (type === 'error') icon = 'fas fa-times-circle';
+
+            // Set toast content
+            toast.innerHTML = `<i class="${icon}"></i> ${message}`;
+
+            // Add toast to container
+            toastContainer.appendChild(toast);
+
+            // Auto-remove after 3 seconds
+            setTimeout(function () {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s';
+                setTimeout(function () {
+                    toastContainer.removeChild(toast);
+                }, 500);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

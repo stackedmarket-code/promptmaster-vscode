@@ -1,0 +1,3399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptMaster Pro - Premium Workspace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-dark: #121212;
+            --secondary-dark: #1e1e1e;
+            --card-dark: #252525;
+            --accent-royal: #4169E1;
+            --accent-gold: #d4af37;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 10% 20%, rgba(65, 105, 225, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+
+        .navbar {
+            background-color: var(--secondary-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--accent-gold) !important;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .navbar-brand i {
+            margin-right: 8px;
+            color: var(--accent-gold);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+            margin: 0 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-royal) !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: var(--accent-gold) !important;
+        }
+
+        .credits-display {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .credits-display i {
+            color: var(--accent-gold);
+            margin-right: 0.25rem;
+        }
+
+        .btn-buy-credits {
+            display: inline-flex;
+            /* centers icon + text */
+            align-items: center;
+            /* vertical alignment */
+            justify-content: center;
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            border: none;
+            color: var(--primary-dark) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            line-height: 1;
+            /* removes extra vertical space */
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-buy-credits:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-buy-credits i {
+            margin-right: 0.5rem;
+        }
+
+        .premium-badge {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .user-dropdown {
+            position: relative;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-info:hover {
+            background-color: var(--glass-bg);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--accent-royal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: var(--card-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            min-width: 180px;
+            z-index: 1000;
+            display: none;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--glass-bg);
+            color: var(--text-primary);
+        }
+
+        .dropdown-item i {
+            margin-right: 8px;
+            color: var(--accent-royal);
+        }
+
+        .hero-section {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .credits-overview {
+            background: rgba(255, 255, 255, 0.05);
+            /* transparent glass like unlock */
+            border-radius: 20px;
+            /* same as unlock */
+            padding: 3rem 2rem;
+            /* same as unlock */
+            margin: 0 auto 2rem;
+            max-width: 1140px;
+            /* match Bootstrap container */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            /* stronger shadow like unlock */
+        }
+
+        .credits-overview .usage-stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .credits-overview .usage-card {
+            flex: 1;
+            background-color: var(--card-dark);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--glass-border);
+        }
+
+        .credits-overview .usage-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+
+        .credits-overview .usage-info h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0 0 0.25rem 0;
+            font-weight: 500;
+        }
+
+        .credits-overview .usage-info p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .credits-overview .usage-value {
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .usage-section {
+            padding: 1rem 0 2rem 0;
+        }
+
+        .usage-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .usage-card {
+            background-color: var(--card-dark);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .usage-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(65, 105, 225, 0.2);
+        }
+
+        .usage-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--accent-royal);
+            font-size: 1.5rem;
+        }
+
+        .usage-info h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0 0 0.25rem 0;
+            font-weight: 500;
+        }
+
+        .usage-info p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .usage-info .usage-value {
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .workspace-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .categories-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .categories-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .view-toggle {
+            display: flex;
+            background-color: var(--card-dark);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .view-toggle button {
+            background-color: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-toggle button.active {
+            background-color: var(--accent-royal);
+            color: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--card-dark);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(65, 105, 225, 0.2);
+            border-color: var(--accent-royal);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-royal);
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .subcategories {
+            display: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .subcategories.show {
+            display: block;
+        }
+
+        .subcategory-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--glass-bg);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .subcategory-item:hover {
+            background-color: rgba(65, 105, 225, 0.2);
+        }
+
+        .subcategory-item i {
+            margin-right: 8px;
+            color: var(--accent-royal);
+        }
+
+        .prompt-form-container {
+            display: none;
+            background-color: var(--card-dark);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .prompt-form-container.show {
+            display: block;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .hide-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .hide-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-control,
+        .form-select {
+            background-color: var(--secondary-dark);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: var(--secondary-dark);
+            border-color: var(--accent-royal);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.25rem rgba(65, 105, 225, 0.25);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-generate {
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(65, 105, 225, 0.3);
+        }
+
+        .btn-generate i {
+            margin-right: 8px;
+        }
+
+        .btn-refresh {
+            background-color: transparent;
+            border: 1px solid var(--accent-royal);
+            color: var(--accent-royal);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-refresh:hover {
+            background-color: rgba(65, 105, 225, 0.2);
+        }
+
+        .btn-refresh i {
+            margin-right: 8px;
+        }
+
+        .btn-copy {
+            background-color: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-copy:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-copy i {
+            margin-right: 8px;
+        }
+
+        .prompt-output-container {
+            margin-top: 1.5rem;
+        }
+
+        .prompt-output {
+            display: none;
+            background-color: var(--secondary-dark);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--glass-border);
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .prompt-output.show {
+            display: block;
+        }
+
+        .variations-container {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .variations-container.show {
+            display: block;
+        }
+
+        .variation-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 1rem;
+        }
+
+        .variation-tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .variation-tab.active {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        .variation-content {
+            display: none;
+        }
+
+        .variation-content.active {
+            display: block;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        .custom-toast {
+            background-color: var(--card-dark);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .custom-toast i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-royal);
+        }
+
+        .active-tools {
+            margin-top: 2rem;
+        }
+
+        .active-tools-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tool-card {
+            background-color: var(--card-dark);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tool-card:hover {
+            background-color: rgba(65, 105, 225, 0.1);
+        }
+
+        .tool-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--accent-royal);
+        }
+
+        .tool-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tool-details p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tool-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .tool-btn:hover {
+            background-color: var(--glass-bg);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar-nav {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+
+        .digitalunlock .btnunlock {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            /* glass-like */
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
+        }
+
+        .digitalunlock .btnunlock:hover {
+            background: linear-gradient(90deg, var(--accent-royal), var(--accent-gold));
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+        }
+
+        .digitalunlock .unlockbanner {
+            background: rgba(255, 255, 255, 0.04);
+            /* subtle glass effect */
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+        const SUPABASE_URL = "https://puyqqmggicdegotsxohf.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1eXFxbWdnaWNkZWdvdHN4b2hmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzOTY5MzYsImV4cCI6MjA3MTk3MjkzNn0.vWtyVzkL1oA8GIJUyhhz5FP4Ql5G5CfN1-Zi3nffJP4";
+
+        const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Check if user is logged in
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            // Not logged in → redirect to login page
+            window.location.href = "auth.html";
+        }
+
+        // Make supabase available globally
+        window.supabase = supabase;
+    </script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-lightning-charge-fill"></i>
+                PromptMaster AI
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="premium-workspace.html"><i class="bi bi-speedometer2"></i>
+                            Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="paidlibrary.html">Prompt Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="businessplan.html">Business Library</a>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#"> More Tools Coming
+                            soon</span></a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="badge rounded-pill credits-display"><i class="bi bi-currency-dollar"></i> 150
+                            Credits</span>
+                    </div>
+                    <button class="btn btn-buy-credits me-3" type="button">
+                        <i class="bi bi-cart"></i> Buy Credits
+                    </button>
+
+                    <div class="user-dropdown">
+                        <div class="user-info" id="userDropdown">
+                            <div class="user-avatar">JD</div>
+                            <div class="ms-2 me-1">
+                                <div class="fw-medium">John Doe</div>
+                                <small class="text-warning">Premium Member</small>
+                            </div>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-menu" id="userDropdownMenu">
+                            <a class="dropdown-item" href="#" id="logoutBtn">
+                                <i class="bi bi-box-arrow-right"></i> Logout
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">✨ Welcome to <span class="text-gold">PromptMaster Pro</span> <span
+                    class="premium-badge">PREMIUM</span></h1>
+            <p class="hero-subtitle">Your Premium AI Prompt Workspace</p>
+        </div>
+    </section>
+
+    <!-- Credits Overview -->
+    <section class="credits-overview">
+        <div class="container">
+            <div class="usage-stats">
+                <div class="usage-card">
+                    <div class="usage-icon">
+                        <i class="bi bi-lightning-charge"></i>
+                    </div>
+                    <div class="usage-info">
+                        <h3>Prompts Generated</h3>
+                        <p class="usage-value">42</p>
+                    </div>
+                </div>
+                <div class="usage-card">
+                    <div class="usage-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="usage-info">
+                        <h3>Credits Left</h3>
+                        <p class="usage-value">150</p>
+                    </div>
+                </div>
+                <div class="usage-card">
+                    <div class="usage-icon">
+                        <i class="bi bi-wallet2"></i>
+                    </div>
+                    <div class="usage-info">
+                        <h3>Total Balance</h3>
+                        <p class="usage-value">200</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mb-5">
+        <div class="workspace-container">
+            <!-- Categories Section -->
+            <div id="categoriesSection">
+                <div class="categories-header">
+                    <h2 class="categories-title">Premium Tools</h2>
+                    <div class="view-toggle">
+                        <button class="active"><i class="bi bi-grid"></i></button>
+                        <button><i class="bi bi-list"></i></button>
+                    </div>
+                </div>
+
+                <!-- Categories Grid -->
+                <div class="category-grid" id="categoriesGrid">
+                    <!-- Business & Marketing -->
+                    <div class="category-card" data-category="business">
+                        <div class="category-icon">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </div>
+                        <h3 class="category-title">Business & Marketing</h3>
+                        <p class="category-description">Professional templates for business planning, marketing
+                            strategies, and sales materials.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="business-plan">
+                                <i class="bi bi-file-earmark-text"></i> Business Plan
+                            </div>
+                            <div class="subcategory-item" data-subcategory="ad-copy">
+                                <i class="bi bi-badge-ad"></i> Ad Copy
+                            </div>
+                            <div class="subcategory-item" data-subcategory="email-marketing">
+                                <i class="bi bi-envelope-arrow-up"></i> Email Marketing
+                            </div>
+                            <div class="subcategory-item" data-subcategory="sales-pitch">
+                                <i class="bi bi-megaphone"></i> Sales Pitch
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- YouTube -->
+                    <div class="category-card" data-category="youtube">
+                        <div class="category-icon">
+                            <i class="bi bi-youtube"></i>
+                        </div>
+                        <h3 class="category-title">YouTube</h3>
+                        <p class="category-description">Create compelling YouTube content with optimized scripts,
+                            titles, and descriptions.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="title-ideas">
+                                <i class="bi bi-lightbulb"></i> Title Ideas
+                            </div>
+                            <div class="subcategory-item" data-subcategory="script-writing">
+                                <i class="bi bi-pencil-square"></i> Script Writing
+                            </div>
+                            <div class="subcategory-item" data-subcategory="thumbnail-text">
+                                <i class="bi bi-image"></i> Thumbnail Text
+                            </div>
+                            <div class="subcategory-item" data-subcategory="channel-description">
+                                <i class="bi bi-info-circle"></i> Channel Description
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blogging -->
+                    <div class="category-card" data-category="blogging">
+                        <div class="category-icon">
+                            <i class="bi bi-journal-text"></i>
+                        </div>
+                        <h3 class="category-title">Blogging</h3>
+                        <p class="category-description">Create engaging blog posts, SEO articles, and content that
+                            drives traffic.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="article">
+                                <i class="bi bi-file-text"></i> Article
+                            </div>
+                            <div class="subcategory-item" data-subcategory="seo-post">
+                                <i class="bi bi-search"></i> SEO Post
+                            </div>
+                            <div class="subcategory-item" data-subcategory="listicle">
+                                <i class="bi bi-list-ol"></i> Listicle
+                            </div>
+                            <div class="subcategory-item" data-subcategory="product-review">
+                                <i class="bi bi-star"></i> Product Review
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI & Automation -->
+                    <div class="category-card" data-category="ai">
+                        <div class="category-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h3 class="category-title">AI & Automation</h3>
+                        <p class="category-description">Design AI workflows, create API prompts, and automate your
+                            content creation.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="workflow-design">
+                                <i class="bi bi-gear-wide-connected"></i> Workflow Design
+                            </div>
+                            <div class="subcategory-item" data-subcategory="api-prompt">
+                                <i class="bi bi-terminal"></i> API Prompt
+                            </div>
+                            <div class="subcategory-item" data-subcategory="automation-ideas">
+                                <i class="bi bi-arrow-repeat"></i> Automation Ideas
+                            </div>
+                            <div class="subcategory-item" data-subcategory="chatbot-script">
+                                <i class="bi bi-chat-dots"></i> Chatbot Script
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Writing -->
+                    <div class="category-card" data-category="creative">
+                        <div class="category-icon">
+                            <i class="bi bi-feather"></i>
+                        </div>
+                        <h3 class="category-title">Creative Writing</h3>
+                        <p class="category-description">Unleash your creativity with story starters, poems, and
+                            character development tools.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="story-starter">
+                                <i class="bi bi-book"></i> Story Starter
+                            </div>
+                            <div class="subcategory-item" data-subcategory="poem">
+                                <i class="bi bi-card-text"></i> Poem
+                            </div>
+                            <div class="subcategory-item" data-subcategory="dialogue-generator">
+                                <i class="bi bi-chat-square-text"></i> Dialogue Generator
+                            </div>
+                            <div class="subcategory-item" data-subcategory="character-creator">
+                                <i class="bi bi-person-arms-up"></i> Character Creator
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education & Learning -->
+                    <div class="category-card" data-category="education">
+                        <div class="category-icon">
+                            <i class="bi bi-book-half"></i>
+                        </div>
+                        <h3 class="category-title">Education & Learning</h3>
+                        <p class="category-description">Create educational content, lesson plans, and study materials.
+                        </p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="lesson-plan">
+                                <i class="bi bi-calendar3"></i> Lesson Plan
+                            </div>
+                            <div class="subcategory-item" data-subcategory="quiz-maker">
+                                <i class="bi bi-question-square"></i> Quiz Maker
+                            </div>
+                            <div class="subcategory-item" data-subcategory="study-notes">
+                                <i class="bi bi-bookmark-star"></i> Study Notes
+                            </div>
+                            <div class="subcategory-item" data-subcategory="presentation-outline">
+                                <i class="bi bi-presentation"></i> Presentation Outline
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="category-card" data-category="social">
+                        <div class="category-icon">
+                            <i class="bi bi-share"></i>
+                        </div>
+                        <h3 class="category-title">Social Media</h3>
+                        <p class="category-description">Create engaging content for all social media platforms.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="instagram-post">
+                                <i class="bi bi-instagram"></i> Instagram Post
+                            </div>
+                            <div class="subcategory-item" data-subcategory="tweet">
+                                <i class="bi bi-twitter"></i> Tweet
+                            </div>
+                            <div class="subcategory-item" data-subcategory="linkedin-post">
+                                <i class="bi bi-linkedin"></i> LinkedIn Post
+                            </div>
+                            <div class="subcategory-item" data-subcategory="facebook-post">
+                                <i class="bi bi-facebook"></i> Facebook Post
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech & Development -->
+                    <div class="category-card" data-category="tech">
+                        <div class="category-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h3 class="category-title">Tech & Development</h3>
+                        <p class="category-description">Create technical documentation, code snippets, and development
+                            resources.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="api-documentation">
+                                <i class="bi bi-file-code"></i> API Documentation
+                            </div>
+                            <div class="subcategory-item" data-subcategory="code-generator">
+                                <i class="bi bi-code-square"></i> Code Generator
+                            </div>
+                            <div class="subcategory-item" data-subcategory="technical-guide">
+                                <i class="bi bi-laptop"></i> Technical Guide
+                            </div>
+                            <div class="subcategory-item" data-subcategory="bug-report">
+                                <i class="bi bi-bug"></i> Bug Report
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health & Wellness -->
+                    <div class="category-card" data-category="health">
+                        <div class="category-icon">
+                            <i class="bi bi-heart-pulse-fill"></i>
+                        </div>
+                        <h3 class="category-title">Health & Wellness</h3>
+                        <p class="category-description">Create content about health, fitness, and wellness topics.</p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="workout-plan">
+                                <i class="bi bi-bicycle"></i> Workout Plan
+                            </div>
+                            <div class="subcategory-item" data-subcategory="meal-plan">
+                                <i class="bi bi-basket"></i> Meal Plan
+                            </div>
+                            <div class="subcategory-item" data-subcategory="wellness-article">
+                                <i class="bi bi-leaf"></i> Wellness Article
+                            </div>
+                            <div class="subcategory-item" data-subcategory="mental-health">
+                                <i class="bi bi-emoji-smile"></i> Mental Health
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E-commerce -->
+                    <div class="category-card" data-category="ecommerce">
+                        <div class="category-icon">
+                            <i class="bi bi-cart3"></i>
+                        </div>
+                        <h3 class="category-title">E-commerce</h3>
+                        <p class="category-description">Create product descriptions, listings, and e-commerce content.
+                        </p>
+                        <div class="subcategories">
+                            <div class="subcategory-item" data-subcategory="product-description">
+                                <i class="bi bi-tag"></i> Product Description
+                            </div>
+                            <div class="subcategory-item" data-subcategory="amazon-listing">
+                                <i class="bi bi-amazon"></i> Amazon Listing
+                            </div>
+                            <div class="subcategory-item" data-subcategory="email-sequence">
+                                <i class="bi bi-envelope-arrow-down"></i> Email Sequence
+                            </div>
+                            <div class="subcategory-item" data-subcategory="landing-page">
+                                <i class="bi bi-window"></i> Landing Page
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Tools Section -->
+            <div class="active-tools" id="activeToolsSection" style="display: none;">
+                <h2 class="active-tools-title">Active Tools</h2>
+                <div id="activeToolsList">
+                    <!-- Active tools will be added here dynamically -->
+                </div>
+            </div>
+
+            <!-- Dynamic Form Container -->
+            <div class="prompt-form-container" id="promptFormContainer">
+                <div class="form-header">
+                    <h2 class="form-title" id="formTitle">Select a template</h2>
+                    <button class="hide-btn" id="hideBtn">
+                        <i class="bi bi-chevron-up"></i>
+                    </button>
+                </div>
+                <form id="dynamicForm">
+                    <!-- Form fields will be dynamically inserted here -->
+                </form>
+                <div class="form-actions">
+                    <button type="button" class="btn-generate" id="generateBtn">
+                        <i class="bi bi-lightning-charge-fill"></i> Generate Prompt
+                    </button>
+                    <button type="button" class="btn-refresh" id="refreshBtn">
+                        <i class="bi bi-arrow-clockwise"></i> Generate Variations
+                    </button>
+                    <button type="button" class="btn-copy" id="copyBtn">
+                        <i class="bi bi-clipboard"></i> Copy Prompt
+                    </button>
+                </div>
+                <div class="prompt-output-container">
+                    <div class="variations-container" id="variationsContainer">
+                        <div class="variation-tabs" id="variationTabs">
+                            <!-- Tabs will be added dynamically -->
+                        </div>
+                        <div id="variationContents">
+                            <!-- Variation contents will be added dynamically -->
+                        </div>
+                    </div>
+                    <div class="prompt-output" id="promptOutput"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Digital Products Unlock Banner -->
+    <section class="digitalunlock my-5">
+        <div class="container">
+            <div class="unlockbanner text-center">
+                <h2>Unlock Premium Digital Products</h2>
+                <p>Boost your productivity with exclusive resources </p>
+                <a href="products2.html" class="btn btnunlock">
+                    🔒 Unlock Now $5
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="about.html">About</a>
+                <a href="index.html" class="text-warning fw-bold">Free Tool</a>
+            </div>
+            <p>© 2023 PromptMaster AI. All rights reserved. Premium Workspace is exclusively for paid members.</p>
+        </div>
+    </footer>
+
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // User dropdown toggle
+            const userDropdown = document.getElementById('userDropdown');
+            const userDropdownMenu = document.getElementById('userDropdownMenu');
+
+            userDropdown.addEventListener('click', function () {
+                userDropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!userDropdown.contains(event.target)) {
+                    userDropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Active tools array
+            let activeTools = [];
+
+            // Category card click handler
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    // If clicked on a subcategory, don't toggle the subcategories
+                    if (e.target.closest('.subcategory-item')) {
+                        return;
+                    }
+
+                    // Toggle subcategories visibility
+                    const subcategories = this.querySelector('.subcategories');
+                    if (subcategories.classList.contains('show')) {
+                        subcategories.classList.remove('show');
+                    } else {
+                        // Hide all other subcategories
+                        document.querySelectorAll('.subcategories').forEach(sub => {
+                            sub.classList.remove('show');
+                        });
+                        subcategories.classList.add('show');
+                    }
+                });
+            });
+
+            // Subcategory click handler
+            const subcategoryItems = document.querySelectorAll('.subcategory-item');
+            subcategoryItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.stopPropagation();
+
+                    const category = this.closest('.category-card').dataset.category;
+                    const subcategory = this.dataset.subcategory;
+
+                    // Add to active tools if not already there
+                    const toolName = this.textContent.trim();
+                    const toolIcon = this.querySelector('i').className;
+
+                    if (!activeTools.find(tool => tool.id === subcategory)) {
+                        activeTools.push({
+                            id: subcategory,
+                            name: toolName,
+                            icon: toolIcon,
+                            category: category
+                        });
+                        updateActiveToolsList();
+                    }
+
+                    // Show form container
+                    const formContainer = document.getElementById('promptFormContainer');
+                    formContainer.classList.add('show');
+
+                    // Scroll to form
+                    formContainer.scrollIntoView({ behavior: 'smooth' });
+
+                    // Build form based on subcategory
+                    buildForm(category, subcategory);
+                });
+            });
+
+            // Hide button click handler
+            document.getElementById('hideBtn').addEventListener('click', function () {
+                const formContainer = document.getElementById('promptFormContainer');
+                formContainer.classList.remove('show');
+            });
+
+            // Generate button click handler
+            document.getElementById('generateBtn').addEventListener('click', function () {
+                generatePrompt();
+            });
+
+            // Refresh button click handler
+            document.getElementById('refreshBtn').addEventListener('click', function () {
+                generateVariations();
+            });
+
+            // Copy button click handler
+            document.getElementById('copyBtn').addEventListener('click', function () {
+                copyPrompt();
+            });
+
+            // View toggle buttons
+            const viewToggleButtons = document.querySelectorAll('.view-toggle button');
+            viewToggleButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    viewToggleButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Here you would implement the view toggle logic
+                    // For now, it's just a placeholder
+                });
+            });
+        });
+
+        function updateActiveToolsList() {
+            const activeToolsSection = document.getElementById('activeToolsSection');
+            const activeToolsList = document.getElementById('activeToolsList');
+
+            if (activeTools.length > 0) {
+                activeToolsSection.style.display = 'block';
+                activeToolsList.innerHTML = '';
+
+                activeTools.forEach(tool => {
+                    const toolCard = document.createElement('div');
+                    toolCard.className = 'tool-card';
+                    toolCard.dataset.toolId = tool.id;
+
+                    toolCard.innerHTML = `
+                        <div class="tool-info">
+                            <div class="tool-icon">
+                                <i class="${tool.icon}"></i>
+                            </div>
+                            <div class="tool-details">
+                                <h4>${tool.name}</h4>
+                                <p>${getCategoryName(tool.category)}</p>
+                            </div>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="tool-btn open-tool" title="Open Tool">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                            <button class="tool-btn remove-tool" title="Remove">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    activeToolsList.appendChild(toolCard);
+
+                    // Add event listeners to the buttons
+                    const openBtn = toolCard.querySelector('.open-tool');
+                    const removeBtn = toolCard.querySelector('.remove-tool');
+
+                    openBtn.addEventListener('click', function () {
+                        const category = tool.category;
+                        const subcategory = tool.id;
+
+                        // Show form container
+                        const formContainer = document.getElementById('promptFormContainer');
+                        formContainer.classList.add('show');
+
+                        // Scroll to form
+                        formContainer.scrollIntoView({ behavior: 'smooth' });
+
+                        // Build form based on subcategory
+                        buildForm(category, subcategory);
+                    });
+
+                    removeBtn.addEventListener('click', function () {
+                        // Remove from active tools array
+                        activeTools = activeTools.filter(t => t.id !== tool.id);
+
+                        // Update the list
+                        updateActiveToolsList();
+
+                        // If no active tools left, hide the section
+                        if (activeTools.length === 0) {
+                            activeToolsSection.style.display = 'none';
+                        }
+                    });
+                });
+            } else {
+                activeToolsSection.style.display = 'none';
+            }
+        }
+
+        function getCategoryName(category) {
+            const categoryNames = {
+                'business': 'Business & Marketing',
+                'youtube': 'YouTube',
+                'blogging': 'Blogging',
+                'ai': 'AI & Automation',
+                'creative': 'Creative Writing',
+                'education': 'Education & Learning',
+                'social': 'Social Media',
+                'tech': 'Tech & Development',
+                'health': 'Health & Wellness',
+                'ecommerce': 'E-commerce'
+            };
+
+            return categoryNames[category] || category;
+        }
+
+        function buildForm(category, subcategory) {
+            const formTitle = document.getElementById('formTitle');
+            const dynamicForm = document.getElementById('dynamicForm');
+
+            // Set form title based on subcategory
+            formTitle.textContent = getSubcategoryTitle(subcategory);
+
+            // Clear existing form fields
+            dynamicForm.innerHTML = '';
+
+            // Add form fields based on subcategory
+            const fields = getFormFields(subcategory);
+            fields.forEach(field => {
+                const formGroup = document.createElement('div');
+                formGroup.className = 'form-group';
+
+                const label = document.createElement('label');
+                label.className = 'form-label';
+                label.textContent = field.label;
+                formGroup.appendChild(label);
+
+                if (field.type === 'select') {
+                    const select = document.createElement('select');
+                    select.className = 'form-select';
+                    select.id = field.id;
+
+                    field.options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.textContent = option.text;
+                        select.appendChild(optionElement);
+                    });
+
+                    formGroup.appendChild(select);
+                } else if (field.type === 'textarea') {
+                    const textarea = document.createElement('textarea');
+                    textarea.className = 'form-control';
+                    textarea.id = field.id;
+                    textarea.rows = 3;
+                    formGroup.appendChild(textarea);
+                } else {
+                    const input = document.createElement('input');
+                    input.type = field.type;
+                    input.className = 'form-control';
+                    input.id = field.id;
+                    input.placeholder = field.placeholder || '';
+                    formGroup.appendChild(input);
+                }
+
+                dynamicForm.appendChild(formGroup);
+            });
+
+            // Store current subcategory for prompt generation
+            dynamicForm.dataset.currentSubcategory = subcategory;
+        }
+
+        function getSubcategoryTitle(subcategory) {
+            const titles = {
+                'business-plan': 'Business Plan Generator',
+                'ad-copy': 'Ad Copy Generator',
+                'email-marketing': 'Email Marketing Campaign',
+                'sales-pitch': 'Sales Pitch Creator',
+                'title-ideas': 'YouTube Title Ideas',
+                'script-writing': 'YouTube Script Writer',
+                'thumbnail-text': 'Thumbnail Text Generator',
+                'channel-description': 'Channel Description Optimizer',
+                'article': 'Blog Article Writer',
+                'seo-post': 'SEO Optimized Post',
+                'listicle': 'Listicle Creator',
+                'product-review': 'Product Review Writer',
+                'workflow-design': 'Workflow Designer',
+                'api-prompt': 'API Prompt Generator',
+                'automation-ideas': 'Automation Ideas Generator',
+                'chatbot-script': 'Chatbot Script Creator',
+                'story-starter': 'Story Starter Generator',
+                'poem': 'Poem Creator',
+                'dialogue-generator': 'Dialogue Generator',
+                'character-creator': 'Character Creator',
+                'lesson-plan': 'Lesson Plan Generator',
+                'quiz-maker': 'Quiz Maker',
+                'study-notes': 'Study Notes Creator',
+                'presentation-outline': 'Presentation Outline Generator',
+                'instagram-post': 'Instagram Post Creator',
+                'tweet': 'Tweet Generator',
+                'linkedin-post': 'LinkedIn Post Creator',
+                'facebook-post': 'Facebook Post Creator',
+                'api-documentation': 'API Documentation Generator',
+                'code-generator': 'Code Generator',
+                'technical-guide': 'Technical Guide Writer',
+                'bug-report': 'Bug Report Writer',
+                'workout-plan': 'Workout Plan Generator',
+                'meal-plan': 'Meal Plan Creator',
+                'wellness-article': 'Wellness Article Writer',
+                'mental-health': 'Mental Health Content Creator',
+                'product-description': 'Product Description Writer',
+                'amazon-listing': 'Amazon Listing Optimizer',
+                'email-sequence': 'Email Sequence Creator',
+                'landing-page': 'Landing Page Copywriter'
+            };
+
+            return titles[subcategory] || 'Template';
+        }
+
+        function getFormFields(subcategory) {
+            const fields = {
+                'business-plan': [
+                    { id: 'businessName', label: 'Business Name', type: 'text', placeholder: 'Enter your business name' },
+                    { id: 'industry', label: 'Industry', type: 'text', placeholder: 'e.g. Technology, Healthcare, Retail' },
+                    { id: 'targetMarket', label: 'Target Market', type: 'text', placeholder: 'Describe your target market' },
+                    { id: 'businessGoals', label: 'Business Goals', type: 'textarea', placeholder: 'Describe your business goals' },
+                    {
+                        id: 'planLength', label: 'Plan Length', type: 'select', options: [
+                            { value: 'short', text: 'Short (1-2 pages)' },
+                            { value: 'medium', text: 'Medium (3-5 pages)' },
+                            { value: 'long', text: 'Long (6+ pages)' }
+                        ]
+                    }
+                ],
+                'ad-copy': [
+                    { id: 'product', label: 'Product/Service', type: 'text', placeholder: 'Describe your product or service' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Describe your target audience' },
+                    { id: 'keyBenefits', label: 'Key Benefits', type: 'textarea', placeholder: 'List the key benefits' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'professional', text: 'Professional' },
+                            { value: 'friendly', text: 'Friendly' },
+                            { value: 'urgent', text: 'Urgent' },
+                            { value: 'humorous', text: 'Humorous' }
+                        ]
+                    },
+                    {
+                        id: 'platform', label: 'Platform', type: 'select', options: [
+                            { value: 'google', text: 'Google Ads' },
+                            { value: 'facebook', text: 'Facebook Ads' },
+                            { value: 'instagram', text: 'Instagram Ads' },
+                            { value: 'linkedin', text: 'LinkedIn Ads' }
+                        ]
+                    }
+                ],
+                'email-marketing': [
+                    { id: 'campaignName', label: 'Campaign Name', type: 'text', placeholder: 'Enter your campaign name' },
+                    { id: 'goal', label: 'Campaign Goal', type: 'text', placeholder: 'What is the goal of this campaign?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Describe your target audience' },
+                    { id: 'keyMessage', label: 'Key Message', type: 'textarea', placeholder: 'What is the key message?' },
+                    { id: 'callToAction', label: 'Call to Action', type: 'text', placeholder: 'What do you want recipients to do?' },
+                    {
+                        id: 'emailCount', label: 'Number of Emails', type: 'select', options: [
+                            { value: '1', text: 'Single Email' },
+                            { value: '3', text: '3-Email Sequence' },
+                            { value: '5', text: '5-Email Sequence' },
+                            { value: '7', text: '7-Email Sequence' }
+                        ]
+                    }
+                ],
+                'sales-pitch': [
+                    { id: 'product', label: 'Product/Service', type: 'text', placeholder: 'Describe your product or service' },
+                    { id: 'prospect', label: 'Prospect', type: 'text', placeholder: 'Describe your prospect' },
+                    { id: 'painPoints', label: 'Pain Points', type: 'textarea', placeholder: 'What pain points does your prospect have?' },
+                    { id: 'solution', label: 'Your Solution', type: 'textarea', placeholder: 'How does your product/service solve these pain points?' },
+                    {
+                        id: 'pitchLength', label: 'Pitch Length', type: 'select', options: [
+                            { value: 'short', text: 'Short (30 seconds)' },
+                            { value: 'medium', text: 'Medium (2 minutes)' },
+                            { value: 'long', text: 'Long (5+ minutes)' }
+                        ]
+                    }
+                ],
+                'title-ideas': [
+                    { id: 'videoTopic', label: 'Video Topic', type: 'text', placeholder: 'What is your video about?' },
+                    { id: 'keywords', label: 'Keywords', type: 'text', placeholder: 'Enter keywords separated by commas' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'serious', text: 'Serious' },
+                            { value: 'fun', text: 'Fun' },
+                            { value: 'provocative', text: 'Provocative' },
+                            { value: 'informative', text: 'Informative' }
+                        ]
+                    },
+                    {
+                        id: 'titleCount', label: 'Number of Titles', type: 'select', options: [
+                            { value: '5', text: '5 Titles' },
+                            { value: '10', text: '10 Titles' },
+                            { value: '15', text: '15 Titles' }
+                        ]
+                    }
+                ],
+                'script-writing': [
+                    { id: 'videoTitle', label: 'Video Title', type: 'text', placeholder: 'Enter your video title' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the video about?' },
+                    {
+                        id: 'scriptLength', label: 'Script Length', type: 'select', options: [
+                            { value: 'short', text: 'Short (5-10 minutes)' },
+                            { value: 'medium', text: 'Medium (10-20 minutes)' },
+                            { value: 'long', text: 'Long (20+ minutes)' }
+                        ]
+                    },
+                    {
+                        id: 'style', label: 'Style', type: 'select', options: [
+                            { value: 'educational', text: 'Educational' },
+                            { value: 'entertaining', text: 'Entertaining' },
+                            { value: 'storytelling', text: 'Storytelling' },
+                            { value: 'motivational', text: 'Motivational' }
+                        ]
+                    },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' }
+                ],
+                'thumbnail-text': [
+                    { id: 'videoTitle', label: 'Video Title', type: 'text', placeholder: 'Enter your video title' },
+                    { id: 'keywords', label: 'Keywords', type: 'text', placeholder: 'Enter keywords separated by commas' },
+                    {
+                        id: 'emotion', label: 'Emotion to Evoke', type: 'select', options: [
+                            { value: 'curiosity', text: 'Curiosity' },
+                            { value: 'excitement', text: 'Excitement' },
+                            { value: 'urgency', text: 'Urgency' },
+                            { value: 'surprise', text: 'Surprise' }
+                        ]
+                    },
+                    {
+                        id: 'textCount', label: 'Number of Text Options', type: 'select', options: [
+                            { value: '3', text: '3 Options' },
+                            { value: '5', text: '5 Options' },
+                            { value: '10', text: '10 Options' }
+                        ]
+                    }
+                ],
+                'channel-description': [
+                    { id: 'channelName', label: 'Channel Name', type: 'text', placeholder: 'Enter your channel name' },
+                    { id: 'niche', label: 'Channel Niche', type: 'text', placeholder: 'What is your channel about?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    { id: 'uniqueValue', label: 'Unique Value Proposition', type: 'textarea', placeholder: 'What makes your channel unique?' },
+                    { id: 'uploadSchedule', label: 'Upload Schedule', type: 'text', placeholder: 'e.g. Every Tuesday and Friday' }
+                ],
+                'article': [
+                    { id: 'articleTitle', label: 'Article Title', type: 'text', placeholder: 'Enter your article title' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the article about?' },
+                    { id: 'keywords', label: 'Keywords', type: 'text', placeholder: 'Enter keywords separated by commas' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'wordCount', label: 'Word Count', type: 'select', options: [
+                            { value: '500', text: 'Short (500 words)' },
+                            { value: '1000', text: 'Medium (1000 words)' },
+                            { value: '2000', text: 'Long (2000 words)' },
+                            { value: '3000', text: 'Very Long (3000+ words)' }
+                        ]
+                    },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'informative', text: 'Informative' },
+                            { value: 'conversational', text: 'Conversational' },
+                            { value: 'persuasive', text: 'Persuasive' },
+                            { value: 'entertaining', text: 'Entertaining' }
+                        ]
+                    }
+                ],
+                'seo-post': [
+                    { id: 'targetKeyword', label: 'Target Keyword', type: 'text', placeholder: 'Enter your main keyword' },
+                    { id: 'secondaryKeywords', label: 'Secondary Keywords', type: 'text', placeholder: 'Enter secondary keywords separated by commas' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the post about?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'wordCount', label: 'Word Count', type: 'select', options: [
+                            { value: '1000', text: 'Medium (1000 words)' },
+                            { value: '2000', text: 'Long (2000 words)' },
+                            { value: '3000', text: 'Very Long (3000+ words)' }
+                        ]
+                    },
+                    {
+                        id: 'readability', label: 'Readability Level', type: 'select', options: [
+                            { value: 'basic', text: 'Basic' },
+                            { value: 'intermediate', text: 'Intermediate' },
+                            { value: 'advanced', text: 'Advanced' }
+                        ]
+                    }
+                ],
+                'listicle': [
+                    { id: 'listicleTitle', label: 'Listicle Title', type: 'text', placeholder: 'Enter your listicle title' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the listicle about?' },
+                    {
+                        id: 'itemCount', label: 'Number of Items', type: 'select', options: [
+                            { value: '5', text: '5 Items' },
+                            { value: '7', text: '7 Items' },
+                            { value: '10', text: '10 Items' },
+                            { value: '15', text: '15 Items' },
+                            { value: '20', text: '20+ Items' }
+                        ]
+                    },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'informative', text: 'Informative' },
+                            { value: 'entertaining', text: 'Entertaining' },
+                            { value: 'humorous', text: 'Humorous' }
+                        ]
+                    }
+                ],
+                'product-review': [
+                    { id: 'productName', label: 'Product Name', type: 'text', placeholder: 'Enter the product name' },
+                    { id: 'productCategory', label: 'Product Category', type: 'text', placeholder: 'e.g. Electronics, Beauty, Fitness' },
+                    { id: 'keyFeatures', label: 'Key Features', type: 'textarea', placeholder: 'List the key features of the product' },
+                    { id: 'pros', label: 'Pros', type: 'textarea', placeholder: 'List the pros of the product' },
+                    { id: 'cons', label: 'Cons', type: 'textarea', placeholder: 'List the cons of the product' },
+                    {
+                        id: 'rating', label: 'Rating', type: 'select', options: [
+                            { value: '1', text: '1 Star' },
+                            { value: '2', text: '2 Stars' },
+                            { value: '3', text: '3 Stars' },
+                            { value: '4', text: '4 Stars' },
+                            { value: '5', text: '5 Stars' }
+                        ]
+                    },
+                    {
+                        id: 'recommendation', label: 'Recommendation', type: 'select', options: [
+                            { value: 'yes', text: 'Yes, I recommend it' },
+                            { value: 'no', text: 'No, I don\'t recommend it' },
+                            { value: 'depends', text: 'It depends on the user' }
+                        ]
+                    }
+                ],
+                'workflow-design': [
+                    { id: 'workflowName', label: 'Workflow Name', type: 'text', placeholder: 'Enter the workflow name' },
+                    { id: 'goal', label: 'Workflow Goal', type: 'text', placeholder: 'What is the goal of this workflow?' },
+                    { id: 'trigger', label: 'Trigger', type: 'text', placeholder: 'What triggers this workflow?' },
+                    { id: 'steps', label: 'Steps', type: 'textarea', placeholder: 'Describe the steps in the workflow' },
+                    { id: 'tools', label: 'Tools/Platforms', type: 'text', placeholder: 'What tools or platforms are involved?' },
+                    { id: 'output', label: 'Expected Output', type: 'textarea', placeholder: 'What is the expected output?' }
+                ],
+                'api-prompt': [
+                    { id: 'task', label: 'Task', type: 'text', placeholder: 'What do you want the AI to do?' },
+                    { id: 'context', label: 'Context', type: 'textarea', placeholder: 'Provide context for the task' },
+                    { id: 'inputFormat', label: 'Input Format', type: 'text', placeholder: 'Describe the input format' },
+                    { id: 'outputFormat', label: 'Output Format', type: 'text', placeholder: 'Describe the desired output format' },
+                    { id: 'constraints', label: 'Constraints', type: 'textarea', placeholder: 'List any constraints or limitations' },
+                    { id: 'examples', label: 'Examples (optional)', type: 'textarea', placeholder: 'Provide examples of desired input/output' }
+                ],
+                'automation-ideas': [
+                    { id: 'businessProcess', label: 'Business Process', type: 'text', placeholder: 'What business process do you want to automate?' },
+                    { id: 'currentWorkflow', label: 'Current Workflow', type: 'textarea', placeholder: 'Describe the current workflow' },
+                    { id: 'painPoints', label: 'Pain Points', type: 'textarea', placeholder: 'What are the pain points in the current process?' },
+                    { id: 'toolsUsed', label: 'Tools Currently Used', type: 'text', placeholder: 'What tools are currently used?' },
+                    { id: 'automationGoal', label: 'Automation Goal', type: 'text', placeholder: 'What is the goal of automation?' },
+                    {
+                        id: 'ideaCount', label: 'Number of Ideas', type: 'select', options: [
+                            { value: '3', text: '3 Ideas' },
+                            { value: '5', text: '5 Ideas' },
+                            { value: '10', text: '10 Ideas' }
+                        ]
+                    }
+                ],
+                'chatbot-script': [
+                    { id: 'chatbotName', label: 'Chatbot Name', type: 'text', placeholder: 'Enter the chatbot name' },
+                    { id: 'purpose', label: 'Purpose', type: 'text', placeholder: 'What is the chatbot for?' },
+                    { id: 'industry', label: 'Industry', type: 'text', placeholder: 'e.g. E-commerce, Healthcare, Finance' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who will use this chatbot?' },
+                    {
+                        id: 'personality', label: 'Personality', type: 'select', options: [
+                            { value: 'professional', text: 'Professional' },
+                            { value: 'friendly', text: 'Friendly' },
+                            { value: 'humorous', text: 'Humorous' },
+                            { value: 'empathetic', text: 'Empathetic' }
+                        ]
+                    },
+                    { id: 'keyFeatures', label: 'Key Features', type: 'textarea', placeholder: 'List the key features of the chatbot' }
+                ],
+                'story-starter': [
+                    {
+                        id: 'genre', label: 'Genre', type: 'select', options: [
+                            { value: 'fantasy', text: 'Fantasy' },
+                            { value: 'sci-fi', text: 'Science Fiction' },
+                            { value: 'mystery', text: 'Mystery' },
+                            { value: 'romance', text: 'Romance' },
+                            { value: 'horror', text: 'Horror' },
+                            { value: 'thriller', text: 'Thriller' }
+                        ]
+                    },
+                    { id: 'setting', label: 'Setting', type: 'text', placeholder: 'Where does the story take place?' },
+                    {
+                        id: 'mood', label: 'Mood', type: 'select', options: [
+                            { value: 'dark', text: 'Dark' },
+                            { value: 'mysterious', text: 'Mysterious' },
+                            { value: 'romantic', text: 'Romantic' },
+                            { value: 'adventurous', text: 'Adventurous' },
+                            { value: 'humorous', text: 'Humorous' }
+                        ]
+                    },
+                    { id: 'characterType', label: 'Main Character Type', type: 'text', placeholder: 'Describe the main character' },
+                    { id: 'conflict', label: 'Conflict', type: 'text', placeholder: 'What is the main conflict?' },
+                    {
+                        id: 'starterCount', label: 'Number of Starters', type: 'select', options: [
+                            { value: '3', text: '3 Starters' },
+                            { value: '5', text: '5 Starters' },
+                            { value: '10', text: '10 Starters' }
+                        ]
+                    }
+                ],
+                'poem': [
+                    { id: 'poemTitle', label: 'Poem Title', type: 'text', placeholder: 'Enter the poem title' },
+                    { id: 'theme', label: 'Theme', type: 'text', placeholder: 'What is the poem about?' },
+                    {
+                        id: 'poemType', label: 'Poem Type', type: 'select', options: [
+                            { value: 'haiku', text: 'Haiku' },
+                            { value: 'sonnet', text: 'Sonnet' },
+                            { value: 'free-verse', text: 'Free Verse' },
+                            { value: 'limerick', text: 'Limerick' },
+                            { value: 'ballad', text: 'Ballad' }
+                        ]
+                    },
+                    {
+                        id: 'mood', label: 'Mood', type: 'select', options: [
+                            { value: 'happy', text: 'Happy' },
+                            { value: 'sad', text: 'Sad' },
+                            { value: 'romantic', text: 'Romantic' },
+                            { value: 'nostalgic', text: 'Nostalgic' },
+                            { value: 'mysterious', text: 'Mysterious' }
+                        ]
+                    },
+                    {
+                        id: 'length', label: 'Length', type: 'select', options: [
+                            { value: 'short', text: 'Short' },
+                            { value: 'medium', text: 'Medium' },
+                            { value: 'long', text: 'Long' }
+                        ]
+                    }
+                ],
+                'dialogue-generator': [
+                    { id: 'characters', label: 'Characters', type: 'text', placeholder: 'List the characters in the dialogue' },
+                    { id: 'setting', label: 'Setting', type: 'text', placeholder: 'Where does the dialogue take place?' },
+                    { id: 'context', label: 'Context', type: 'textarea', placeholder: 'What is the context of the dialogue?' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'formal', text: 'Formal' },
+                            { value: 'casual', text: 'Casual' },
+                            { value: 'tense', text: 'Tense' },
+                            { value: 'humorous', text: 'Humorous' }
+                        ]
+                    },
+                    { id: 'purpose', label: 'Purpose', type: 'text', placeholder: 'What is the purpose of this dialogue?' },
+                    {
+                        id: 'dialogueLength', label: 'Dialogue Length', type: 'select', options: [
+                            { value: 'short', text: 'Short (5-10 lines)' },
+                            { value: 'medium', text: 'Medium (10-20 lines)' },
+                            { value: 'long', text: 'Long (20+ lines)' }
+                        ]
+                    }
+                ],
+                'character-creator': [
+                    { id: 'characterName', label: 'Character Name', type: 'text', placeholder: 'Enter the character name' },
+                    {
+                        id: 'characterType', label: 'Character Type', type: 'select', options: [
+                            { value: 'protagonist', text: 'Protagonist' },
+                            { value: 'antagonist', text: 'Antagonist' },
+                            { value: 'supporting', text: 'Supporting Character' },
+                            { value: 'minor', text: 'Minor Character' }
+                        ]
+                    },
+                    {
+                        id: 'genre', label: 'Genre', type: 'select', options: [
+                            { value: 'fantasy', text: 'Fantasy' },
+                            { value: 'sci-fi', text: 'Science Fiction' },
+                            { value: 'mystery', text: 'Mystery' },
+                            { value: 'romance', text: 'Romance' },
+                            { value: 'horror', text: 'Horror' }
+                        ]
+                    },
+                    { id: 'appearance', label: 'Appearance', type: 'textarea', placeholder: 'Describe the character\'s appearance' },
+                    { id: 'personality', label: 'Personality', type: 'textarea', placeholder: 'Describe the character\'s personality' },
+                    { id: 'backstory', label: 'Backstory', type: 'textarea', placeholder: 'Describe the character\'s backstory' },
+                    { id: 'motivations', label: 'Motivations', type: 'textarea', placeholder: 'What motivates this character?' }
+                ],
+                'lesson-plan': [
+                    { id: 'subject', label: 'Subject', type: 'text', placeholder: 'e.g. Math, Science, History' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the lesson about?' },
+                    { id: 'gradeLevel', label: 'Grade Level', type: 'text', placeholder: 'e.g. 3rd Grade, High School, College' },
+                    { id: 'duration', label: 'Duration', type: 'text', placeholder: 'e.g. 45 minutes, 1 hour, 2 hours' },
+                    { id: 'learningObjectives', label: 'Learning Objectives', type: 'textarea', placeholder: 'List the learning objectives' },
+                    { id: 'materials', label: 'Materials', type: 'textarea', placeholder: 'List the materials needed' },
+                    { id: 'activities', label: 'Activities', type: 'textarea', placeholder: 'Describe the activities' }
+                ],
+                'quiz-maker': [
+                    { id: 'subject', label: 'Subject', type: 'text', placeholder: 'e.g. Math, Science, History' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the quiz about?' },
+                    {
+                        id: 'difficulty', label: 'Difficulty Level', type: 'select', options: [
+                            { value: 'easy', text: 'Easy' },
+                            { value: 'medium', text: 'Medium' },
+                            { value: 'hard', text: 'Hard' }
+                        ]
+                    },
+                    {
+                        id: 'questionCount', label: 'Number of Questions', type: 'select', options: [
+                            { value: '5', text: '5 Questions' },
+                            { value: '10', text: '10 Questions' },
+                            { value: '20', text: '20 Questions' },
+                            { value: '30', text: '30 Questions' }
+                        ]
+                    },
+                    {
+                        id: 'questionType', label: 'Question Type', type: 'select', options: [
+                            { value: 'multiple-choice', text: 'Multiple Choice' },
+                            { value: 'true-false', text: 'True/False' },
+                            { value: 'short-answer', text: 'Short Answer' },
+                            { value: 'mixed', text: 'Mixed Types' }
+                        ]
+                    }
+                ],
+                'study-notes': [
+                    { id: 'subject', label: 'Subject', type: 'text', placeholder: 'e.g. Math, Science, History' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What are the study notes about?' },
+                    { id: 'keyConcepts', label: 'Key Concepts', type: 'textarea', placeholder: 'List the key concepts to cover' },
+                    {
+                        id: 'format', label: 'Format', type: 'select', options: [
+                            { value: 'outline', text: 'Outline Format' },
+                            { value: 'bullet-points', text: 'Bullet Points' },
+                            { value: 'mind-map', text: 'Mind Map' },
+                            { value: 'summary', text: 'Summary' }
+                        ]
+                    },
+                    {
+                        id: 'studyLevel', label: 'Study Level', type: 'select', options: [
+                            { value: 'basic', text: 'Basic Overview' },
+                            { value: 'intermediate', text: 'Detailed Study' },
+                            { value: 'advanced', text: 'Advanced Analysis' }
+                        ]
+                    }
+                ],
+                'presentation-outline': [
+                    { id: 'presentationTitle', label: 'Presentation Title', type: 'text', placeholder: 'Enter the presentation title' },
+                    { id: 'topic', label: 'Topic', type: 'text', placeholder: 'What is the presentation about?' },
+                    { id: 'audience', label: 'Audience', type: 'text', placeholder: 'Who is the presentation for?' },
+                    {
+                        id: 'duration', label: 'Duration', type: 'select', options: [
+                            { value: '5min', text: '5 Minutes' },
+                            { value: '10min', text: '10 Minutes' },
+                            { value: '20min', text: '20 Minutes' },
+                            { value: '30min', text: '30 Minutes' },
+                            { value: '60min', text: '60+ Minutes' }
+                        ]
+                    },
+                    { id: 'keyPoints', label: 'Key Points', type: 'textarea', placeholder: 'List the key points to cover' },
+                    { id: 'visualElements', label: 'Visual Elements', type: 'textarea', placeholder: 'Describe the visual elements to include' }
+                ],
+                'instagram-post': [
+                    { id: 'postTopic', label: 'Post Topic', type: 'text', placeholder: 'What is the post about?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'postType', label: 'Post Type', type: 'select', options: [
+                            { value: 'image', text: 'Image Post' },
+                            { value: 'carousel', text: 'Carousel' },
+                            { value: 'reel', text: 'Reel' },
+                            { value: 'story', text: 'Story' }
+                        ]
+                    },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'inspirational', text: 'Inspirational' },
+                            { value: 'educational', text: 'Educational' },
+                            { value: 'entertaining', text: 'Entertaining' },
+                            { value: 'promotional', text: 'Promotional' }
+                        ]
+                    },
+                    { id: 'hashtags', label: 'Hashtags', type: 'text', placeholder: 'Enter hashtags separated by commas' }
+                ],
+                'tweet': [
+                    { id: 'tweetTopic', label: 'Tweet Topic', type: 'text', placeholder: 'What is the tweet about?' },
+                    { id: 'goal', label: 'Goal', type: 'text', placeholder: 'What is the goal of this tweet?' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'informative', text: 'Informative' },
+                            { value: 'humorous', text: 'Humorous' },
+                            { value: 'promotional', text: 'Promotional' },
+                            { value: 'engaging', text: 'Engaging' }
+                        ]
+                    },
+                    { id: 'hashtags', label: 'Hashtags', type: 'text', placeholder: 'Enter hashtags separated by commas' },
+                    { id: 'mention', label: 'Mentions (optional)', type: 'text', placeholder: 'Enter Twitter handles to mention' }
+                ],
+                'linkedin-post': [
+                    { id: 'postTopic', label: 'Post Topic', type: 'text', placeholder: 'What is the post about?' },
+                    { id: 'industry', label: 'Industry', type: 'text', placeholder: 'e.g. Technology, Finance, Healthcare' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'postType', label: 'Post Type', type: 'select', options: [
+                            { value: 'insight', text: 'Industry Insight' },
+                            { value: 'achievement', text: 'Personal Achievement' },
+                            { value: 'article', text: 'Article Share' },
+                            { value: 'question', text: 'Question' }
+                        ]
+                    },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'professional', text: 'Professional' },
+                            { value: 'inspirational', text: 'Inspirational' },
+                            { value: 'educational', text: 'Educational' }
+                        ]
+                    }
+                ],
+                'facebook-post': [
+                    { id: 'postTopic', label: 'Post Topic', type: 'text', placeholder: 'What is the post about?' },
+                    { id: 'goal', label: 'Goal', type: 'text', placeholder: 'What is the goal of this post?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is your target audience?' },
+                    {
+                        id: 'postType', label: 'Post Type', type: 'select', options: [
+                            { value: 'text', text: 'Text Post' },
+                            { value: 'image', text: 'Image Post' },
+                            { value: 'video', text: 'Video Post' },
+                            { value: 'link', text: 'Link Share' }
+                        ]
+                    },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'informative', text: 'Informative' },
+                            { value: 'entertaining', text: 'Entertaining' },
+                            { value: 'promotional', text: 'Promotional' },
+                            { value: 'engaging', text: 'Engaging' }
+                        ]
+                    }
+                ],
+                'api-documentation': [
+                    { id: 'apiName', label: 'API Name', type: 'text', placeholder: 'Enter the API name' },
+                    {
+                        id: 'apiType', label: 'API Type', type: 'select', options: [
+                            { value: 'rest', text: 'REST' },
+                            { value: 'graphql', text: 'GraphQL' },
+                            { value: 'soap', text: 'SOAP' },
+                            { value: 'websocket', text: 'WebSocket' }
+                        ]
+                    },
+                    { id: 'purpose', label: 'Purpose', type: 'textarea', placeholder: 'What is the purpose of this API?' },
+                    { id: 'endpoints', label: 'Key Endpoints', type: 'textarea', placeholder: 'List the key endpoints' },
+                    { id: 'authentication', label: 'Authentication', type: 'text', placeholder: 'e.g. API Key, OAuth, JWT' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who will use this API?' }
+                ],
+                'code-generator': [
+                    {
+                        id: 'programmingLanguage', label: 'Programming Language', type: 'select', options: [
+                            { value: 'javascript', text: 'JavaScript' },
+                            { value: 'python', text: 'Python' },
+                            { value: 'java', text: 'Java' },
+                            { value: 'csharp', text: 'C#' },
+                            { value: 'php', text: 'PHP' },
+                            { value: 'ruby', text: 'Ruby' },
+                            { value: 'go', text: 'Go' },
+                            { value: 'rust', text: 'Rust' }
+                        ]
+                    },
+                    { id: 'codePurpose', label: 'Code Purpose', type: 'text', placeholder: 'What should the code do?' },
+                    { id: 'functionality', label: 'Functionality', type: 'textarea', placeholder: 'Describe the functionality in detail' },
+                    { id: 'inputsOutputs', label: 'Inputs/Outputs', type: 'textarea', placeholder: 'Describe the expected inputs and outputs' },
+                    { id: 'constraints', label: 'Constraints', type: 'textarea', placeholder: 'List any constraints or requirements' }
+                ],
+                'technical-guide': [
+                    { id: 'guideTitle', label: 'Guide Title', type: 'text', placeholder: 'Enter the guide title' },
+                    { id: 'technology', label: 'Technology', type: 'text', placeholder: 'What technology is the guide about?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is the guide for?' },
+                    {
+                        id: 'difficulty', label: 'Difficulty Level', type: 'select', options: [
+                            { value: 'beginner', text: 'Beginner' },
+                            { value: 'intermediate', text: 'Intermediate' },
+                            { value: 'advanced', text: 'Advanced' }
+                        ]
+                    },
+                    { id: 'keyTopics', label: 'Key Topics', type: 'textarea', placeholder: 'List the key topics to cover' },
+                    { id: 'prerequisites', label: 'Prerequisites', type: 'textarea', placeholder: 'List any prerequisites' }
+                ],
+                'bug-report': [
+                    { id: 'softwareName', label: 'Software Name', type: 'text', placeholder: 'Enter the software name' },
+                    { id: 'bugDescription', label: 'Bug Description', type: 'textarea', placeholder: 'Describe the bug in detail' },
+                    { id: 'stepsToReproduce', label: 'Steps to Reproduce', type: 'textarea', placeholder: 'List the steps to reproduce the bug' },
+                    { id: 'expectedBehavior', label: 'Expected Behavior', type: 'textarea', placeholder: 'What should happen?' },
+                    { id: 'actualBehavior', label: 'Actual Behavior', type: 'textarea', placeholder: 'What actually happens?' },
+                    {
+                        id: 'severity', label: 'Severity', type: 'select', options: [
+                            { value: 'low', text: 'Low' },
+                            { value: 'medium', text: 'Medium' },
+                            { value: 'high', text: 'High' },
+                            { value: 'critical', text: 'Critical' }
+                        ]
+                    }
+                ],
+                'workout-plan': [
+                    {
+                        id: 'fitnessGoal', label: 'Fitness Goal', type: 'select', options: [
+                            { value: 'weight-loss', text: 'Weight Loss' },
+                            { value: 'muscle-gain', text: 'Muscle Gain' },
+                            { value: 'endurance', text: 'Endurance' },
+                            { value: 'strength', text: 'Strength' },
+                            { value: 'general-fitness', text: 'General Fitness' }
+                        ]
+                    },
+                    {
+                        id: 'fitnessLevel', label: 'Fitness Level', type: 'select', options: [
+                            { value: 'beginner', text: 'Beginner' },
+                            { value: 'intermediate', text: 'Intermediate' },
+                            { value: 'advanced', text: 'Advanced' }
+                        ]
+                    },
+                    {
+                        id: 'daysPerWeek', label: 'Days Per Week', type: 'select', options: [
+                            { value: '3', text: '3 Days' },
+                            { value: '4', text: '4 Days' },
+                            { value: '5', text: '5 Days' },
+                            { value: '6', text: '6 Days' }
+                        ]
+                    },
+                    {
+                        id: 'duration', label: 'Duration', type: 'select', options: [
+                            { value: '4weeks', text: '4 Weeks' },
+                            { value: '8weeks', text: '8 Weeks' },
+                            { value: '12weeks', text: '12 Weeks' }
+                        ]
+                    },
+                    { id: 'equipment', label: 'Equipment Available', type: 'textarea', placeholder: 'List the equipment you have access to' }
+                ],
+                'meal-plan': [
+                    {
+                        id: 'dietaryPreference', label: 'Dietary Preference', type: 'select', options: [
+                            { value: 'omnivore', text: 'Omnivore' },
+                            { value: 'vegetarian', text: 'Vegetarian' },
+                            { value: 'vegan', text: 'Vegan' },
+                            { value: 'keto', text: 'Keto' },
+                            { value: 'paleo', text: 'Paleo' }
+                        ]
+                    },
+                    { id: 'calorieTarget', label: 'Calorie Target', type: 'text', placeholder: 'e.g. 1500, 2000, 2500' },
+                    {
+                        id: 'mealsPerDay', label: 'Meals Per Day', type: 'select', options: [
+                            { value: '3', text: '3 Meals' },
+                            { value: '4', text: '4 Meals' },
+                            { value: '5', text: '5 Meals' },
+                            { value: '6', text: '6 Meals' }
+                        ]
+                    },
+                    {
+                        id: 'duration', label: 'Duration', type: 'select', options: [
+                            { value: '1week', text: '1 Week' },
+                            { value: '2weeks', text: '2 Weeks' },
+                            { value: '1month', text: '1 Month' }
+                        ]
+                    },
+                    { id: 'restrictions', label: 'Food Restrictions', type: 'textarea', placeholder: 'List any food restrictions or allergies' }
+                ],
+                'wellness-article': [
+                    { id: 'articleTitle', label: 'Article Title', type: 'text', placeholder: 'Enter the article title' },
+                    { id: 'wellnessTopic', label: 'Wellness Topic', type: 'text', placeholder: 'What is the article about?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is the article for?' },
+                    {
+                        id: 'articleType', label: 'Article Type', type: 'select', options: [
+                            { value: 'informative', text: 'Informative' },
+                            { value: 'how-to', text: 'How-To Guide' },
+                            { value: 'listicle', text: 'Listicle' },
+                            { value: 'personal-story', text: 'Personal Story' }
+                        ]
+                    },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'inspirational', text: 'Inspirational' },
+                            { value: 'educational', text: 'Educational' },
+                            { value: 'empathetic', text: 'Empathetic' }
+                        ]
+                    },
+                    {
+                        id: 'wordCount', label: 'Word Count', type: 'select', options: [
+                            { value: '500', text: 'Short (500 words)' },
+                            { value: '1000', text: 'Medium (1000 words)' },
+                            { value: '2000', text: 'Long (2000 words)' }
+                        ]
+                    }
+                ],
+                'mental-health': [
+                    { id: 'contentTitle', label: 'Content Title', type: 'text', placeholder: 'Enter the content title' },
+                    { id: 'mentalHealthTopic', label: 'Mental Health Topic', type: 'text', placeholder: 'What is the content about?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is the content for?' },
+                    {
+                        id: 'contentType', label: 'Content Type', type: 'select', options: [
+                            { value: 'article', text: 'Article' },
+                            { value: 'guide', text: 'Guide' },
+                            { value: 'tips', text: 'Tips List' },
+                            { value: 'resource', text: 'Resource List' }
+                        ]
+                    },
+                    {
+                        id: 'approach', label: 'Approach', type: 'select', options: [
+                            { value: 'clinical', text: 'Clinical' },
+                            { value: 'holistic', text: 'Holistic' },
+                            { value: 'practical', text: 'Practical' }
+                        ]
+                    },
+                    {
+                        id: 'sensitivity', label: 'Sensitivity Level', type: 'select', options: [
+                            { value: 'high', text: 'High Sensitivity' },
+                            { value: 'medium', text: 'Medium Sensitivity' },
+                            { value: 'low', text: 'Low Sensitivity' }
+                        ]
+                    }
+                ],
+                'product-description': [
+                    { id: 'productName', label: 'Product Name', type: 'text', placeholder: 'Enter the product name' },
+                    { id: 'productCategory', label: 'Product Category', type: 'text', placeholder: 'e.g. Electronics, Beauty, Fitness' },
+                    { id: 'keyFeatures', label: 'Key Features', type: 'textarea', placeholder: 'List the key features' },
+                    { id: 'benefits', label: 'Benefits', type: 'textarea', placeholder: 'List the benefits to the customer' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is this product for?' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'professional', text: 'Professional' },
+                            { value: 'friendly', text: 'Friendly' },
+                            { value: 'enthusiastic', text: 'Enthusiastic' },
+                            { value: 'luxury', text: 'Luxury' }
+                        ]
+                    }
+                ],
+                'amazon-listing': [
+                    { id: 'productName', label: 'Product Name', type: 'text', placeholder: 'Enter the product name' },
+                    { id: 'productCategory', label: 'Product Category', type: 'text', placeholder: 'e.g. Electronics, Beauty, Fitness' },
+                    { id: 'keyFeatures', label: 'Key Features', type: 'textarea', placeholder: 'List the key features' },
+                    { id: 'benefits', label: 'Benefits', type: 'textarea', placeholder: 'List the benefits to the customer' },
+                    { id: 'keywords', label: 'Keywords', type: 'text', placeholder: 'Enter keywords separated by commas' },
+                    { id: 'competingProducts', label: 'Competing Products', type: 'textarea', placeholder: 'List competing products and how yours is better' }
+                ],
+                'email-sequence': [
+                    { id: 'sequenceName', label: 'Sequence Name', type: 'text', placeholder: 'Enter the sequence name' },
+                    { id: 'goal', label: 'Sequence Goal', type: 'text', placeholder: 'What is the goal of this sequence?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is this sequence for?' },
+                    {
+                        id: 'emailCount', label: 'Number of Emails', type: 'select', options: [
+                            { value: '3', text: '3 Emails' },
+                            { value: '5', text: '5 Emails' },
+                            { value: '7', text: '7 Emails' },
+                            { value: '10', text: '10 Emails' }
+                        ]
+                    },
+                    { id: 'keyMessages', label: 'Key Messages', type: 'textarea', placeholder: 'List the key messages for each email' },
+                    { id: 'callToAction', label: 'Final Call to Action', type: 'text', placeholder: 'What is the final call to action?' }
+                ],
+                'landing-page': [
+                    { id: 'pageName', label: 'Page Name', type: 'text', placeholder: 'Enter the landing page name' },
+                    { id: 'productService', label: 'Product/Service', type: 'text', placeholder: 'What product or service is being promoted?' },
+                    { id: 'targetAudience', label: 'Target Audience', type: 'text', placeholder: 'Who is this landing page for?' },
+                    {
+                        id: 'primaryGoal', label: 'Primary Goal', type: 'select', options: [
+                            { value: 'sales', text: 'Generate Sales' },
+                            { value: 'leads', text: 'Generate Leads' },
+                            { value: 'signups', text: 'Get Sign-ups' },
+                            { value: 'downloads', text: 'Get Downloads' }
+                        ]
+                    },
+                    { id: 'keySections', label: 'Key Sections', type: 'textarea', placeholder: 'List the key sections to include' },
+                    {
+                        id: 'tone', label: 'Tone', type: 'select', options: [
+                            { value: 'professional', text: 'Professional' },
+                            { value: 'friendly', text: 'Friendly' },
+                            { value: 'urgent', text: 'Urgent' },
+                            { value: 'luxury', text: 'Luxury' }
+                        ]
+                    }
+                ]
+            };
+
+            return fields[subcategory] || [];
+        }
+
+        function generatePrompt() {
+            const dynamicForm = document.getElementById('dynamicForm');
+            const subcategory = dynamicForm.dataset.currentSubcategory;
+            const promptOutput = document.getElementById('promptOutput');
+            const variationsContainer = document.getElementById('variationsContainer');
+
+            if (!subcategory) {
+                showToast('Please select a template first', 'warning');
+                return;
+            }
+
+            // Collect form data
+            const formData = {};
+            const formElements = dynamicForm.querySelectorAll('input, select, textarea');
+            formElements.forEach(element => {
+                formData[element.id] = element.value;
+            });
+
+            // Generate prompt based on subcategory
+            let prompt = '';
+
+            switch (subcategory) {
+                case 'business-plan':
+                    prompt = `Create a comprehensive business plan for ${formData.businessName || '[Business Name]'} in the ${formData.industry || '[Industry]'} industry.
+
+The business plan should include:
+• Executive Summary
+• Company Description
+• Market Analysis
+• Organization & Management
+• Service or Product Line
+• Marketing & Sales Strategy
+• Funding Request (if applicable)
+• Financial Projections
+• Appendix
+
+Target Market: ${formData.targetMarket || '[Target Market]'}
+Business Goals: ${formData.businessGoals || '[Business Goals]'}
+
+The plan should be approximately ${formData.planLength || '[Plan Length]'} and written in a professional, clear, and concise manner. Include specific details about the business model, competitive advantages, and growth strategy. Use data and research to support your claims and projections. The plan should be compelling enough to attract investors or guide the business's growth.`;
+                    break;
+
+                case 'ad-copy':
+                    prompt = `Create compelling ad copy for ${formData.product || '[Product/Service]'} targeting ${formData.targetAudience || '[Target Audience]'}.
+
+The ad copy should:
+• Grab attention with a strong headline
+• Highlight the key benefits: ${formData.keyBenefits || '[Key Benefits]'}
+• Include a clear call to action
+• Be written in a ${formData.tone || '[Tone]'} tone
+• Be optimized for ${formData.platform || '[Platform]'}
+
+The copy should be concise yet powerful, focusing on the unique value proposition and addressing the pain points of the target audience. Use persuasive language that drives action and creates a sense of urgency or desire. The ad should stand out in a crowded marketplace and clearly communicate why this product/service is the best choice.`;
+                    break;
+
+                case 'email-marketing':
+                    prompt = `Create a ${formData.emailCount || '[Number of Emails]'}-email marketing sequence for the "${formData.campaignName || '[Campaign Name]'}" campaign.
+
+Campaign Goal: ${formData.goal || '[Campaign Goal]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Key Message: ${formData.keyMessage || '[Key Message]'}
+Call to Action: ${formData.callToAction || '[Call to Action]'}
+
+Each email should:
+• Have a compelling subject line
+• Personalize where possible
+• Provide value to the recipient
+• Build on the previous email in the sequence
+• Include a clear call to action
+• Be optimized for deliverability and engagement
+
+The sequence should nurture leads or customers toward the campaign goal, with each email serving a specific purpose in the customer journey. Include timing recommendations between emails and metrics to measure success.`;
+                    break;
+
+                case 'sales-pitch':
+                    prompt = `Create a ${formData.pitchLength || '[Pitch Length]'} sales pitch for ${formData.product || '[Product/Service]'} to ${formData.prospect || '[Prospect]'}.
+
+Prospect's Pain Points: ${formData.painPoints || '[Pain Points]'}
+Your Solution: ${formData.solution || '[Your Solution]'}
+
+The sales pitch should:
+• Start with a strong hook that grabs attention
+• Clearly identify the prospect's pain points
+• Present your product/service as the solution
+• Highlight key benefits and unique value proposition
+• Address potential objections
+• End with a clear call to action
+
+The pitch should be persuasive, confident, and tailored to the specific needs and concerns of the prospect. Use storytelling and data to make your points more compelling. The tone should be professional yet conversational, building rapport with the prospect while clearly communicating the value of your offering.`;
+                    break;
+
+                case 'title-ideas':
+                    prompt = `Generate ${formData.titleCount || '[Number of Titles]'} compelling YouTube title ideas for a video about "${formData.videoTopic || '[Video Topic]'}".
+
+Keywords to include: ${formData.keywords || '[Keywords]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The title ideas should:
+• Be attention-grabbing and clickable
+• Include relevant keywords for SEO
+• Accurately represent the video content
+• Appeal to the target audience
+• Be appropriate for the ${formData.tone || '[Tone]'} tone
+• Follow YouTube best practices for titles
+
+Each title should be unique and compelling, designed to increase click-through rate while setting accurate expectations for the video content. Include a mix of different title approaches, such as question-based, list-based, benefit-driven, and curiosity-driven titles.`;
+                    break;
+
+                case 'script-writing':
+                    prompt = `Write a YouTube script for a video titled "${formData.videoTitle || '[Video Title]'}" about ${formData.topic || '[Topic]'}.
+
+The script should be approximately ${formData.scriptLength || '[Script Length]'} and written in a ${formData.style || '[Style]'} style for ${formData.targetAudience || '[Target Audience]'}.
+
+The script should include:
+• A compelling hook to grab attention in the first 30 seconds
+• Clear introduction of the topic and why it matters
+• Main content sections with smooth transitions
+• Key points, examples, and supporting information
+• A strong conclusion with a call to action
+• Timestamps for different sections
+
+The script should be conversational yet informative, engaging the audience while providing value. Include suggestions for visuals, B-roll, and on-screen text to enhance the video. The pacing should be appropriate for the target audience and platform, with natural breaks for ads or sponsored content if applicable.`;
+                    break;
+
+                case 'thumbnail-text':
+                    prompt = `Generate ${formData.textCount || '[Number of Text Options]'} thumbnail text options for a YouTube video titled "${formData.videoTitle || '[Video Title]'}".
+
+Keywords: ${formData.keywords || '[Keywords]'}
+Emotion to Evoke: ${formData.emotion || '[Emotion to Evoke]'}
+
+The thumbnail text should:
+• Be short and impactful (ideally 3-5 words)
+• Evoke ${formData.emotion || '[Emotion to Evoke]'} in viewers
+• Include relevant keywords when possible
+• Be readable even at small sizes
+• Complement the video thumbnail image
+• Align with YouTube's community guidelines
+
+Each option should be unique and compelling, designed to increase click-through rate while accurately representing the video content. Consider different approaches such as question-based, statement-based, curiosity-driven, and benefit-driven text options.`;
+                    break;
+
+                case 'channel-description':
+                    prompt = `Write an optimized YouTube channel description for "${formData.channelName || '[Channel Name]'}".
+
+Channel Niche: ${formData.niche || '[Channel Niche]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Unique Value Proposition: ${formData.uniqueValue || '[Unique Value Proposition]'}
+Upload Schedule: ${formData.uploadSchedule || '[Upload Schedule]'}
+
+The channel description should:
+• Clearly explain what the channel is about
+• Highlight the unique value proposition
+• Include relevant keywords for SEO
+• Mention the upload schedule
+• Include links to social media or website
+• Include a call to action to subscribe
+• Be well-organized and easy to read
+
+The description should be comprehensive yet concise, providing all the essential information a potential subscriber needs while encouraging them to subscribe. It should accurately represent the channel's content and brand personality, helping to attract the right audience and improve search visibility.`;
+                    break;
+
+                case 'article':
+                    prompt = `Write a ${formData.wordCount || '[Word Count]'} word blog article titled "${formData.articleTitle || '[Article Title]'}" about ${formData.topic || '[Topic]'}.
+
+Keywords: ${formData.keywords || '[Keywords]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The article should:
+• Have a compelling introduction that hooks the reader
+• Be well-structured with clear headings and subheadings
+• Provide valuable, accurate, and engaging information
+• Include relevant examples and data points
+• Be written in a ${formData.tone || '[Tone]'} tone that resonates with the target audience
+• Have a strong conclusion with a call to action
+• Be optimized for SEO with proper keyword usage
+
+The article should be original, informative, and engaging, providing real value to the reader while encouraging them to take the desired action. It should be well-researched and well-written, with a clear structure that makes it easy to read and understand.`;
+                    break;
+
+                case 'seo-post':
+                    prompt = `Write a ${formData.wordCount || '[Word Count]'} word SEO-optimized blog post targeting the keyword "${formData.targetKeyword || '[Target Keyword]'}".
+
+Secondary Keywords: ${formData.secondaryKeywords || '[Secondary Keywords]'}
+Topic: ${formData.topic || '[Topic]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Readability Level: ${formData.readability || '[Readability Level]'}
+
+The post should:
+• Include the target keyword in the title, first paragraph, and throughout the content
+• Naturally incorporate secondary keywords
+• Have a clear structure with H1, H2, and H3 headings
+• Include internal and external links to relevant resources
+• Be written at a ${formData.readability || '[Readability Level]'} readability level
+• Provide comprehensive, valuable information on the topic
+• Include a meta description under 160 characters
+• Have a clear call to action
+
+The post should be optimized for search engines while still providing value to human readers. It should answer the search intent behind the target keyword and be comprehensive enough to rank well in search results.`;
+                    break;
+
+                case 'listicle':
+                    prompt = `Write a listicle titled "${formData.listicleTitle || '[Listicle Title]'}" with ${formData.itemCount || '[Number of Items]'} items about ${formData.topic || '[Topic]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The listicle should:
+• Have a compelling introduction that explains the value of the list
+• Include exactly ${formData.itemCount || '[Number of Items]'} items, each with a clear heading
+• Provide valuable, accurate, and engaging information for each item
+• Be written in a ${formData.tone || '[Tone]'} tone that resonates with the target audience
+• Have a strong conclusion with a call to action
+• Be well-structured and easy to scan
+
+Each item in the list should provide real value to the reader, with clear explanations and examples where appropriate. The listicle should be comprehensive yet concise, providing the information the reader needs in an easily digestible format.`;
+                    break;
+
+                case 'product-review':
+                    prompt = `Write a comprehensive product review for ${formData.productName || '[Product Name]'} in the ${formData.productCategory || '[Product Category]'} category.
+
+Key Features: ${formData.keyFeatures || '[Key Features]'}
+Pros: ${formData.pros || '[Pros]'}
+Cons: ${formData.cons || '[Cons]'}
+Rating: ${formData.rating || '[Rating]'} stars
+Recommendation: ${formData.recommendation || '[Recommendation]'}
+
+The review should:
+• Have a compelling title that includes the product name and rating
+• Provide an overview of the product and its purpose
+• Detail the key features and how they perform
+• Honestly assess the pros and cons
+• Include personal experience and observations
+• Rate the product on relevant criteria
+• Make a clear recommendation to potential buyers
+• Be well-structured and easy to read
+
+The review should be honest, balanced, and helpful to potential buyers, providing all the information they need to make an informed decision. It should be written in an engaging yet informative style that builds trust with the reader.`;
+                    break;
+
+                case 'workflow-design':
+                    prompt = `Design a workflow for "${formData.workflowName || '[Workflow Name]'}" with the goal of ${formData.goal || '[Workflow Goal]'}.
+
+Trigger: ${formData.trigger || '[Trigger]'}
+Steps: ${formData.steps || '[Steps]'}
+Tools/Platforms: ${formData.tools || '[Tools/Platforms]'}
+Expected Output: ${formData.output || '[Expected Output]'}
+
+The workflow design should include:
+• A clear name and purpose
+• The trigger that starts the workflow
+• A step-by-step process with detailed descriptions
+• The tools or platforms involved at each step
+• Decision points and branching logic
+• The expected output or result
+• Metrics to measure success
+• Potential issues and how to handle them
+
+The workflow should be efficient, effective, and easy to understand, with clear documentation that allows anyone to implement it. It should be designed to solve a specific problem or achieve a specific goal, with consideration for scalability and maintainability.`;
+                    break;
+
+                case 'api-prompt':
+                    prompt = `Create a detailed API prompt for an AI to perform the following task: "${formData.task || '[Task]'}".
+
+Context: ${formData.context || '[Context]'}
+Input Format: ${formData.inputFormat || '[Input Format]'}
+Output Format: ${formData.outputFormat || '[Output Format]'}
+Constraints: ${formData.constraints || '[Constraints]'}
+Examples: ${formData.examples || '[Examples]'}
+
+The API prompt should:
+• Clearly define the task the AI needs to perform
+• Provide sufficient context for the AI to understand the request
+• Specify the expected input format and structure
+• Clearly define the desired output format and structure
+• List any constraints or limitations the AI should follow
+• Include examples of desired input/output pairs if applicable
+• Be structured in a way that the AI can easily parse and understand
+
+The prompt should be comprehensive yet concise, providing all the necessary information for the AI to perform the task accurately and consistently. It should be designed to minimize ambiguity and ensure the AI produces the desired output.`;
+                    break;
+
+                case 'automation-ideas':
+                    prompt = `Generate ${formData.ideaCount || '[Number of Ideas]'} automation ideas for the following business process: "${formData.businessProcess || '[Business Process]'}".
+
+Current Workflow: ${formData.currentWorkflow || '[Current Workflow]'}
+Pain Points: ${formData.painPoints || '[Pain Points]'}
+Tools Currently Used: ${formData.toolsUsed || '[Tools Currently Used]'}
+Automation Goal: ${formData.automationGoal || '[Automation Goal]'}
+
+Each automation idea should include:
+• A clear name and description
+• The part of the process it automates
+• The tools or platforms involved
+• The expected benefits and ROI
+• Potential challenges or limitations
+• Implementation complexity
+• Estimated time to implement
+
+The ideas should be practical, innovative, and tailored to the specific business process and goals. They should address the pain points identified and provide clear value through time savings, error reduction, or improved customer experience. The ideas should range from simple to complex, providing options for different levels of investment and technical expertise.`;
+                    break;
+
+                case 'chatbot-script':
+                    prompt = `Create a chatbot script for "${formData.chatbotName || '[Chatbot Name]'}" with the purpose of ${formData.purpose || '[Purpose]'}.
+
+Industry: ${formData.industry || '[Industry]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Personality: ${formData.personality || '[Personality]'}
+Key Features: ${formData.keyFeatures || '[Key Features]'}
+
+The chatbot script should include:
+• A greeting that establishes the chatbot's purpose and personality
+• A set of common user intents and appropriate responses
+• A flow for handling complex queries or escalations
+• A way to collect user information if needed
+• A natural, conversational tone that matches the ${formData.personality || '[Personality]'} personality
+• Clear next steps or call to action
+
+The script should be comprehensive yet flexible, allowing the chatbot to handle a variety of user queries while maintaining a consistent personality and achieving its purpose. It should include both the conversational flow and the underlying logic for decision-making.`;
+                    break;
+
+                case 'story-starter':
+                    prompt = `Generate ${formData.starterCount || '[Number of Starters]'} story starters for a ${formData.genre || '[Genre]'} story set in ${formData.setting || '[Setting]'} with a ${formData.mood || '[Mood]'} mood.
+
+Main Character Type: ${formData.characterType || '[Main Character Type]'}
+Main Conflict: ${formData.conflict || '[Conflict]'}
+
+Each story starter should:
+• Establish the setting and mood
+• Introduce the main character
+• Hint at the central conflict
+• Create intrigue or curiosity
+• Be approximately 2-3 sentences long
+• Be unique and compelling
+• Set the stage for a larger story
+
+The starters should vary in approach and style, providing different entry points into the story while maintaining the specified genre, setting, and mood. They should be evocative and engaging, inspiring the reader to want to continue the story.`;
+                    break;
+
+                case 'poem':
+                    prompt = `Write a ${formData.length || '[Length]'} ${formData.poemType || '[Poem Type]'} poem titled "${formData.poemTitle || '[Poem Title]'}" about ${formData.theme || '[Theme]'} with a ${formData.mood || '[Mood]'} mood.
+
+The poem should:
+• Follow the structure and rules of a ${formData.poemType || '[Poem Type]'}
+• Evoke a ${formData.mood || '[Mood]'} mood in the reader
+• Explore the theme of ${formData.theme || '[Theme]'} in a meaningful way
+• Use vivid imagery and sensory language
+• Have a clear rhythm and flow
+• Include a strong opening and closing
+• Be original and creative
+
+The poem should be well-crafted and evocative, using language and structure to create a powerful emotional impact. It should be both technically proficient and artistically expressive, capturing the essence of the theme and mood in a unique way.`;
+                    break;
+
+                case 'dialogue-generator':
+                    prompt = `Generate a ${formData.dialogueLength || '[Dialogue Length]'} dialogue between ${formData.characters || '[Characters]'} in a ${formData.setting || '[Setting]'}.
+
+Context: ${formData.context || '[Context]'}
+Tone: ${formData.tone || '[Tone]'}
+Purpose: ${formData.purpose || '[Purpose]'}
+
+The dialogue should:
+• Be natural and realistic for the characters and setting
+• Reflect the ${formData.tone || '[Tone]'} tone consistently
+• Advance the conversation toward the stated purpose
+• Reveal character traits and relationships
+• Include appropriate dialogue tags and actions
+• Be well-paced and engaging
+• Have a clear beginning, middle, and end
+
+The dialogue should sound authentic to the characters and situation, with each character having a distinct voice. It should serve the narrative purpose while maintaining realism and emotional truth. The dialogue should be compelling and drive the story or scene forward.`;
+                    break;
+
+                case 'character-creator':
+                    prompt = `Create a detailed character profile for "${formData.characterName || '[Character Name]'}", a ${formData.characterType || '[Character Type]'} in a ${formData.genre || '[Genre]'} story.
+
+Appearance: ${formData.appearance || '[Appearance]'}
+Personality: ${formData.personality || '[Personality]'}
+Backstory: ${formData.backstory || '[Backstory]'}
+Motivations: ${formData.motivations || '[Motivations]'}
+
+The character profile should include:
+• Basic information (name, age, gender, etc.)
+• Physical appearance and distinctive features
+• Personality traits, strengths, and weaknesses
+• Backstory and life experiences that shaped them
+• Goals, desires, and motivations
+• Fears, flaws, and internal conflicts
+• Relationships with other characters
+• Role in the story and character arc
+
+The profile should be comprehensive yet concise, providing all the necessary information to understand and write the character consistently. It should be detailed enough to guide the character's actions and development throughout the story while allowing room for growth and change.`;
+                    break;
+
+                case 'lesson-plan':
+                    prompt = `Create a comprehensive lesson plan for a ${formData.subject || '[Subject]'} lesson on "${formData.topic || '[Topic]'}" for ${formData.gradeLevel || '[Grade Level]'} students.
+
+Duration: ${formData.duration || '[Duration]'}
+Learning Objectives: ${formData.learningObjectives || '[Learning Objectives]'}
+Materials: ${formData.materials || '[Materials]'}
+Activities: ${formData.activities || '[Activities]'}
+
+The lesson plan should include:
+• Lesson title, subject, grade level, and duration
+• Clear learning objectives
+• Required materials and resources
+• Introduction/hook to engage students
+• Step-by-step procedure for the lesson
+• Activities and practice opportunities
+• Assessment methods to check understanding
+• Differentiation strategies for diverse learners
+• Conclusion and homework/extension activities
+• Reflection questions for the teacher
+
+The lesson plan should be detailed, practical, and aligned with educational standards. It should provide a clear roadmap for the teacher to follow while allowing flexibility to adapt to student needs and responses. The plan should be engaging and effective, promoting student learning and achievement.`;
+                    break;
+
+                case 'quiz-maker':
+                    prompt = `Create a ${formData.difficulty || '[Difficulty Level]'} quiz with ${formData.questionCount || '[Number of Questions]'} ${formData.questionType || '[Question Type]'} questions on the topic of ${formData.topic || '[Topic]'} for ${formData.subject || '[Subject]'}.
+
+The quiz should:
+• Have a clear title and instructions
+• Include exactly ${formData.questionCount || '[Number of Questions]'} questions
+• Be appropriate for ${formData.difficulty || '[Difficulty Level]'} level students
+• Use ${formData.questionType || '[Question Type]'} question format
+• Cover key concepts and information about ${formData.topic || '[Topic]'}
+• Include a mix of recall, application, and analysis questions
+• Have a clear answer key
+• Be well-formatted and easy to read
+
+The quiz should effectively assess student understanding of the topic, with questions that are clear, unambiguous, and aligned with learning objectives. It should be challenging yet fair, providing a valid measure of student knowledge and skills.`;
+                    break;
+
+                case 'study-notes':
+                    prompt = `Create comprehensive study notes on the topic of ${formData.topic || '[Topic]'} for ${formData.subject || '[Subject]'} in a ${formData.format || '[Format]'} format.
+
+Key Concepts: ${formData.keyConcepts || '[Key Concepts]'}
+Study Level: ${formData.studyLevel || '[Study Level]'}
+
+The study notes should:
+• Be organized in a clear ${formData.format || '[Format]'} format
+• Cover all key concepts: ${formData.keyConcepts || '[Key Concepts]'}
+• Include definitions, explanations, and examples
+• Highlight important information and key terms
+• Be appropriate for ${formData.studyLevel || '[Study Level]'} level students
+• Be comprehensive yet concise
+• Include memory aids or mnemonics where helpful
+• Be visually appealing and easy to review
+
+The study notes should effectively summarize and organize the information in a way that facilitates learning and retention. They should be detailed enough to provide a thorough understanding of the topic while being concise enough to be practical for review and study.`;
+                    break;
+
+                case 'presentation-outline':
+                    prompt = `Create a presentation outline for "${formData.presentationTitle || '[Presentation Title]'}" on the topic of ${formData.topic || '[Topic]'}.
+
+Audience: ${formData.audience || '[Audience]'}
+Duration: ${formData.duration || '[Duration]'}
+Key Points: ${formData.keyPoints || '[Key Points]'}
+Visual Elements: ${formData.visualElements || '[Visual Elements]'}
+
+The presentation outline should include:
+• A compelling title and subtitle
+• Introduction with hook and overview
+• Main content sections with key points
+• Supporting evidence, data, or examples
+• Visual elements and their placement
+• Transitions between sections
+• Conclusion with key takeaways
+• Q&A or discussion prompts
+• Call to action or next steps
+
+The outline should be well-structured and logical, with a clear flow that builds understanding and engagement. It should be tailored to the audience and duration, with appropriate content depth and visual support. The outline should provide a solid foundation for creating an effective and impactful presentation.`;
+                    break;
+
+                case 'instagram-post':
+                    prompt = `Create an Instagram post about ${formData.postTopic || '[Post Topic]'} for ${formData.targetAudience || '[Target Audience]'}.
+
+Post Type: ${formData.postType || '[Post Type]'}
+Tone: ${formData.tone || '[Tone]'}
+Hashtags: ${formData.hashtags || '[Hashtags]'}
+
+The Instagram post should:
+• Have a compelling caption that grabs attention
+• Be written in a ${formData.tone || '[Tone]'} tone that resonates with ${formData.targetAudience || '[Target Audience]'}
+• Include relevant hashtags: ${formData.hashtags || '[Hashtags]'}
+• Be appropriate for a ${formData.postType || '[Post Type]'} post
+• Include a clear call to action
+• Be engaging and encourage interaction
+• Be formatted for easy reading on mobile
+
+The post should be visually and verbally appealing, designed to stop users from scrolling and encourage engagement. It should effectively communicate the message while maintaining the brand voice and aesthetic. The post should drive the desired action, whether that's likes, comments, shares, or clicks.`;
+                    break;
+
+                case 'tweet':
+                    prompt = `Create a tweet about ${formData.tweetTopic || '[Tweet Topic]'} with the goal of ${formData.goal || '[Goal]'}.
+
+Tone: ${formData.tone || '[Tone]'}
+Hashtags: ${formData.hashtags || '[Hashtags]'}
+Mentions: ${formData.mention || '[Mentions]'}
+
+The tweet should:
+• Be concise (under 280 characters)
+• Grab attention with the first few words
+• Communicate the message clearly and effectively
+• Be written in a ${formData.tone || '[Tone]'} tone
+• Include relevant hashtags: ${formData.hashtags || '[Hashtags]'}
+• Include mentions if applicable: ${formData.mention || '[Mentions]'}
+• Have a clear purpose aligned with the goal
+• Encourage engagement (likes, retweets, replies)
+
+The tweet should be impactful and memorable, designed to stand out in a fast-paced feed. It should effectively communicate the message while encouraging interaction and achieving the stated goal. The tweet should be optimized for Twitter's format and audience.`;
+                    break;
+
+                case 'linkedin-post':
+                    prompt = `Create a LinkedIn post about ${formData.postTopic || '[Post Topic]'} in the ${formData.industry || '[Industry]'} industry.
+
+Post Type: ${formData.postType || '[Post Type]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The LinkedIn post should:
+• Have a compelling hook that grabs attention
+• Be professional and well-written
+• Be appropriate for a ${formData.postType || '[Post Type]'} post
+• Be tailored to ${formData.targetAudience || '[Target Audience]'}
+• Be written in a ${formData.tone || '[Tone]'} tone
+• Include relevant hashtags
+• Have a clear purpose or message
+• Encourage engagement and discussion
+
+The post should be professional and valuable, designed to enhance the poster's professional brand and credibility. It should provide insights, information, or perspectives that are relevant and interesting to the target audience. The post should encourage thoughtful discussion and engagement while maintaining a professional tone.`;
+                    break;
+
+                case 'facebook-post':
+                    prompt = `Create a Facebook post about ${formData.postTopic || '[Post Topic]'} with the goal of ${formData.goal || '[Goal]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Post Type: ${formData.postType || '[Post Type]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The Facebook post should:
+• Have a compelling headline or opening
+• Be engaging and interesting to read
+• Be appropriate for a ${formData.postType || '[Post Type]'} post
+• Be tailored to ${formData.targetAudience || '[Target Audience]'}
+• Be written in a ${formData.tone || '[Tone]'} tone
+• Include relevant hashtags if applicable
+• Have a clear call to action
+• Encourage likes, comments, and shares
+
+The post should be engaging and shareable, designed to reach and resonate with the target audience. It should effectively communicate the message while encouraging interaction and achieving the stated goal. The post should be optimized for Facebook's format and algorithm, with appropriate length and formatting.`;
+                    break;
+
+                case 'api-documentation':
+                    prompt = `Create comprehensive API documentation for "${formData.apiName || '[API Name]'}", a ${formData.apiType || '[API Type]'}.
+
+Purpose: ${formData.purpose || '[Purpose]'}
+Key Endpoints: ${formData.endpoints || '[Key Endpoints]'}
+Authentication: ${formData.authentication || '[Authentication]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+
+The API documentation should include:
+• API overview and purpose
+• Authentication and authorization details
+• Base URL and version information
+• Detailed endpoint documentation including:
+  - HTTP method
+  - Endpoint URL
+  - Required parameters
+  - Request body format
+  - Response format
+  - Error codes and handling
+• Code examples in multiple languages
+• Rate limiting and usage guidelines
+• Troubleshooting and FAQ
+• Changelog and version history
+
+The documentation should be clear, comprehensive, and easy to navigate, providing all the information developers need to integrate with the API successfully. It should include practical examples and address common questions and issues.`;
+                    break;
+
+                case 'code-generator':
+                    prompt = `Generate ${formData.programmingLanguage || '[Programming Language]'} code for ${formData.codePurpose || '[Code Purpose]'}.
+
+Functionality: ${formData.functionality || '[Functionality]'}
+Inputs/Outputs: ${formData.inputsOutputs || '[Inputs/Outputs]'}
+Constraints: ${formData.constraints || '[Constraints]'}
+
+The code should:
+• Be written in clean, efficient ${formData.programmingLanguage || '[Programming Language]'}
+• Accomplish the stated purpose: ${formData.codePurpose || '[Code Purpose]'}
+• Handle the specified inputs and outputs: ${formData.inputsOutputs || '[Inputs/Outputs]'}
+• Adhere to the constraints: ${formData.constraints || '[Constraints]'}
+• Follow best practices for the language
+• Include appropriate comments and documentation
+• Be well-structured and readable
+• Include error handling where appropriate
+
+The code should be functional, efficient, and well-written, following best practices for the specified programming language. It should solve the stated problem while adhering to the given constraints and requirements. The code should be ready to use or easily adaptable for the intended purpose.`;
+                    break;
+
+                case 'technical-guide':
+                    prompt = `Create a technical guide titled "${formData.guideTitle || '[Guide Title]'}" about ${formData.technology || '[Technology]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Difficulty Level: ${formData.difficulty || '[Difficulty Level]'}
+Key Topics: ${formData.keyTopics || '[Key Topics]'}
+Prerequisites: ${formData.prerequisites || '[Prerequisites]'}
+
+The technical guide should:
+• Have a clear title and introduction
+• Explain the technology and its purpose
+• Cover the key topics: ${formData.keyTopics || '[Key Topics]'}
+• Be appropriate for ${formData.difficulty || '[Difficulty Level]'} level readers
+• Assume the prerequisites: ${formData.prerequisites || '[Prerequisites]'}
+• Include step-by-step instructions where applicable
+• Provide examples and code snippets
+• Include tips, best practices, and warnings
+• Have a logical flow and structure
+• Include a summary or conclusion
+
+The guide should be comprehensive yet accessible, providing all the information needed to understand and work with the technology. It should be well-structured and easy to follow, with clear explanations and practical examples. The guide should empower readers to apply the knowledge effectively.`;
+                    break;
+
+                case 'bug-report':
+                    prompt = `Create a detailed bug report for ${formData.softwareName || '[Software Name]'}.
+
+Bug Description: ${formData.bugDescription || '[Bug Description]'}
+Steps to Reproduce: ${formData.stepsToReproduce || '[Steps to Reproduce]'}
+Expected Behavior: ${formData.expectedBehavior || '[Expected Behavior]'}
+Actual Behavior: ${formData.actualBehavior || '[Actual Behavior]'}
+Severity: ${formData.severity || '[Severity]'}
+
+The bug report should include:
+• A clear, descriptive title
+• Detailed bug description
+• Step-by-step instructions to reproduce the bug
+• Expected vs. actual behavior
+• Screenshots or error messages if applicable
+• Environment information (OS, browser, version, etc.)
+• Severity assessment
+• Suggested workarounds if known
+• Additional context or notes
+
+The bug report should be clear, comprehensive, and actionable, providing all the information needed for developers to understand, reproduce, and fix the bug. It should be well-organized and easy to understand, with sufficient detail to facilitate a quick resolution.`;
+                    break;
+
+                case 'workout-plan':
+                    prompt = `Create a ${formData.duration || '[Duration]'} workout plan for ${formData.fitnessGoal || '[Fitness Goal]'} at a ${formData.fitnessLevel || '[Fitness Level]'} level.
+
+Days Per Week: ${formData.daysPerWeek || '[Days Per Week]'}
+Equipment Available: ${formData.equipment || '[Equipment Available]'}
+
+The workout plan should include:
+• A clear schedule for ${formData.daysPerWeek || '[Days Per Week]'} days of exercise
+• A variety of exercises targeting all major muscle groups
+• Specific exercises, sets, reps, and rest periods
+• Warm-up and cool-down routines
+• Progression plan to increase difficulty over time
+• Modifications for different fitness levels
+• Notes on proper form and technique
+• Cardiovascular and strength training components
+
+The workout plan should be balanced, effective, and tailored to the specified fitness goal and level. It should be safe, practical, and achievable with the available equipment. The plan should provide clear guidance for each workout, with appropriate progression to ensure continued improvement and avoid plateaus.`;
+                    break;
+
+                case 'meal-plan':
+                    prompt = `Create a ${formData.duration || '[Duration]'} meal plan for a ${formData.dietaryPreference || '[Dietary Preference]'} diet with a target of ${formData.calorieTarget || '[Calorie Target]'} calories per day.
+
+Meals Per Day: ${formData.mealsPerDay || '[Meals Per Day]'}
+Food Restrictions: ${formData.restrictions || '[Food Restrictions]'}
+
+The meal plan should include:
+• Daily calorie and macronutrient targets
+• ${formData.mealsPerDay || '[Meals Per Day]'} meals and snacks per day
+• Specific food recommendations and recipes
+• Portion sizes and preparation instructions
+• Grocery shopping list
+• Meal prep tips and strategies
+• Hydration recommendations
+• Supplement suggestions if applicable
+• Options for eating out or social occasions
+
+The meal plan should be nutritionally balanced, practical, and tailored to the specified dietary preferences and calorie targets. It should be varied and enjoyable, with enough flexibility to accommodate individual tastes and schedules. The plan should promote sustainable, healthy eating habits.`;
+                    break;
+
+                case 'wellness-article':
+                    prompt = `Write a ${formData.wordCount || '[Word Count]'} word wellness article titled "${formData.articleTitle || '[Article Title]'}" about ${formData.wellnessTopic || '[Wellness Topic]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Article Type: ${formData.articleType || '[Article Type]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The wellness article should:
+• Have a compelling introduction that hooks the reader
+• Provide accurate, evidence-based information
+• Be written in a ${formData.tone || '[Tone]'} tone that resonates with ${formData.targetAudience || '[Target Audience]'}
+• Follow a ${formData.articleType || '[Article Type]'} structure
+• Include practical tips and advice
+• Address common questions or concerns
+• Be approximately ${formData.wordCount || '[Word Count]'} words
+• Have a strong conclusion with a call to action
+
+The article should be informative, engaging, and helpful, providing valuable information that empowers readers to improve their wellness. It should be well-researched and well-written, with a clear structure that makes it easy to read and understand. The article should inspire positive change while being realistic and achievable.`;
+                    break;
+
+                case 'mental-health':
+                    prompt = `Create a ${formData.contentType || '[Content Type]'} titled "${formData.contentTitle || '[Content Title]'}" about ${formData.mentalHealthTopic || '[Mental Health Topic]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Approach: ${formData.approach || '[Approach]'}
+Sensitivity Level: ${formData.sensitivity || '[Sensitivity Level]'}
+
+The content should:
+• Address the mental health topic with care and respect
+• Be appropriate for ${formData.targetAudience || '[Target Audience]'}
+• Take a ${formData.approach || '[Approach]'} approach
+• Maintain ${formData.sensitivity || '[Sensitivity Level]'} sensitivity
+• Provide accurate, helpful information
+• Include practical strategies or resources
+• Avoid stigmatizing language or harmful stereotypes
+• Encourage seeking professional help when appropriate
+• Be well-structured and easy to understand
+
+The content should be supportive, informative, and empowering, providing valuable information and resources related to mental health. It should be created with care and sensitivity, recognizing the importance of mental health and the need for accurate, non-stigmatizing information. The content should promote understanding and well-being while encouraging appropriate help-seeking behavior.`;
+                    break;
+
+                case 'product-description':
+                    prompt = `Write a compelling product description for ${formData.productName || '[Product Name]'} in the ${formData.productCategory || '[Product Category]'} category.
+
+Key Features: ${formData.keyFeatures || '[Key Features]'}
+Benefits: ${formData.benefits || '[Benefits]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The product description should:
+• Have a strong headline that grabs attention
+• Clearly identify the product and its category
+• Highlight the key features: ${formData.keyFeatures || '[Key Features]'}
+• Explain the benefits to the customer: ${formData.benefits || '[Benefits]'}
+• Be written in a ${formData.tone || '[Tone]'} tone that appeals to ${formData.targetAudience || '[Target Audience]'}
+• Address potential objections or concerns
+• Include a clear call to action
+• Be well-structured and easy to read
+
+The description should be persuasive and informative, highlighting the unique value proposition of the product and why it's the best choice for the target audience. It should be compelling enough to convert browsers into buyers while accurately representing the product and its capabilities.`;
+                    break;
+
+                case 'amazon-listing':
+                    prompt = `Write an optimized Amazon product listing for ${formData.productName || '[Product Name]'} in the ${formData.productCategory || '[Product Category]'} category.
+
+Key Features: ${formData.keyFeatures || '[Key Features]'}
+Benefits: ${formData.benefits || '[Benefits]'}
+Keywords: ${formData.keywords || '[Keywords]'}
+Competing Products: ${formData.competingProducts || '[Competing Products]'}
+
+The Amazon listing should include:
+• A compelling product title with relevant keywords
+• Bullet points highlighting key features and benefits
+• A detailed product description
+• Backend search terms for SEO
+• Comparison with competing products
+• Clear, high-quality image suggestions
+• Appropriate category selection
+• Pricing strategy recommendations
+
+The listing should be optimized for Amazon's search algorithm and conversion rates. It should include relevant keywords naturally, highlight the product's unique selling points, and address potential customer questions or concerns. The listing should be persuasive and informative, designed to rank well in search results and convert browsers into buyers.`;
+                    break;
+
+                case 'email-sequence':
+                    prompt = `Create a ${formData.emailCount || '[Number of Emails]'}-email sequence for "${formData.sequenceName || '[Sequence Name]'}" with the goal of ${formData.goal || '[Sequence Goal]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Key Messages: ${formData.keyMessages || '[Key Messages]'}
+Final Call to Action: ${formData.callToAction || '[Final Call to Action]'}
+
+The email sequence should include:
+• A welcome or introduction email that establishes the relationship
+• A series of emails that deliver value and build trust
+• Emails that address common questions or objections
+• Social proof or case studies if applicable
+• A clear path toward the final call to action
+• Appropriate timing and frequency between emails
+• Personalization opportunities
+• Metrics to measure success
+
+The sequence should be strategic and purposeful, with each email building on the previous ones to guide subscribers toward the desired action. It should provide value at every stage while maintaining engagement and moving subscribers closer to conversion. The sequence should be optimized for open rates, click-through rates, and conversions.`;
+                    break;
+
+                case 'landing-page':
+                    prompt = `Create a landing page for "${formData.pageName || '[Page Name]'}" promoting ${formData.productService || '[Product/Service]'}.
+
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Primary Goal: ${formData.primaryGoal || '[Primary Goal]'}
+Key Sections: ${formData.keySections || '[Key Sections]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The landing page should include:
+• A compelling headline and subheadline
+• A clear value proposition
+• Benefits and features of the product/service
+• Social proof (testimonials, reviews, stats)
+• Visual elements (images, videos, graphics)
+• A clear call to action aligned with the primary goal
+• Trust indicators (security badges, guarantees)
+• Additional information as needed
+• Mobile-responsive design
+
+The landing page should be designed to convert visitors into customers or leads, with a clear focus on the primary goal. It should be visually appealing, easy to navigate, and persuasive, with all elements working together to guide visitors toward the desired action. The page should be optimized for the target audience and consistent with the brand's tone and style.`;
+                    break;
+
+                default:
+                    prompt = 'Please select a valid template.';
+            }
+
+            // Display the generated prompt
+            promptOutput.textContent = prompt;
+            promptOutput.classList.add('show');
+
+            // Hide variations container
+            variationsContainer.classList.remove('show');
+
+            // Scroll to output
+            promptOutput.scrollIntoView({ behavior: 'smooth' });
+
+            showToast('Prompt generated successfully!', 'success');
+        }
+
+        function generateVariations() {
+            const dynamicForm = document.getElementById('dynamicForm');
+            const subcategory = dynamicForm.dataset.currentSubcategory;
+            const variationsContainer = document.getElementById('variationsContainer');
+            const variationTabs = document.getElementById('variationTabs');
+            const variationContents = document.getElementById('variationContents');
+
+            if (!subcategory) {
+                showToast('Please select a template first', 'warning');
+                return;
+            }
+
+            // Collect form data
+            const formData = {};
+            const formElements = dynamicForm.querySelectorAll('input, select, textarea');
+            formElements.forEach(element => {
+                formData[element.id] = element.value;
+            });
+
+            // Clear previous variations
+            variationTabs.innerHTML = '';
+            variationContents.innerHTML = '';
+
+            // Generate 5 variations
+            for (let i = 1; i <= 5; i++) {
+                // Create tab
+                const tab = document.createElement('div');
+                tab.className = 'variation-tab';
+                tab.textContent = `Variation ${i}`;
+                tab.dataset.variation = i;
+
+                if (i === 1) {
+                    tab.classList.add('active');
+                }
+
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.variation-tab').forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Remove active class from all contents
+                    document.querySelectorAll('.variation-content').forEach(c => c.classList.remove('active'));
+                    // Add active class to corresponding content
+                    document.getElementById(`variation-content-${i}`).classList.add('active');
+                });
+
+                variationTabs.appendChild(tab);
+
+                // Create content
+                const content = document.createElement('div');
+                content.className = 'variation-content';
+                content.id = `variation-content-${i}`;
+
+                if (i === 1) {
+                    content.classList.add('active');
+                }
+
+                // Generate variation based on subcategory
+                let variation = '';
+
+                // This is a simplified version - in a real implementation,
+                // you would have more sophisticated variation generation logic
+                switch (subcategory) {
+                    case 'business-plan':
+                        variation = `Create a comprehensive business plan for ${formData.businessName || '[Business Name]'} in the ${formData.industry || '[Industry]'} industry.
+
+This is Variation ${i} of the business plan prompt, focusing on different aspects of the business.
+
+Key elements to include:
+• Executive Summary with unique value proposition
+• Detailed Market Analysis with current trends
+• Competitor Review with strategic positioning
+• Pricing & Revenue Model with financial projections
+• Operations & Strategy with implementation timeline
+• Financial Forecasts with break-even analysis
+• Conclusion with next steps
+
+Target Market: ${formData.targetMarket || '[Target Market]'}
+Business Goals: ${formData.businessGoals || '[Business Goals]'}
+
+The plan should be approximately ${formData.planLength || '[Plan Length]'} and written in a professional, clear, and concise manner. Include specific details about the business model, competitive advantages, and growth strategy.`;
+                        break;
+
+                    case 'article':
+                        variation = `Write a ${formData.wordCount || '[Word Count]'} word blog article titled "${formData.articleTitle || '[Article Title]'}" about ${formData.topic || '[Topic]'}.
+
+This is Variation ${i} of the article prompt, with a different approach and structure.
+
+Keywords: ${formData.keywords || '[Keywords]'}
+Target Audience: ${formData.targetAudience || '[Target Audience]'}
+Tone: ${formData.tone || '[Tone]'}
+
+The article should:
+• Have a compelling introduction that hooks the reader
+• Be well-structured with clear headings and subheadings
+• Provide valuable, accurate, and engaging information
+• Include relevant examples and data points
+• Be written in a ${formData.tone || '[Tone]'} tone that resonates with the target audience
+• Have a strong conclusion with a call to action
+• Be optimized for SEO with proper keyword usage
+
+The article should be original, informative, and engaging, providing real value to the reader while encouraging them to take the desired action.`;
+                        break;
+
+                    case 'youtube-script':
+                        variation = `Write a YouTube script for a video titled "${formData.videoTitle || '[Video Title]'}" about ${formData.topic || '[Topic]'}.
+
+This is Variation ${i} of the YouTube script prompt, with a different approach and structure.
+
+The script should be approximately ${formData.scriptLength || '[Script Length]'} and written in a ${formData.style || '[Style]'} style for ${formData.targetAudience || '[Target Audience]'}.
+
+The script should include:
+• A compelling hook to grab attention in the first 30 seconds
+• Clear introduction of the topic and why it matters
+• Main content sections with smooth transitions
+• Key points, examples, and supporting information
+• A strong conclusion with a call to action
+• Timestamps for different sections
+
+The script should be conversational yet informative, engaging the audience while providing value. Include suggestions for visuals, B-roll, and on-screen text to enhance the video.`;
+                        break;
+
+                    default:
+                        variation = `This is Variation ${i} of the prompt for ${getSubcategoryTitle(subcategory)}.
+
+${formData ? Object.entries(formData).map(([key, value]) => `${key}: ${value || '[Not specified]'}`).join('\n') : 'No form data available'}`;
+                }
+
+                content.textContent = variation;
+                variationContents.appendChild(content);
+            }
+
+            // Show variations container
+            variationsContainer.classList.add('show');
+
+            // Hide single prompt output
+            document.getElementById('promptOutput').classList.remove('show');
+
+            // Scroll to variations
+            variationsContainer.scrollIntoView({ behavior: 'smooth' });
+
+            showToast('Variations generated successfully!', 'success');
+        }
+
+        function copyPrompt() {
+            let textToCopy = '';
+
+            // Check if variations are visible
+            const variationsContainer = document.getElementById('variationsContainer');
+            const promptOutput = document.getElementById('promptOutput');
+
+            if (variationsContainer.classList.contains('show')) {
+                // Find the active variation
+                const activeContent = document.querySelector('.variation-content.active');
+                if (activeContent) {
+                    textToCopy = activeContent.textContent;
+                }
+            } else if (promptOutput.classList.contains('show')) {
+                textToCopy = promptOutput.textContent;
+            }
+
+            if (!textToCopy) {
+                showToast('Please generate a prompt first', 'warning');
+                return;
+            }
+
+            // Copy the prompt text to clipboard
+            navigator.clipboard.writeText(textToCopy).then(function () {
+                showToast('Prompt copied to clipboard!', 'success');
+            }).catch(function (err) {
+                showToast('Failed to copy prompt', 'error');
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function showToast(message, type) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast';
+
+            let icon = 'bi-info-circle';
+            if (type === 'success') icon = 'bi-check-circle';
+            if (type === 'warning') icon = 'bi-exclamation-triangle';
+            if (type === 'error') icon = 'bi-x-circle';
+
+            toast.innerHTML = `<i class="bi ${icon}"></i> ${message}`;
+
+            toastContainer.appendChild(toast);
+
+            // Auto-remove after 3 seconds
+            setTimeout(function () {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s';
+                setTimeout(function () {
+                    toastContainer.removeChild(toast);
+                }, 500);
+            }, 3000);
+        }
+        // Logout button with Supabase
+        document.getElementById("logoutBtn").addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            const { error } = await window.supabase.auth.signOut();
+            if (error) {
+                console.error("Logout failed:", error.message);
+            } else {
+                // Redirect to login page after logout
+                window.location.href = "index.html";
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptMaster AI - Premium AI Prompt Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        body {
+            background-color: #f0f4ff;
+            /* Light futuristic blue background */
+        }
+
+        /* ===== HERO SECTION STYLES ===== */
+        /* Digital product-themed hero section with gradient and effects */
+        .digital-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #312e81 50%, #1e40af 75%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 6rem 0;
+        }
+
+        /* Digital grid pattern overlay for tech aesthetic */
+        .digital-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+        }
+
+        /* Glowing orbs for visual interest and depth */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #6366f1 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation: floatOrb 20s infinite ease-in-out;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+            bottom: -150px;
+            left: -50px;
+            animation: floatOrb 25s infinite ease-in-out reverse;
+        }
+
+        .orb3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #0ea5e9 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: floatOrb 30s infinite ease-in-out;
+        }
+
+        /* Animation for floating orbs */
+        @keyframes floatOrb {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            75% {
+                transform: translate(40px, 10px) scale(1.05);
+            }
+        }
+
+        /* Circuit lines pattern for digital aesthetic */
+        .circuit-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 1;
+            background-image:
+                linear-gradient(90deg, transparent 98%, #6366f1 100%),
+                linear-gradient(0deg, transparent 98%, #8b5cf6 100%);
+            background-size: 100px 100px;
+        }
+
+        /* Hero content animations */
+        .digital-hero-content h1 {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
+        }
+
+        .digital-hero-content p {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== BUTTON STYLES ===== */
+        /* Primary button with gradient and hover effects */
+        .btn-primary {
+            background: linear-gradient(90deg, #7cf0ff, #9b8cff);
+            color: #0e1222;
+            box-shadow: 0 12px 30px rgba(124, 240, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(124, 240, 255, 0.35);
+            background: linear-gradient(90deg, #8df2ff, #a99cff);
+        }
+
+        /* Animated gradient background */
+        .gradient-animation {
+            background: linear-gradient(270deg, #0ea5e9, #6366f1, #8b5cf6);
+            background-size: 600% 600%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ===== CARD STYLES ===== */
+        /* General card container with hover effects */
+        .card-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6 rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5 rgba(0, 0, 0, 0.04);
+        }
+
+        /* ===== PREMIUM SECTION STYLES ===== */
+        /* Premium section with animated background */
+        .premium-section {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        /* Premium button with shine effect */
+        .premium-button {
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+            box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.5);
+        }
+
+        .premium-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .premium-button:hover::before {
+            transform: translateX(0);
+        }
+
+        /* ===== LAYOUT STYLES ===== */
+        /* Content width container with responsive breakpoints */
+        .content-width {
+            max-width: 75%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .content-width {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-width {
+                max-width: 95%;
+            }
+        }
+
+        .section-spacing {
+            padding: 4rem 0;
+        }
+
+        /* ===== PRODUCT CARD STYLES ===== */
+        /* Individual product card with hover effects */
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6 rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5 rgba(0, 0, 0, 0.04);
+        }
+
+        /* Product image container with zoom effect */
+        .product-image {
+            height: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        /* Product badge for special offers */
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Product content area */
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+
+        .product-description {
+            color: #6b7280;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        /* Product footer with price and buy button */
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        /* Buy button with hover effects */
+        .buy-button {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(99, 102, 241, 0.4);
+            background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <!-- Top Banner with promotional message -->
+    <div class="bg-purple-800 text-white py-2 text-center">
+        <p class="text-sm font-medium">"Unlock the Power of AI Free Prompts, Smart Tools & 900+ Premium Prompts"</p>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Left side: Logo + Menu Links -->
+                <div class="flex">
+                    <!-- Logo with robot icon -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-purple-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">PromptMaster AI</span>
+                    </div>
+                    <!-- Desktop Menu Links -->
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="library.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Free
+                            Library</a>
+                        <a href="blogs.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
+                        <a href="products.html"
+                            class="border-purple-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Products</a>
+                        <a href="about.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <!-- Right side: Get Premium Button (desktop only) -->
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="auth.html"
+                        class="bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:from-yellow-600 hover:via-yellow-700 hover:to-yellow-800 text-white px-4 py-2 rounded-md text-base font-semibold shadow-lg transition duration-200 ease-in-out">
+                        Get Premium
+                    </a>
+                </div>
+                <!-- Mobile Menu Button (hamburger icon) -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+                        aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (hidden by default) -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="library.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Free
+                    Library</a>
+                <a href="blogs.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Blog</a>
+                <a href="products.html"
+                    class="bg-purple-50 border-purple-500 text-purple-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Products</a>
+                <a href="about.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <div class="mt-4 pl-3 pr-4">
+                    <a href="auth.html" target="_blank"
+                        class="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-base font-medium transition duration-150 ease-in-out block text-center">
+                        Get Premium
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with digital product theme -->
+    <section class="digital-hero">
+        <div class="circuit-lines"></div>
+        <div class="glow-orb orb1"></div>
+        <div class="glow-orb orb2"></div>
+        <div class="glow-orb orb3"></div>
+        <div class="content-width relative z-10">
+            <div class="digital-hero-content text-center text-white">
+                <h1 class="text-5xl font-bold mb-6">Premium AI Prompt Products</h1>
+                <p class="text-xl mb-10 max-w-3xl mx-auto">Explore our collection of premium AI prompt bundles designed
+                    to supercharge your productivity and unlock the full potential of artificial intelligence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-20 bg-gray-50 section-spacing">
+        <div class="content-width">
+            <!-- Section Header -->
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Premium Products</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Professionally crafted prompt bundles for various
+                    industries and use cases</p>
+            </div>
+
+            <!-- Product Grid - 3 columns on desktop, 2 on tablet, 1 on mobile -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product Card 1: Business & Marketing Bundle -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/6366f1/ffffff?text=Business+Bundle"
+                            alt="Business & Marketing Prompt Bundle">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Business & Marketing Bundle</h3>
+                        <p class="product-description">150+ expertly crafted prompts for business strategy, marketing
+                            campaigns, and growth hacking. Perfect for entrepreneurs and marketing professionals.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$29.99</span>
+                            <button class="buy-button" onclick="buyProduct('business-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2: Content Creator Bundle -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/8b5cf6/ffffff?text=Content+Creator+Bundle"
+                            alt="Content Creator Prompt Bundle">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Content Creator Bundle</h3>
+                        <p class="product-description">200+ prompts for social media, blog posts, video scripts, and
+                            content strategy. Elevate your content game across all platforms.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$24.99</span>
+                            <button class="buy-button" onclick="buyProduct('content-creator-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3: Tech & AI Bundle -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/0ea5e9/ffffff?text=Tech+Bundle"
+                            alt="Tech & AI Prompt Bundle">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Tech & AI Bundle</h3>
+                        <p class="product-description">175+ specialized prompts for developers, data scientists, and AI
+                            professionals. Includes coding, automation, and technical documentation templates.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$34.99</span>
+                            <button class="buy-button" onclick="buyProduct('tech-ai-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4: Education & Learning Bundle -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/10b981/ffffff?text=Education+Bundle"
+                            alt="Education & Learning Prompt Bundle">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Education & Learning Bundle</h3>
+                        <p class="product-description">125+ prompts for educators, course creators, and students.
+                            Includes lesson planning, study guides, and educational content templates.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$19.99</span>
+                            <button class="buy-button" onclick="buyProduct('education-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5: Creative Writing Bundle -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/ec4899/ffffff?text=Creative+Bundle"
+                            alt="Creative Writing Prompt Bundle">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Creative Writing Bundle</h3>
+                        <p class="product-description">150+ prompts for fiction writers, poets, and storytellers.
+                            Includes character development, plot outlines, and world-building templates.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$22.99</span>
+                            <button class="buy-button" onclick="buyProduct('creative-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6: Ultimate Bundle -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x200/f59e0b/ffffff?text=Ultimate+Bundle"
+                            alt="Ultimate Prompt Bundle">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Ultimate Bundle</h3>
+                        <p class="product-description">900+ prompts covering all categories with resell rights. The
+                            complete collection for professionals who want it all. Best value for money.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$49.99</span>
+                            <button class="buy-button" onclick="buyProduct('ultimate-bundle')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">Need a custom bundle or have questions?</p>
+                <a href="contact.html"
+                    class="bg-gradient-primary hover:opacity-90 text-white px-8 py-3 rounded-lg text-lg font-medium transition duration-150 ease-in-out inline-flex items-center">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section with special offer -->
+    <section class="py-20 section-spacing">
+        <div class="premium-section py-16 md:py-20">
+            <div class="content-width relative z-10">
+                <div class="text-center text-white fade-in">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Unlock 900+ Premium AI Prompts</h2>
+                    <p class="text-lg mb-8 max-w-2xl mx-auto">Includes Resell Rights — repackage and sell as your own
+                        prompt bundle</p>
+                    <a href="https://stackedmarket.gumroad.com/l/AIPromptBundle" target="_blank"
+                        class="premium-button text-white px-10 py-4 rounded-xl text-lg font-bold text-center transition duration-150 ease-in-out inline-flex items-center justify-center mx-auto">
+                        <i class="fas fa-lock mr-2"></i> Only $15
+                    </a>
+                    <p class="mt-6 text-sm">Includes resell rights. Use for your business or resell as your own.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="content-width">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-purple-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">PromptMaster AI</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Helping you get the most out of AI assistants with perfectly structured prompts.
+                    </p>
+                </div>
+                <!-- Product Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-300 tracking-wider uppercase mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#generator" class="text-gray-400 hover:text-white">Prompt Generator</a></li>
+                        <li><a href="library.html" class="text-gray-400 hover:text-white">Free Prompts</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Premium Products</a></li>
+                    </ul>
+                </div>
+                <!-- Company Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-300 tracking-wider uppercase mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Connect Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-300 tracking-wider uppercase mb-4">Connect</h3>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-white"><i
+                                    class="fab fa-twitter mr-2"></i> Twitter</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-white"><i
+                                    class="fab fa-linkedin mr-2"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Copyright and Legal Links -->
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 PromptMaster AI. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm mr-4">Terms of Service</a>
+                    <a href="privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== JAVASCRIPT FUNCTIONS =====
+
+        // Mobile menu toggle functionality
+        // This function handles showing/hiding the mobile menu when the hamburger button is clicked
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            // Toggle the 'hidden' class to show/hide the mobile menu
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        /**
+         * Placeholder function for buying products
+         * This function will be connected with 2Checkout payment processing in the future
+         * Currently shows an alert message and logs the product ID to console
+         *
+         * @param {string} productId - The ID of the product being purchased
+         */
+        function buyProduct(productId) {
+            // Log the product ID for debugging purposes
+            console.log(`Product ID: ${productId}`);
+
+            // Show a placeholder alert message
+            alert(`Thank you for your interest in ${productId}! This is a placeholder function. Payment processing will be implemented soon.`);
+
+            // Future implementation will redirect to 2Checkout payment page:
+            // window.location.href = `https://checkout.2checkout.com/checkout/purchase?productId=${productId}`;
+        }
+    </script>
+</body>
+
+</html>

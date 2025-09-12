@@ -1,0 +1,3411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptMaster AI - Free Prompts & Premium AI Prompt Bundles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All existing CSS remains the same */
+        body {
+            background-color: #f0f4ff;
+            /* Changed to a light futuristic blue */
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0f1020, #101a3a, #142042);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Glow overlay */
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(26, 31, 85, 0.4) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        /* Moving glow objects */
+        .glow-object {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .glow-cyan {
+            background: radial-gradient(circle, #7cf0ff 0%, transparent 70%);
+        }
+
+        .glow-violet {
+            background: radial-gradient(circle, #9b8cff 0%, transparent 70%);
+        }
+
+        .object1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation: float1 25s infinite ease-in-out;
+        }
+
+        .object2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 15%;
+            animation: float2 30s infinite ease-in-out;
+        }
+
+        .object3 {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 10%;
+            animation: float3 28s infinite ease-in-out;
+        }
+
+        .object4 {
+            width: 180px;
+            height: 180px;
+            top: 70%;
+            right: 20%;
+            animation: float4 32s infinite ease-in-out;
+        }
+
+        .object5 {
+            width: 220px;
+            height: 220px;
+            top: 15%;
+            right: 40%;
+            animation: float5 35s infinite ease-in-out;
+        }
+
+        @keyframes float1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(20px, 15px);
+            }
+
+            50% {
+                transform: translate(15px, -10px);
+            }
+
+            75% {
+                transform: translate(-10px, 20px);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(-15px, 20px);
+            }
+
+            50% {
+                transform: translate(10px, -15px);
+            }
+
+            75% {
+                transform: translate(20px, 10px);
+            }
+        }
+
+        @keyframes float3 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(15px, -20px);
+            }
+
+            50% {
+                transform: translate(-20px, 10px);
+            }
+
+            75% {
+                transform: translate(10px, 15px);
+            }
+        }
+
+        @keyframes float4 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(20px, 10px);
+            }
+
+            50% {
+                transform: translate(-10px, -15px);
+            }
+
+            75% {
+                transform: translate(15px, 20px);
+            }
+        }
+
+        @keyframes float5 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(-20px, -10px);
+            }
+
+            50% {
+                transform: translate(15px, 15px);
+            }
+
+            75% {
+                transform: translate(-15px, -20px);
+            }
+        }
+
+        /* Main content animations */
+        .hero-content h1 {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
+        }
+
+        .hero-content p {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+
+        .hero-content .button-container {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out 1.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Primary button */
+        .btn-primary {
+            background: linear-gradient(90deg, #7cf0ff, #9b8cff);
+            color: #0e1222;
+            box-shadow: 0 12px 30px rgba(124, 240, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(124, 240, 255, 0.35);
+            background: linear-gradient(90deg, #8df2ff, #a99cff);
+        }
+
+        /* Secondary button */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Moving text bar */
+        .moving-text-bar {
+            position: relative;
+            height: 40px;
+            overflow: hidden;
+            background: #f3f4f6;
+            margin-top: -1px;
+        }
+
+        .moving-text-container {
+            position: absolute;
+            white-space: nowrap;
+            animation: moveText 20s linear infinite;
+        }
+
+        .moving-text-bg {
+            display: inline-block;
+            background: linear-gradient(90deg, #0ea5e9, #6366f1, #8b5cf6);
+            border-radius: 20px;
+            padding: 8px 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .moving-text {
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(100vw);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .gradient-animation {
+            background: linear-gradient(270deg, #0ea5e9, #6366f1, #8b5cf6);
+            background-size: 600% 600%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .card-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6 rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5 rgba(0, 0, 0, 0.04);
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .category-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .category-card.business::before {
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .category-card.ai::before {
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+        }
+
+        .category-card.education::before {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+
+        .category-card.creative::before {
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+        }
+
+        .category-card.tech::before {
+            background: linear-gradient(90deg, #0ea5e9, #0284c7);
+        }
+
+        .category-card.content::before {
+            background: linear-gradient(90deg, #ec4899, #db2777);
+        }
+
+        .category-card.health::before {
+            background: linear-gradient(90deg, #14b8a6, #0d9488);
+        }
+
+        .category-card.career::before {
+            background: linear-gradient(90deg, #6366f1, #4f46e5);
+        }
+
+        .premium-section {
+            background: linear-gradient(135deg, #111827, #0f172a);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .premium-button {
+            background: linear-gradient(90deg, #ec4899, #db2777);
+            box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.5);
+        }
+
+        .premium-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .premium-button:hover::before {
+            transform: translateX(0);
+        }
+
+        .generate-button {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .generate-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prompt-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .prompt-content.expanded {
+            max-height: 1000px;
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #10B981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+        }
+
+        .content-width {
+            max-width: 75%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .content-width {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-width {
+                max-width: 95%;
+            }
+        }
+
+        .section-spacing {
+            padding: 4rem 0;
+        }
+
+        .icon-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .business-tag {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .ai-tag {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .education-tag {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .creative-tag {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+
+        .tech-tag {
+            background-color: rgba(14, 165, 233, 0.1);
+            color: #0ea5e9;
+        }
+
+        .content-tag {
+            background-color: rgba(236, 72, 153, 0.1);
+            color: #ec4899;
+        }
+
+        .health-tag {
+            background-color: rgba(20, 184, 166, 0.1);
+            color: #14b8a6;
+        }
+
+        .career-tag {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+        }
+
+        /* Enhanced styling for consistent color theme */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .border-gradient-primary {
+            border-image: linear-gradient(90deg, #0ea5e9, #6366f1) 1;
+        }
+
+        /* Tool section professional card design */
+        .tool-container {
+            --login-box-color: #272727;
+            --input-color: #3a3a3a;
+            --button-color: #373737;
+            background: var(--login-box-color);
+            border-radius: 24px;
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.2),
+                0 8px 16px rgba(0, 0, 0, 0.2),
+                0 0 8px rgba(255, 255, 255, 0.1),
+                0 0 16px rgba(255, 255, 255, 0.08);
+            padding: 20px;
+        }
+
+        /* Form styling for dark background */
+        .tool-container label {
+            color: #e0e0e0;
+        }
+
+        .tool-container input,
+        .tool-container select,
+        .tool-container textarea {
+            background-color: var(--input-color);
+            border: 1px solid #444;
+            color: #fff;
+        }
+
+        .tool-container input:focus,
+        .tool-container select:focus,
+        .tool-container textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+
+        .tool-container .bg-gray-50 {
+            background-color: #333;
+        }
+
+        .tool-container .bg-white {
+            background-color: var(--input-color);
+        }
+
+        .tool-container .border-gray-300 {
+            border-color: #444;
+        }
+
+        .tool-container .text-gray-800 {
+            color: #e0e0e0;
+        }
+
+        .tool-container .text-gray-900 {
+            color: #fff;
+        }
+
+        .tool-container .text-gray-500 {
+            color: #aaa;
+        }
+
+        /* Output area styling */
+        .tool-container .output-area {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            border-radius: 0 0 24px 24px;
+            padding: 24px;
+        }
+
+        .tool-container .output-area h3 {
+            color: #1f2937;
+        }
+
+        /* Enhanced prompt output card with corner shine effect */
+        .prompt-output-card {
+            background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        /* Single left-to-right shine effect */
+        .shine-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    transparent 100%);
+            transform: skewX(-25deg);
+            transition: none;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .prompt-output-card.generated .shine-effect {
+            animation: shineOnce 3s ease-in-out;
+        }
+
+        @keyframes shineOnce {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Corner shine effect - more subtle for better readability */
+        .corner-shine {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            filter: blur(3px);
+            opacity: 0.3;
+            z-index: 2;
+        }
+
+        .corner-shine.top-left {
+            top: -8px;
+            left: -8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: moveCorner1 8s infinite ease-in-out;
+        }
+
+        .corner-shine.top-right {
+            top: -8px;
+            right: -8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: moveCorner2 8s infinite ease-in-out;
+        }
+
+        .corner-shine.bottom-right {
+            bottom: -8px;
+            right: -8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: moveCorner3 8s infinite ease-in-out;
+        }
+
+        .corner-shine.bottom-left {
+            bottom: -8px;
+            left: -8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: moveCorner4 8s infinite ease-in-out;
+        }
+
+        .prompt-output-card.generated .corner-shine.top-left {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0) 70%);
+            animation: moveColorCorner1 6s infinite ease-in-out;
+        }
+
+        .prompt-output-card.generated .corner-shine.top-right {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(139, 92, 246, 0) 70%);
+            animation: moveColorCorner2 6s infinite ease-in-out;
+        }
+
+        .prompt-output-card.generated .corner-shine.bottom-right {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0) 70%);
+            animation: moveColorCorner3 6s infinite ease-in-out;
+        }
+
+        .prompt-output-card.generated .corner-shine.bottom-left {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(139, 92, 246, 0) 70%);
+            animation: moveColorCorner4 6s infinite ease-in-out;
+        }
+
+        @keyframes moveCorner1 {
+
+            0%,
+            100% {
+                top: -8px;
+                left: -8px;
+            }
+
+            25% {
+                top: -8px;
+                left: 8px;
+            }
+
+            50% {
+                top: 8px;
+                left: 8px;
+            }
+
+            75% {
+                top: 8px;
+                left: -8px;
+            }
+        }
+
+        @keyframes moveCorner2 {
+
+            0%,
+            100% {
+                top: -8px;
+                right: -8px;
+            }
+
+            25% {
+                top: 8px;
+                right: -8px;
+            }
+
+            50% {
+                top: 8px;
+                right: 8px;
+            }
+
+            75% {
+                top: -8px;
+                right: 8px;
+            }
+        }
+
+        @keyframes moveCorner3 {
+
+            0%,
+            100% {
+                bottom: -8px;
+                right: -8px;
+            }
+
+            25% {
+                bottom: -8px;
+                right: 8px;
+            }
+
+            50% {
+                bottom: 8px;
+                right: 8px;
+            }
+
+            75% {
+                bottom: 8px;
+                right: -8px;
+            }
+        }
+
+        @keyframes moveCorner4 {
+
+            0%,
+            100% {
+                bottom: -8px;
+                left: -8px;
+            }
+
+            25% {
+                bottom: 8px;
+                left: -8px;
+            }
+
+            50% {
+                bottom: 8px;
+                left: 8px;
+            }
+
+            75% {
+                bottom: -8px;
+                left: 8px;
+            }
+        }
+
+        @keyframes moveColorCorner1 {
+
+            0%,
+            100% {
+                top: -8px;
+                left: -8px;
+                opacity: 0.3;
+            }
+
+            25% {
+                top: -8px;
+                left: 8px;
+                opacity: 0.5;
+            }
+
+            50% {
+                top: 8px;
+                left: 8px;
+                opacity: 0.3;
+            }
+
+            75% {
+                top: 8px;
+                left: -8px;
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes moveColorCorner2 {
+
+            0%,
+            100% {
+                top: -8px;
+                right: -8px;
+                opacity: 0.3;
+            }
+
+            25% {
+                top: 8px;
+                right: -8px;
+                opacity: 0.5;
+            }
+
+            50% {
+                top: 8px;
+                right: 8px;
+                opacity: 0.3;
+            }
+
+            75% {
+                top: -8px;
+                right: 8px;
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes moveColorCorner3 {
+
+            0%,
+            100% {
+                bottom: -8px;
+                right: -8px;
+                opacity: 0.3;
+            }
+
+            25% {
+                bottom: -8px;
+                right: 8px;
+                opacity: 0.5;
+            }
+
+            50% {
+                bottom: 8px;
+                right: 8px;
+                opacity: 0.3;
+            }
+
+            75% {
+                bottom: 8px;
+                right: -8px;
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes moveColorCorner4 {
+
+            0%,
+            100% {
+                bottom: -8px;
+                left: -8px;
+                opacity: 0.3;
+            }
+
+            25% {
+                bottom: 8px;
+                left: -8px;
+                opacity: 0.5;
+            }
+
+            50% {
+                bottom: 8px;
+                left: 8px;
+                opacity: 0.3;
+            }
+
+            75% {
+                bottom: -8px;
+                left: 8px;
+                opacity: 0.5;
+            }
+        }
+
+        .prompt-output-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .prompt-output-card.generated::before {
+            transform: scaleX(1);
+        }
+
+        .prompt-output-card #promptOutput {
+            background: transparent;
+            border: none;
+            padding: 0;
+            min-height: 150px;
+            max-height: 300px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+            position: relative;
+            z-index: 3;
+            line-height: 1.6;
+        }
+
+        .prompt-output-card #promptOutput::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .prompt-output-card #promptOutput::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .prompt-output-card #promptOutput::-webkit-scrollbar-thumb {
+            background: #c7d2fe;
+            border-radius: 10px;
+        }
+
+        .prompt-output-card #promptOutput::-webkit-scrollbar-thumb:hover {
+            background: #a5b4fc;
+        }
+
+        .tool-container .output-area #variationCounter {
+            color: #6b7280;
+        }
+
+        /* Enhanced copy button */
+        .copy-button-enhanced {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-button-enhanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+        }
+
+        .copy-button-enhanced:disabled {
+            background: #9ca3af;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .copy-button-enhanced.copied {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+
+        /* Expand button */
+        .expand-button {
+            background: #f3f4f6;
+            color: #4b5563;
+            border: 1px solid #d1d5db;
+            transition: all 0.3s ease;
+        }
+
+        .expand-button:hover {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Adjust spacing between sections */
+        #generator {
+            padding-top: 3rem;
+        }
+
+        /* Carousel styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Sample prompt animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hover effects for carousel navigation */
+        #prevStory:hover,
+        #nextStory:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments for the contact section */
+        @media (max-width: 1024px) {
+            .carousel-container {
+                max-height: 300px;
+                overflow-y: auto;
+            }
+        }
+
+        /* Subcategory dropdown styling */
+        .subcategory-dropdown {
+            position: relative;
+        }
+
+        .subcategory-dropdown button {
+            width: 100%;
+            text-align: left;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .subcategory-dropdown .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #3a3a3a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            margin-top: 4px;
+            z-index: 10;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .subcategory-dropdown .dropdown-content div {
+            padding: 10px 15px;
+            cursor: pointer;
+            color: #fff;
+            transition: background 0.2s;
+        }
+
+        .subcategory-dropdown .dropdown-content div:hover {
+            background: #4a4a4a;
+        }
+
+        .subcategory-dropdown .dropdown-content div.selected {
+            background: #6366f1;
+            color: white;
+        }
+
+        .subcategory-dropdown .dropdown-content .search-box {
+            position: sticky;
+            top: 0;
+            padding: 10px;
+            background: #3a3a3a;
+            border-bottom: 1px solid #444;
+        }
+
+        .subcategory-dropdown .dropdown-content .search-box input {
+            width: 100%;
+            padding: 8px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: white;
+        }
+
+        /* Prompt Navigator Styles */
+        .prompt-navigator {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .prompt-nav-button {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .prompt-nav-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .prompt-nav-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .prompt-counter {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .prompt-display-container {
+            position: relative;
+            min-height: 200px;
+            max-height: 400px;
+            overflow: hidden;
+        }
+
+        .prompt-card-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <!-- Top Banner -->
+    <div class="bg-purple-800 text-white py-2 text-center">
+        <p class="text-sm font-medium">"Unlock the Power of AI — Free Prompts, Smart Tools & 900+ Premium Prompts"</p>
+    </div>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Left side: Logo + Menu -->
+                <div class="flex">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-purple-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">PromptMaster AI</span>
+                    </div>
+                    <!-- Menu Links -->
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html"
+                            class="border-purple-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="library.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Free
+                            Library</a>
+                        <a href="blogs.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
+                        <a href="products.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Products
+                        </a>
+                        <a href="about.html"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <!-- Right side: Get Premium Button (desktop) -->
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="auth.html"
+                        class="bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:from-yellow-600 hover:via-yellow-700 hover:to-yellow-800 text-white px-4 py-2 rounded-md text-base font-semibold shadow-lg transition duration-200 ease-in-out">
+                        Get Premium
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+                        aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="bg-purple-50 border-purple-500 text-purple-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="library.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Free
+                    Library</a>
+                <a href="blogs.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Blog</a>
+                <a href="products.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Products
+                </a>
+                <a href="about.html"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <div class="mt-4 pl-3 pr-4">
+                    <a href="auth.html" target="_blank"
+                        class="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-base font-medium transition duration-150 ease-in-out block text-center">
+                        Get Premium
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero-banner relative">
+        <!-- Moving Glow Objects -->
+        <div class="glow-object glow-cyan object1"></div>
+        <div class="glow-object glow-violet object2"></div>
+        <div class="glow-object glow-cyan object3"></div>
+        <div class="glow-object glow-violet object4"></div>
+        <div class="glow-object glow-cyan object5"></div>
+        <!-- Main Content -->
+        <div class="content-width h-full flex items-center justify-center hero-content relative z-10">
+            <div class="text-center text-white">
+                <h1 class="text-4xl font-bold mb-6">Unlock the Power of AI with Perfect Prompts</h1>
+                <p class="text-xl mb-10 max-w-3xl mx-auto">Generate professional-grade prompts instantly and access our
+                    free library of detailed AI prompts designed for real results.</p>
+                <div
+                    class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 button-container">
+                    <a href="#generator"
+                        class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold text-center transition duration-150 ease-in-out shadow-lg">
+                        Generate Prompt
+                    </a>
+                    <a href="library.html"
+                        class="btn-secondary px-8 py-4 rounded-lg text-lg font-semibold text-center transition duration-150 ease-in-out">
+                        Browse Free Templates
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Moving Text Bar -->
+    <div class="moving-text-bar">
+        <div class="moving-text-container">
+            <div class="moving-text-bg">
+                <span class="moving-text">Grow your business smarter unlock premium AI tool for high quality
+                    prompts.</span>
+            </div>
+        </div>
+    </div>
+    <!-- New Prompt Generator Section -->
+    <section id="generator" class="py-20 bg-gray-50 section-spacing">
+        <div class="content-width">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">AI Prompt Generator</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Select a category and subcategory to generate
+                    professional prompts.</p>
+            </div>
+            <div class="tool-container mb-12 fade-in">
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Main Category Dropdown -->
+                        <div>
+                            <label for="mainCategory" class="block text-sm font-medium">Main Category <span
+                                    class="text-red-500">*</span></label>
+                            <select id="mainCategory"
+                                class="mt-1 block w-full rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-purple-500"
+                                required>
+                                <option value="">Select a category</option>
+                                <option value="business">Business & Work</option>
+                                <option value="technology">Technology & Coding</option>
+                                <option value="marketing">Marketing & Sales</option>
+                                <option value="design">Design & Creativity</option>
+                                <option value="education">Education & Learning</option>
+                                <option value="lifestyle">Lifestyle & Personal Development</option>
+                                <option value="health">Health & Wellness</option>
+                                <option value="finance">Finance & Investing</option>
+                                <option value="law">Law & Policy</option>
+                                <option value="research">Research & Analysis</option>
+                                <option value="entertainment">Entertainment & Fun</option>
+                                <option value="travel">Travel & Culture</option>
+                                <option value="science">Science & Innovation</option>
+                                <option value="writing">Writing & Publishing</option>
+                                <option value="social">Social Media & Communication</option>
+                                <option value="agency">Agency</option>
+                                <option value="blogger">Blogger</option>
+                                <option value="youtube">YouTube</option>
+                                <option value="article">Article Writing</option>
+                                <option value="coding">Coding</option>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="ecommerce">E-Commerce</option>
+                                <option value="content">Content Creator</option>
+                                <option value="podcaster">Podcaster</option>
+                                <option value="teacher">Teacher / Educator</option>
+                                <option value="designer">Designer</option>
+                                <option value="startup">Startup Founder</option>
+                                <option value="author">Author</option>
+                                <option value="social_media">Social Media Manager</option>
+                            </select>
+                        </div>
+                        <!-- Subcategory Dropdown -->
+                        <div>
+                            <label for="subcategory" class="block text-sm font-medium">Subcategory <span
+                                    class="text-red-500">*</span></label>
+                            <div class="subcategory-dropdown mt-1">
+                                <button type="button" id="subcategoryButton"
+                                    class="group flex justify-between items-center w-full rounded-lg border border-[#444] bg-[#3a3a3a] text-white shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    <span id="selectedSubcategory">Select a subcategory</span>
+                                    <i class="fas fa-chevron-down ml-2 text-gray-400"></i>
+                                </button>
+                                <div id="subcategoryContent" class="dropdown-content hidden">
+                                    <div class="search-box">
+                                        <input type="text" id="subcategorySearch" placeholder="Search subcategories..."
+                                            class="w-full bg-[#2a2a2a] text-white rounded py-2 px-3 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                                    </div>
+                                    <div id="subcategoryList">
+                                        <!-- Subcategories will be populated here by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="button" id="generateButton"
+                            class="generate-button text-white px-8 py-4 rounded-lg text-lg font-medium transition duration-150 ease-in-out">
+                            Generate Prompts
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Output area -->
+            <div class="output-area">
+                <h3 class="text-lg font-medium mb-4">Generated Prompts</h3>
+                <div id="promptOutputContainer" class="grid grid-cols-1 gap-4">
+                    <!-- Prompt cards will be inserted here -->
+                    <div class="text-gray-500 text-center py-8">Select a category and subcategory, then click "Generate
+                        Prompts"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sample Prompts Section -->
+    <section id="library" class="py-20 bg-white section-spacing">
+        <div class="content-width">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Free Sample Prompts</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Explore our collection of professional, ready-to-use
+                    AI prompts</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Business & Marketing Prompt -->
+                <div class="category-card business card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag business-tag">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Business & Marketing</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are a Marketing Strategist. Act as an expert in Business &
+                            Marketing. Your task is to develop a comprehensive marketing strategy focused on [product
+                            launch].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Define objectives and target audience</li>
+                                <li>Structured analysis including SWOT</li>
+                                <li>Strategic components with positioning</li>
+                                <li>Implementation resources and roadmap</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- AI & Automation Prompt -->
+                <div class="category-card ai card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag ai-tag">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">AI & Automation</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are an AI Automation Specialist. Act as an expert in AI &
+                            Automation. Your task is to design an automation workflow for [customer service].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Objectives and scope definition</li>
+                                <li>Workflow analysis and mapping</li>
+                                <li>Technical components and tools</li>
+                                <li>Implementation roadmap and resources</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- Education & Learning Prompt -->
+                <div class="category-card education card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag education-tag">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Education & Learning</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are an Instructional Designer. Act as an expert in Education &
+                            Learning. Your task is to create a learning program for [data science fundamentals].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Learning objectives and audience</li>
+                                <li>Curriculum structure and modules</li>
+                                <li>Content and activities design</li>
+                                <li>Implementation plan and resources</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- Creative Writing Prompt -->
+                <div class="category-card creative card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag creative-tag">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Creative Writing</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are a Creative Writing Coach. Act as an expert in Creative Writing.
+                            Your task is to develop a compelling story outline for [fictional narrative].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Character development and arcs</li>
+                                <li>Plot structure and pacing</li>
+                                <li>Setting and world-building elements</li>
+                                <li>Themes and narrative techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- Tech & Data Prompt -->
+                <div class="category-card tech card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag tech-tag">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Tech & Data</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are a Data Scientist. Act as an expert in Tech & Data. Your task is
+                            to create a comprehensive data analysis plan for [business intelligence project].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Data collection and preparation</li>
+                                <li>Analysis methodology and tools</li>
+                                <li>Visualization and reporting strategy</li>
+                                <li>Implementation and deployment plan</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- Content Creation Prompt -->
+                <div class="category-card content card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag content-tag">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Content Creation</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are a Content Strategist. Act as an expert in Content Creation.
+                            Your task is to develop a comprehensive content strategy for [social media campaign].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Audience research and personas</li>
+                                <li>Content pillars and themes</li>
+                                <li>Platform-specific strategy</li>
+                                <li>Measurement and optimization plan</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- Health & Lifestyle Prompt -->
+                <div class="category-card health card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag health-tag">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Health & Lifestyle</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are a Wellness Coach. Act as an expert in Health & Lifestyle. Your
+                            task is to create a personalized wellness plan for [client goals].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Assessment and goal setting</li>
+                                <li>Nutrition and exercise planning</li>
+                                <li>Mindfulness and stress management</li>
+                                <li>Progress tracking and adjustments</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+                <!-- Career & Professional Development Prompt -->
+                <div class="category-card career card-container p-6 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-tag career-tag">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-gray-900">Career Development</h3>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg font-mono text-sm mb-4">
+                        <p class="font-semibold">You are a Career Coach. Act as an expert in Career Development. Your
+                            task is to create a comprehensive career advancement plan for [professional goals].</p>
+                        <div class="prompt-content mt-2">
+                            <p>Follow these steps:</p>
+                            <ul class="list-disc pl-5 mt-2">
+                                <li>Skills assessment and gap analysis</li>
+                                <li>Professional development roadmap</li>
+                                <li>Networking and personal branding</li>
+                                <li>Goal setting and achievement tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button
+                        class="copy-prompt-btn bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-lg text-xs font-medium transition duration-150 ease-in-out flex items-center">
+                        <i class="fas fa-copy mr-1"></i> Copy Prompt
+                    </button>
+                </div>
+            </div>
+            <div class="text-center fade-in">
+                <a href="library.html"
+                    class="bg-gradient-primary hover:opacity-90 text-white px-8 py-4 rounded-lg text-lg font-medium transition duration-150 ease-in-out inline-flex items-center">
+                    Explore Full Library →
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-20 bg-gray-50 section-spacing">
+        <div class="content-width">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Have questions or feedback? We'd love to hear from
+                    you!</p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Left Side: Interactive Success Stories -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Prompt Success Stories</h3>
+                        <div class="relative">
+                            <!-- Success Stories Carousel -->
+                            <div class="carousel-container overflow-hidden">
+                                <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+                                    <!-- Story 1 -->
+                                    <div class="carousel-item min-w-full">
+                                        <div class="flex items-start mb-4">
+                                            <div class="bg-purple-100 rounded-full p-3 mr-4">
+                                                <i class="fas fa-quote-left text-purple-600 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-700 italic">"PromptMaster AI has transformed how we
+                                                    create content. The prompts are incredibly well-structured and save
+                                                    us hours of work!"</p>
+                                                <p class="text-gray-900 font-medium mt-2">Sarah Johnson</p>
+                                                <p class="text-gray-500 text-sm">Marketing Director, TechCorp</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Story 2 -->
+                                    <div class="carousel-item min-w-full">
+                                        <div class="flex items-start mb-4">
+                                            <div class="bg-purple-100 rounded-full p-3 mr-4">
+                                                <i class="fas fa-quote-left text-purple-600 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-700 italic">"The premium bundle was worth every
+                                                    penny. We've already seen a 40% increase in engagement with our
+                                                    AI-generated content."</p>
+                                                <p class="text-gray-900 font-medium mt-2">Michael Chen</p>
+                                                <p class="text-gray-500 text-sm">Content Creator, StartupXYZ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Story 3 -->
+                                    <div class="carousel-item min-w-full">
+                                        <div class="flex items-start mb-4">
+                                            <div class="bg-purple-100 rounded-full p-3 mr-4">
+                                                <i class="fas fa-quote-left text-purple-600 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-gray-700 italic">"As a teacher, I've saved countless
+                                                    hours preparing lesson plans. The education prompts are exactly what
+                                                    I needed!"</p>
+                                                <p class="text-gray-900 font-medium mt-2">Emily Rodriguez</p>
+                                                <p class="text-gray-500 text-sm">High School Teacher</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel Navigation -->
+                            <div class="flex justify-center mt-6 space-x-2">
+                                <button class="carousel-dot w-3 h-3 rounded-full bg-purple-600" data-index="0"></button>
+                                <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
+                                <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+                            </div>
+                            <!-- Manual Navigation -->
+                            <div class="flex justify-between mt-4">
+                                <button id="prevStory" class="text-purple-600 hover:text-purple-800">
+                                    <i class="fas fa-chevron-left"></i> Previous
+                                </button>
+                                <button id="nextStory" class="text-purple-600 hover:text-purple-800">
+                                    Next <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Interactive Prompt Showcase -->
+                        <div
+                            class="mt-8 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg border border-purple-100">
+                            <h4 class="font-bold text-gray-900 mb-3">Try a Sample Prompt</h4>
+                            <p class="text-gray-700 mb-3">Click below to generate a sample prompt and see the power of
+                                our system:</p>
+                            <button id="samplePromptBtn"
+                                class="bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-150 ease-in-out">
+                                Generate Sample Prompt
+                            </button>
+                            <div id="samplePromptOutput"
+                                class="mt-4 p-3 bg-white rounded-lg border border-gray-200 hidden">
+                                <p class="text-sm text-gray-700 font-mono"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Side: Contact Form -->
+                <div class="lg:w-1/2">
+                    <div class="card-container p-8">
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                <input type="text" id="name" name="name"
+                                    class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email"
+                                    class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <textarea id="message" name="message" rows="4"
+                                    class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-purple-500 focus:border-purple-500"
+                                    required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    class="w-full bg-gradient-primary hover:opacity-90 text-white px-4 py-3 rounded-lg text-lg font-medium transition duration-150 ease-in-out">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                        <div id="formMessage"
+                            class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Premium Section -->
+    <section class="premium-section py-16 md:py-20">
+        <div class="content-width relative z-10">
+            <div class="text-center text-white fade-in">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6">Explore More Digital Products on My Gumstore</h2>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">Ready-made digital products designed to save you time and grow
+                    your business instantly.</p>
+                <a href="https://stackedmarket.gumroad.com/l/AIPromptBundle" target="_blank"
+                    class="premium-button text-white px-10 py-4 rounded-xl text-lg font-bold text-center transition duration-150 ease-in-out inline-flex items-center justify-center mx-auto">
+                    Visit My Gumstore
+                </a>
+                <p class="mt-6 text-sm">Includes resell rights. Use for your business or resell as your own.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="content-width">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-purple-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">PromptMaster AI</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Helping you get the most out of AI assistants with perfectly structured prompts.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-300 tracking-wider uppercase mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#generator" class="text-gray-400 hover:text-white">Prompt Generator</a></li>
+                        <li><a href="library.html" class="text-gray-400 hover:text-white">Free Prompts</a></li>
+                        <li><a href="https://stackedmarket.gumroad.com/l/AIPromptBundle" target="_blank"
+                                class="text-gray-400 hover:text-white">Premium Bundle</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-300 tracking-wider uppercase mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-300 tracking-wider uppercase mb-4">Connect</h3>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-white"><i
+                                    class="fab fa-twitter mr-2"></i> Twitter</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-white"><i
+                                    class="fab fa-linkedin mr-2"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 PromptMaster AI. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm mr-4">Terms of Service</a>
+                    <a href="privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        <i class="fas fa-check-circle"></i> Prompt copied to clipboard!
+    </div>
+    <!-- Categories and Subcategories Data -->
+    <script>
+        const categories = {
+            business: [
+                { id: 'resume', name: 'Resume' },
+                { id: 'cover_letter', name: 'Cover Letter' },
+                { id: 'portfolio', name: 'Portfolio' },
+                { id: 'job_description', name: 'Job Description' },
+                { id: 'business_plan', name: 'Business Plan' },
+                { id: 'pitch_deck', name: 'Pitch Deck' },
+                { id: 'proposal', name: 'Proposal' },
+                { id: 'contract', name: 'Contract' },
+                { id: 'invoice', name: 'Invoice' },
+                { id: 'meeting_agenda', name: 'Meeting Agenda' },
+                { id: 'meeting_notes', name: 'Meeting Notes' },
+                { id: 'report', name: 'Report' },
+                { id: 'policy', name: 'Policy' },
+                { id: 'handbook', name: 'Handbook' },
+                { id: 'workflow', name: 'Workflow' },
+                { id: 'sop', name: 'SOP' },
+                { id: 'checklist', name: 'Checklist' },
+                { id: 'onboarding', name: 'Onboarding' },
+                { id: 'training', name: 'Training' },
+                { id: 'strategy', name: 'Strategy' },
+                { id: 'roadmap', name: 'Roadmap' },
+                { id: 'okrs', name: 'OKRs' },
+                { id: 'kpis', name: 'KPIs' },
+                { id: 'productivity', name: 'Productivity' },
+                { id: 'time_blocking', name: 'Time Blocking' },
+                { id: 'task_list', name: 'Task List' },
+                { id: 'negotiation', name: 'Negotiation' },
+                { id: 'networking', name: 'Networking' },
+                { id: 'cold_email', name: 'Cold Email' },
+                { id: 'follow_up', name: 'Follow-up' },
+                { id: 'linkedin_post', name: 'LinkedIn Post' },
+                { id: 'linkedin_bio', name: 'LinkedIn Bio' },
+                { id: 'sales_script', name: 'Sales Script' },
+                { id: 'funnel', name: 'Funnel' },
+                { id: 'outreach', name: 'Outreach' },
+                { id: 'feedback', name: 'Feedback' },
+                { id: 'review_request', name: 'Review Request' },
+                { id: 'retention', name: 'Retention' },
+                { id: 'upsell', name: 'Upsell' },
+                { id: 'coaching', name: 'Coaching' },
+                { id: 'mentorship', name: 'Mentorship' },
+                { id: 'workshop', name: 'Workshop' },
+                { id: 'team_building', name: 'Team Building' },
+                { id: 'performance_review', name: 'Performance Review' },
+                { id: 'evaluation', name: 'Evaluation' },
+                { id: 'annual_report', name: 'Annual Report' },
+                { id: 'swot', name: 'SWOT' },
+                { id: 'analysis', name: 'Analysis' },
+                { id: 'proposal_deck', name: 'Proposal Deck' },
+                { id: 'collaboration', name: 'Collaboration' }
+            ],
+            technology: [
+                { id: 'script', name: 'Script' },
+                { id: 'function', name: 'Function' },
+                { id: 'class', name: 'Class' },
+                { id: 'api', name: 'API' },
+                { id: 'endpoint', name: 'Endpoint' },
+                { id: 'documentation', name: 'Documentation' },
+                { id: 'schema', name: 'Schema' },
+                { id: 'query', name: 'Query' },
+                { id: 'regex', name: 'Regex' },
+                { id: 'algorithm', name: 'Algorithm' },
+                { id: 'pseudocode', name: 'Pseudocode' },
+                { id: 'flowchart', name: 'Flowchart' },
+                { id: 'wireframe', name: 'Wireframe' },
+                { id: 'debugging', name: 'Debugging' },
+                { id: 'test_case', name: 'Test Case' },
+                { id: 'unit_test', name: 'Unit Test' },
+                { id: 'integration', name: 'Integration' },
+                { id: 'automation', name: 'Automation' },
+                { id: 'scraper', name: 'Scraper' },
+                { id: 'bot', name: 'Bot' },
+                { id: 'cli_tool', name: 'CLI Tool' },
+                { id: 'plugin', name: 'Plugin' },
+                { id: 'extension', name: 'Extension' },
+                { id: 'module', name: 'Module' },
+                { id: 'package', name: 'Package' },
+                { id: 'library', name: 'Library' },
+                { id: 'framework', name: 'Framework' },
+                { id: 'deployment', name: 'Deployment' },
+                { id: 'pipeline', name: 'Pipeline' },
+                { id: 'container', name: 'Container' },
+                { id: 'dockerfile', name: 'Dockerfile' },
+                { id: 'cicd', name: 'CI/CD' },
+                { id: 'error_log', name: 'Error Log' },
+                { id: 'patch', name: 'Patch' },
+                { id: 'update', name: 'Update' },
+                { id: 'config', name: 'Config' },
+                { id: 'audit', name: 'Audit' },
+                { id: 'encryption', name: 'Encryption' },
+                { id: 'hashing', name: 'Hashing' },
+                { id: 'token', name: 'Token' },
+                { id: 'smart_contract', name: 'Smart Contract' },
+                { id: 'blockchain', name: 'Blockchain' },
+                { id: 'nft', name: 'NFT' },
+                { id: 'vr', name: 'VR' },
+                { id: 'ar', name: 'AR' },
+                { id: 'ai_model', name: 'AI Model' },
+                { id: 'dataset', name: 'Dataset' },
+                { id: 'training', name: 'Training' },
+                { id: 'prediction', name: 'Prediction' },
+                { id: 'visualization', name: 'Visualization' }
+            ],
+            marketing: [
+                { id: 'ad_copy', name: 'Ad Copy' },
+                { id: 'headline', name: 'Headline' },
+                { id: 'slogan', name: 'Slogan' },
+                { id: 'tagline', name: 'Tagline' },
+                { id: 'email_campaign', name: 'Email Campaign' },
+                { id: 'newsletter', name: 'Newsletter' },
+                { id: 'sales_page', name: 'Sales Page' },
+                { id: 'landing_page', name: 'Landing Page' },
+                { id: 'opt_in_form', name: 'Opt-in Form' },
+                { id: 'lead_magnet', name: 'Lead Magnet' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'whitepaper', name: 'Whitepaper' },
+                { id: 'infographic', name: 'Infographic' },
+                { id: 'brochure', name: 'Brochure' },
+                { id: 'flyer', name: 'Flyer' },
+                { id: 'social_ad', name: 'Social Ad' },
+                { id: 'facebook_ad', name: 'Facebook Ad' },
+                { id: 'google_ad', name: 'Google Ad' },
+                { id: 'instagram_ad', name: 'Instagram Ad' },
+                { id: 'tiktok_ad', name: 'TikTok Ad' },
+                { id: 'linkedin_ad', name: 'LinkedIn Ad' },
+                { id: 'youtube_ad', name: 'YouTube Ad' },
+                { id: 'press_release', name: 'Press Release' },
+                { id: 'blog_post', name: 'Blog Post' },
+                { id: 'article', name: 'Article' },
+                { id: 'guest_post', name: 'Guest Post' },
+                { id: 'seo_keywords', name: 'SEO Keywords' },
+                { id: 'meta_description', name: 'Meta Description' },
+                { id: 'product_page', name: 'Product Page' },
+                { id: 'pricing_page', name: 'Pricing Page' },
+                { id: 'upsell_page', name: 'Upsell Page' },
+                { id: 'cross_sell', name: 'Cross-sell' },
+                { id: 'webinar', name: 'Webinar' },
+                { id: 'event_invite', name: 'Event Invite' },
+                { id: 'script', name: 'Script' },
+                { id: 'cold_call', name: 'Cold Call' },
+                { id: 'demo_script', name: 'Demo Script' },
+                { id: 'review', name: 'Review' },
+                { id: 'testimonial', name: 'Testimonial' },
+                { id: 'customer_story', name: 'Customer Story' },
+                { id: 'promo_video', name: 'Promo Video' },
+                { id: 'giveaway', name: 'Giveaway' },
+                { id: 'contest', name: 'Contest' },
+                { id: 'referral', name: 'Referral' },
+                { id: 'loyalty', name: 'Loyalty' },
+                { id: 'survey', name: 'Survey' },
+                { id: 'feedback_form', name: 'Feedback Form' },
+                { id: 'retargeting', name: 'Retargeting' },
+                { id: 'conversion_copy', name: 'Conversion Copy' }
+            ],
+            design: [
+                { id: 'logo', name: 'Logo' },
+                { id: 'icon', name: 'Icon' },
+                { id: 'poster', name: 'Poster' },
+                { id: 'flyer', name: 'Flyer' },
+                { id: 'brochure', name: 'Brochure' },
+                { id: 'card', name: 'Card' },
+                { id: 'banner', name: 'Banner' },
+                { id: 'thumbnail', name: 'Thumbnail' },
+                { id: 'cover_art', name: 'Cover Art' },
+                { id: 'mockup', name: 'Mockup' },
+                { id: 'wireframe', name: 'Wireframe' },
+                { id: 'ui_design', name: 'UI Design' },
+                { id: 'ux_flow', name: 'UX Flow' },
+                { id: 'style_guide', name: 'Style Guide' },
+                { id: 'color_palette', name: 'Color Palette' },
+                { id: 'typography', name: 'Typography' },
+                { id: 'illustration', name: 'Illustration' },
+                { id: 'sketch', name: 'Sketch' },
+                { id: 'drawing', name: 'Drawing' },
+                { id: 'painting', name: 'Painting' },
+                { id: '3d_model', name: '3D Model' },
+                { id: 'animation', name: 'Animation' },
+                { id: 'storyboard', name: 'Storyboard' },
+                { id: 'concept_art', name: 'Concept Art' },
+                { id: 'moodboard', name: 'Moodboard' },
+                { id: 'infographic', name: 'Infographic' },
+                { id: 'social_post', name: 'Social Post' },
+                { id: 'ad_design', name: 'Ad Design' },
+                { id: 'video_intro', name: 'Video Intro' },
+                { id: 'outro', name: 'Outro' },
+                { id: 'presentation', name: 'Presentation' },
+                { id: 'slide_deck', name: 'Slide Deck' },
+                { id: 'pitch_deck', name: 'Pitch Deck' },
+                { id: 'tshirt_design', name: 'T-shirt Design' },
+                { id: 'merch_design', name: 'Merch Design' },
+                { id: 'sticker', name: 'Sticker' },
+                { id: 'label', name: 'Label' },
+                { id: 'packaging', name: 'Packaging' },
+                { id: 'album_cover', name: 'Album Cover' },
+                { id: 'book_cover', name: 'Book Cover' },
+                { id: 'magazine_cover', name: 'Magazine Cover' },
+                { id: 'poster_series', name: 'Poster Series' },
+                { id: 'icon_pack', name: 'Icon Pack' },
+                { id: 'button_set', name: 'Button Set' },
+                { id: 'template', name: 'Template' },
+                { id: 'theme', name: 'Theme' },
+                { id: 'mock_scene', name: 'Mock Scene' },
+                { id: 'promo_graphic', name: 'Promo Graphic' },
+                { id: 'website_layout', name: 'Website Layout' },
+                { id: 'mobile_layout', name: 'Mobile Layout' }
+            ],
+            education: [
+                { id: 'lesson_plan', name: 'Lesson Plan' },
+                { id: 'curriculum', name: 'Curriculum' },
+                { id: 'study_guide', name: 'Study Guide' },
+                { id: 'worksheet', name: 'Worksheet' },
+                { id: 'quiz', name: 'Quiz' },
+                { id: 'test', name: 'Test' },
+                { id: 'exam', name: 'Exam' },
+                { id: 'flashcards', name: 'Flashcards' },
+                { id: 'cheat_sheet', name: 'Cheat Sheet' },
+                { id: 'summary', name: 'Summary' },
+                { id: 'outline', name: 'Outline' },
+                { id: 'notes', name: 'Notes' },
+                { id: 'tutorial', name: 'Tutorial' },
+                { id: 'guide', name: 'Guide' },
+                { id: 'explanation', name: 'Explanation' },
+                { id: 'example', name: 'Example' },
+                { id: 'practice', name: 'Practice' },
+                { id: 'drill', name: 'Drill' },
+                { id: 'assignment', name: 'Assignment' },
+                { id: 'homework', name: 'Homework' },
+                { id: 'project', name: 'Project' },
+                { id: 'activity', name: 'Activity' },
+                { id: 'classroom_plan', name: 'Classroom Plan' },
+                { id: 'teaching_aid', name: 'Teaching Aid' },
+                { id: 'diagram', name: 'Diagram' },
+                { id: 'chart', name: 'Chart' },
+                { id: 'graph', name: 'Graph' },
+                { id: 'table', name: 'Table' },
+                { id: 'infographic', name: 'Infographic' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'research_paper', name: 'Research Paper' },
+                { id: 'thesis', name: 'Thesis' },
+                { id: 'dissertation', name: 'Dissertation' },
+                { id: 'abstract', name: 'Abstract' },
+                { id: 'review', name: 'Review' },
+                { id: 'critique', name: 'Critique' },
+                { id: 'report', name: 'Report' },
+                { id: 'essay', name: 'Essay' },
+                { id: 'debate', name: 'Debate' },
+                { id: 'speech', name: 'Speech' },
+                { id: 'presentation', name: 'Presentation' },
+                { id: 'seminar', name: 'Seminar' },
+                { id: 'workshop', name: 'Workshop' },
+                { id: 'training', name: 'Training' },
+                { id: 'certificate', name: 'Certificate' },
+                { id: 'badge', name: 'Badge' },
+                { id: 'quiz_game', name: 'Quiz Game' },
+                { id: 'educational_video', name: 'Educational Video' },
+                { id: 'lesson_script', name: 'Lesson Script' },
+                { id: 'faq', name: 'FAQ' }
+            ],
+            lifestyle: [
+                { id: 'morning_routine', name: 'Morning Routine' },
+                { id: 'evening_routine', name: 'Evening Routine' },
+                { id: 'habit_tracker', name: 'Habit Tracker' },
+                { id: 'journal', name: 'Journal' },
+                { id: 'affirmations', name: 'Affirmations' },
+                { id: 'gratitude_list', name: 'Gratitude List' },
+                { id: 'vision_board', name: 'Vision Board' },
+                { id: 'goal_setting', name: 'Goal Setting' },
+                { id: 'daily_planner', name: 'Daily Planner' },
+                { id: 'weekly_planner', name: 'Weekly Planner' },
+                { id: 'monthly_planner', name: 'Monthly Planner' },
+                { id: 'yearly_planner', name: 'Yearly Planner' },
+                { id: 'self_care_plan', name: 'Self-Care Plan' },
+                { id: 'fitness_log', name: 'Fitness Log' },
+                { id: 'diet_plan', name: 'Diet Plan' },
+                { id: 'recipe', name: 'Recipe' },
+                { id: 'meal_prep', name: 'Meal Prep' },
+                { id: 'workout_plan', name: 'Workout Plan' },
+                { id: 'yoga_flow', name: 'Yoga Flow' },
+                { id: 'meditation_script', name: 'Meditation Script' },
+                { id: 'mindfulness_practice', name: 'Mindfulness Practice' },
+                { id: 'breathing_exercise', name: 'Breathing Exercise' },
+                { id: 'sleep_routine', name: 'Sleep Routine' },
+                { id: 'productivity_hack', name: 'Productivity Hack' },
+                { id: 'focus_tracker', name: 'Focus Tracker' },
+                { id: 'mood_tracker', name: 'Mood Tracker' },
+                { id: 'stress_relief', name: 'Stress Relief' },
+                { id: 'time_blocking', name: 'Time Blocking' },
+                { id: 'decluttering_plan', name: 'Decluttering Plan' },
+                { id: 'minimalism_tips', name: 'Minimalism Tips' },
+                { id: 'budget_tracker', name: 'Budget Tracker' },
+                { id: 'expense_log', name: 'Expense Log' },
+                { id: 'savings_plan', name: 'Savings Plan' },
+                { id: 'side_hustle', name: 'Side Hustle' },
+                { id: 'skill_building', name: 'Skill Building' },
+                { id: 'learning_path', name: 'Learning Path' },
+                { id: 'personal_brand', name: 'Personal Brand' },
+                { id: 'online_profile', name: 'Online Profile' },
+                { id: 'social_bio', name: 'Social Bio' },
+                { id: 'networking_plan', name: 'Networking Plan' },
+                { id: 'bucket_list', name: 'Bucket List' },
+                { id: 'travel_journal', name: 'Travel Journal' },
+                { id: 'reading_list', name: 'Reading List' },
+                { id: 'book_notes', name: 'Book Notes' },
+                { id: 'language_practice', name: 'Language Practice' },
+                { id: 'gratitude_journal', name: 'Gratitude Journal' },
+                { id: 'success_plan', name: 'Success Plan' },
+                { id: 'vision_statement', name: 'Vision Statement' },
+                { id: 'life_audit', name: 'Life Audit' },
+                { id: 'growth_plan', name: 'Growth Plan' }
+            ],
+            health: [
+                { id: 'meal_plan', name: 'Meal Plan' },
+                { id: 'recipe', name: 'Recipe' },
+                { id: 'smoothie_guide', name: 'Smoothie Guide' },
+                { id: 'nutrition_tips', name: 'Nutrition Tips' },
+                { id: 'food_log', name: 'Food Log' },
+                { id: 'calorie_tracker', name: 'Calorie Tracker' },
+                { id: 'macros_plan', name: 'Macros Plan' },
+                { id: 'workout_plan', name: 'Workout Plan' },
+                { id: 'gym_routine', name: 'Gym Routine' },
+                { id: 'hiit_session', name: 'HIIT Session' },
+                { id: 'yoga_flow', name: 'Yoga Flow' },
+                { id: 'meditation_script', name: 'Meditation Script' },
+                { id: 'breathing_guide', name: 'Breathing Guide' },
+                { id: 'mindfulness_notes', name: 'Mindfulness Notes' },
+                { id: 'stress_journal', name: 'Stress Journal' },
+                { id: 'sleep_schedule', name: 'Sleep Schedule' },
+                { id: 'sleep_tracker', name: 'Sleep Tracker' },
+                { id: 'morning_routine', name: 'Morning Routine' },
+                { id: 'hydration_plan', name: 'Hydration Plan' },
+                { id: 'fitness_challenge', name: 'Fitness Challenge' },
+                { id: 'step_counter', name: 'Step Counter' },
+                { id: 'running_log', name: 'Running Log' },
+                { id: 'cycling_plan', name: 'Cycling Plan' },
+                { id: 'stretch_routine', name: 'Stretch Routine' },
+                { id: 'strength_training', name: 'Strength Training' },
+                { id: 'cardio_plan', name: 'Cardio Plan' },
+                { id: 'bodyweight_routine', name: 'Bodyweight Routine' },
+                { id: 'mobility_guide', name: 'Mobility Guide' },
+                { id: 'posture_tips', name: 'Posture Tips' },
+                { id: 'injury_recovery', name: 'Injury Recovery' },
+                { id: 'rehab_plan', name: 'Rehab Plan' },
+                { id: 'therapy_notes', name: 'Therapy Notes' },
+                { id: 'wellness_journal', name: 'Wellness Journal' },
+                { id: 'mental_health_plan', name: 'Mental Health Plan' },
+                { id: 'anxiety_tools', name: 'Anxiety Tools' },
+                { id: 'depression_coping', name: 'Depression Coping' },
+                { id: 'relaxation_script', name: 'Relaxation Script' },
+                { id: 'self_care_list', name: 'Self-Care List' },
+                { id: 'energy_boost', name: 'Energy Boost' },
+                { id: 'detox_plan', name: 'Detox Plan' },
+                { id: 'immune_boost', name: 'Immune Boost' },
+                { id: 'skincare_routine', name: 'Skincare Routine' },
+                { id: 'haircare_guide', name: 'Haircare Guide' },
+                { id: 'hygiene_checklist', name: 'Hygiene Checklist' },
+                { id: 'supplements_log', name: 'Supplements Log' },
+                { id: 'doctor_notes', name: 'Doctor Notes' },
+                { id: 'symptom_tracker', name: 'Symptom Tracker' },
+                { id: 'medication_log', name: 'Medication Log' },
+                { id: 'health_goals', name: 'Health Goals' },
+                { id: 'progress_tracker', name: 'Progress Tracker' }
+            ],
+            finance: [
+                { id: 'budget_plan', name: 'Budget Plan' },
+                { id: 'budget_tracker', name: 'Budget Tracker' },
+                { id: 'expense_log', name: 'Expense Log' },
+                { id: 'income_log', name: 'Income Log' },
+                { id: 'savings_plan', name: 'Savings Plan' },
+                { id: 'investment_plan', name: 'Investment Plan' },
+                { id: 'stock_tracker', name: 'Stock Tracker' },
+                { id: 'crypto_tracker', name: 'Crypto Tracker' },
+                { id: 'portfolio', name: 'Portfolio' },
+                { id: 'asset_list', name: 'Asset List' },
+                { id: 'liability_list', name: 'Liability List' },
+                { id: 'net_worth_sheet', name: 'Net Worth Sheet' },
+                { id: 'retirement_plan', name: 'Retirement Plan' },
+                { id: 'pension_plan', name: 'Pension Plan' },
+                { id: 'tax_checklist', name: 'Tax Checklist' },
+                { id: 'tax_filing', name: 'Tax Filing' },
+                { id: 'invoice', name: 'Invoice' },
+                { id: 'bill_reminder', name: 'Bill Reminder' },
+                { id: 'subscription_log', name: 'Subscription Log' },
+                { id: 'cash_flow_sheet', name: 'Cash Flow Sheet' },
+                { id: 'profit_loss', name: 'Profit & Loss' },
+                { id: 'balance_sheet', name: 'Balance Sheet' },
+                { id: 'financial_goals', name: 'Financial Goals' },
+                { id: 'emergency_fund', name: 'Emergency Fund' },
+                { id: 'debt_tracker', name: 'Debt Tracker' },
+                { id: 'loan_plan', name: 'Loan Plan' },
+                { id: 'mortgage_sheet', name: 'Mortgage Sheet' },
+                { id: 'insurance_plan', name: 'Insurance Plan' },
+                { id: 'claim_form', name: 'Claim Form' },
+                { id: 'expense_report', name: 'Expense Report' },
+                { id: 'dividend_tracker', name: 'Dividend Tracker' },
+                { id: 'roi_calculator', name: 'ROI Calculator' },
+                { id: 'risk_assessment', name: 'Risk Assessment' },
+                { id: 'business_budget', name: 'Business Budget' },
+                { id: 'startup_costs', name: 'Startup Costs' },
+                { id: 'break_even_sheet', name: 'Break-even Sheet' },
+                { id: 'salary_tracker', name: 'Salary Tracker' },
+                { id: 'allowance_plan', name: 'Allowance Plan' },
+                { id: 'side_hustle', name: 'Side Hustle' },
+                { id: 'freelance_income', name: 'Freelance Income' },
+                { id: 'affiliate_tracker', name: 'Affiliate Tracker' },
+                { id: 'royalty_log', name: 'Royalty Log' },
+                { id: 'expense_splitter', name: 'Expense Splitter' },
+                { id: 'vacation_budget', name: 'Vacation Budget' },
+                { id: 'wedding_budget', name: 'Wedding Budget' },
+                { id: 'college_fund', name: 'College Fund' },
+                { id: 'baby_fund', name: 'Baby Fund' },
+                { id: 'tax_deduction_list', name: 'Tax Deduction List' },
+                { id: 'donation_log', name: 'Donation Log' },
+                { id: 'ledger', name: 'Ledger' }
+            ],
+            law: [
+                { id: 'contract', name: 'Contract' },
+                { id: 'agreement', name: 'Agreement' },
+                { id: 'terms', name: 'Terms' },
+                { id: 'privacy_policy', name: 'Privacy Policy' },
+                { id: 'disclaimer', name: 'Disclaimer' },
+                { id: 'nda', name: 'NDA' },
+                { id: 'mou', name: 'MOU' },
+                { id: 'partnership_deal', name: 'Partnership Deal' },
+                { id: 'lease', name: 'Lease' },
+                { id: 'rental_agreement', name: 'Rental Agreement' },
+                { id: 'will', name: 'Will' },
+                { id: 'testament', name: 'Testament' },
+                { id: 'power_of_attorney', name: 'Power of Attorney' },
+                { id: 'consent_form', name: 'Consent Form' },
+                { id: 'release_form', name: 'Release Form' },
+                { id: 'waiver', name: 'Waiver' },
+                { id: 'legal_memo', name: 'Legal Memo' },
+                { id: 'case_brief', name: 'Case Brief' },
+                { id: 'court_filing', name: 'Court Filing' },
+                { id: 'complaint', name: 'Complaint' },
+                { id: 'petition', name: 'Petition' },
+                { id: 'appeal', name: 'Appeal' },
+                { id: 'motion', name: 'Motion' },
+                { id: 'legal_notice', name: 'Legal Notice' },
+                { id: 'summons', name: 'Summons' },
+                { id: 'subpoena', name: 'Subpoena' },
+                { id: 'affidavit', name: 'Affidavit' },
+                { id: 'declaration', name: 'Declaration' },
+                { id: 'statute', name: 'Statute' },
+                { id: 'regulation', name: 'Regulation' },
+                { id: 'policy_draft', name: 'Policy Draft' },
+                { id: 'compliance_plan', name: 'Compliance Plan' },
+                { id: 'risk_assessment', name: 'Risk Assessment' },
+                { id: 'audit_checklist', name: 'Audit Checklist' },
+                { id: 'contract_review', name: 'Contract Review' },
+                { id: 'due_diligence', name: 'Due Diligence' },
+                { id: 'employment_law', name: 'Employment Law' },
+                { id: 'labor_rights', name: 'Labor Rights' },
+                { id: 'copyright', name: 'Copyright' },
+                { id: 'trademark', name: 'Trademark' },
+                { id: 'patent', name: 'Patent' },
+                { id: 'license', name: 'License' },
+                { id: 'franchise_deal', name: 'Franchise Deal' },
+                { id: 'immigration_form', name: 'Immigration Form' },
+                { id: 'visa_application', name: 'Visa Application' },
+                { id: 'residency_form', name: 'Residency Form' },
+                { id: 'citizenship_plan', name: 'Citizenship Plan' },
+                { id: 'tax_law', name: 'Tax Law' },
+                { id: 'business_law', name: 'Business Law' },
+                { id: 'consumer_rights', name: 'Consumer Rights' }
+            ],
+            research: [
+                { id: 'hypothesis', name: 'Hypothesis' },
+                { id: 'abstract', name: 'Abstract' },
+                { id: 'literature_review', name: 'Literature Review' },
+                { id: 'methodology', name: 'Methodology' },
+                { id: 'experiment_plan', name: 'Experiment Plan' },
+                { id: 'survey', name: 'Survey' },
+                { id: 'questionnaire', name: 'Questionnaire' },
+                { id: 'interview_script', name: 'Interview Script' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'data_sheet', name: 'Data Sheet' },
+                { id: 'observation', name: 'Observation' },
+                { id: 'experiment_log', name: 'Experiment Log' },
+                { id: 'field_notes', name: 'Field Notes' },
+                { id: 'research_journal', name: 'Research Journal' },
+                { id: 'analysis_report', name: 'Analysis Report' },
+                { id: 'findings', name: 'Findings' },
+                { id: 'results', name: 'Results' },
+                { id: 'conclusion', name: 'Conclusion' },
+                { id: 'discussion', name: 'Discussion' },
+                { id: 'summary', name: 'Summary' },
+                { id: 'graph', name: 'Graph' },
+                { id: 'chart', name: 'Chart' },
+                { id: 'table', name: 'Table' },
+                { id: 'diagram', name: 'Diagram' },
+                { id: 'infographic', name: 'Infographic' },
+                { id: 'model', name: 'Model' },
+                { id: 'framework', name: 'Framework' },
+                { id: 'concept_map', name: 'Concept Map' },
+                { id: 'flowchart', name: 'Flowchart' },
+                { id: 'simulation', name: 'Simulation' },
+                { id: 'dataset', name: 'Dataset' },
+                { id: 'coding_scheme', name: 'Coding Scheme' },
+                { id: 'codebook', name: 'Codebook' },
+                { id: 'classification', name: 'Classification' },
+                { id: 'taxonomy', name: 'Taxonomy' },
+                { id: 'trend_report', name: 'Trend Report' },
+                { id: 'market_research', name: 'Market Research' },
+                { id: 'industry_report', name: 'Industry Report' },
+                { id: 'swot', name: 'SWOT' },
+                { id: 'pestle', name: 'PESTLE' },
+                { id: 'risk_analysis', name: 'Risk Analysis' },
+                { id: 'gap_analysis', name: 'Gap Analysis' },
+                { id: 'comparative_study', name: 'Comparative Study' },
+                { id: 'review', name: 'Review' },
+                { id: 'critique', name: 'Critique' },
+                { id: 'whitepaper', name: 'Whitepaper' },
+                { id: 'policy_brief', name: 'Policy Brief' },
+                { id: 'meta_analysis', name: 'Meta-Analysis' },
+                { id: 'systematic_review', name: 'Systematic Review' },
+                { id: 'research_proposal', name: 'Research Proposal' }
+            ],
+            entertainment: [
+                { id: 'joke', name: 'Joke' },
+                { id: 'meme', name: 'Meme' },
+                { id: 'riddle', name: 'Riddle' },
+                { id: 'puzzle', name: 'Puzzle' },
+                { id: 'quiz', name: 'Quiz' },
+                { id: 'trivia', name: 'Trivia' },
+                { id: 'game_idea', name: 'Game Idea' },
+                { id: 'character', name: 'Character' },
+                { id: 'story_prompt', name: 'Story Prompt' },
+                { id: 'plot_twist', name: 'Plot Twist' },
+                { id: 'dialogue', name: 'Dialogue' },
+                { id: 'script', name: 'Script' },
+                { id: 'monologue', name: 'Monologue' },
+                { id: 'sketch', name: 'Sketch' },
+                { id: 'stand_up_set', name: 'Stand-up Set' },
+                { id: 'song_idea', name: 'Song Idea' },
+                { id: 'lyric', name: 'Lyric' },
+                { id: 'playlist', name: 'Playlist' },
+                { id: 'dj_setlist', name: 'DJ Setlist' },
+                { id: 'rap_verse', name: 'Rap Verse' },
+                { id: 'poem', name: 'Poem' },
+                { id: 'haiku', name: 'Haiku' },
+                { id: 'limerick', name: 'Limerick' },
+                { id: 'short_story', name: 'Short Story' },
+                { id: 'novel_idea', name: 'Novel Idea' },
+                { id: 'comic_strip', name: 'Comic Strip' },
+                { id: 'manga_plot', name: 'Manga Plot' },
+                { id: 'anime_scene', name: 'Anime Scene' },
+                { id: 'fanfiction', name: 'Fanfiction' },
+                { id: 'parody', name: 'Parody' },
+                { id: 'satire', name: 'Satire' },
+                { id: 'spoof', name: 'Spoof' },
+                { id: 'challenge', name: 'Challenge' },
+                { id: 'dare', name: 'Dare' },
+                { id: 'icebreaker', name: 'Icebreaker' },
+                { id: 'party_game', name: 'Party Game' },
+                { id: 'drinking_game', name: 'Drinking Game' },
+                { id: 'card_game', name: 'Card Game' },
+                { id: 'board_game', name: 'Board Game' },
+                { id: 'video_game_idea', name: 'Video Game Idea' },
+                { id: 'quest', name: 'Quest' },
+                { id: 'boss_fight', name: 'Boss Fight' },
+                { id: 'achievement', name: 'Achievement' },
+                { id: 'easter_egg', name: 'Easter Egg' },
+                { id: 'magic_trick', name: 'Magic Trick' },
+                { id: 'illusion', name: 'Illusion' },
+                { id: 'escape_room', name: 'Escape Room' },
+                { id: 'carnival_game', name: 'Carnival Game' },
+                { id: 'festival_plan', name: 'Festival Plan' },
+                { id: 'event_idea', name: 'Event Idea' }
+            ],
+            travel: [
+                { id: 'itinerary', name: 'Itinerary' },
+                { id: 'packing_list', name: 'Packing List' },
+                { id: 'travel_journal', name: 'Travel Journal' },
+                { id: 'bucket_list', name: 'Bucket List' },
+                { id: 'city_guide', name: 'City Guide' },
+                { id: 'country_guide', name: 'Country Guide' },
+                { id: 'road_trip_plan', name: 'Road Trip Plan' },
+                { id: 'flight_checklist', name: 'Flight Checklist' },
+                { id: 'airport_tips', name: 'Airport Tips' },
+                { id: 'train_guide', name: 'Train Guide' },
+                { id: 'bus_guide', name: 'Bus Guide' },
+                { id: 'cruise_plan', name: 'Cruise Plan' },
+                { id: 'hiking_route', name: 'Hiking Route' },
+                { id: 'camping_guide', name: 'Camping Guide' },
+                { id: 'hostel_list', name: 'Hostel List' },
+                { id: 'hotel_review', name: 'Hotel Review' },
+                { id: 'airbnb_guide', name: 'Airbnb Guide' },
+                { id: 'travel_budget', name: 'Travel Budget' },
+                { id: 'currency_tips', name: 'Currency Tips' },
+                { id: 'visa_guide', name: 'Visa Guide' },
+                { id: 'passport_checklist', name: 'Passport Checklist' },
+                { id: 'customs_guide', name: 'Customs Guide' },
+                { id: 'local_phrases', name: 'Local Phrases' },
+                { id: 'food_guide', name: 'Food Guide' },
+                { id: 'street_food_list', name: 'Street Food List' },
+                { id: 'restaurant_review', name: 'Restaurant Review' },
+                { id: 'cafe_guide', name: 'Cafe Guide' },
+                { id: 'bar_crawl', name: 'Bar Crawl' },
+                { id: 'nightlife_guide', name: 'Nightlife Guide' },
+                { id: 'festival_guide', name: 'Festival Guide' },
+                { id: 'cultural_event', name: 'Cultural Event' },
+                { id: 'museum_guide', name: 'Museum Guide' },
+                { id: 'art_tour', name: 'Art Tour' },
+                { id: 'history_notes', name: 'History Notes' },
+                { id: 'landmark_guide', name: 'Landmark Guide' },
+                { id: 'architecture_tour', name: 'Architecture Tour' },
+                { id: 'photography_spots', name: 'Photography Spots' },
+                { id: 'instagram_guide', name: 'Instagram Guide' },
+                { id: 'souvenir_list', name: 'Souvenir List' },
+                { id: 'gift_guide', name: 'Gift Guide' },
+                { id: 'etiquette_tips', name: 'Etiquette Tips' },
+                { id: 'safety_guide', name: 'Safety Guide' },
+                { id: 'travel_hacks', name: 'Travel Hacks' },
+                { id: 'backpacking_plan', name: 'Backpacking Plan' },
+                { id: 'gap_year_plan', name: 'Gap Year Plan' },
+                { id: 'study_abroad_guide', name: 'Study Abroad Guide' },
+                { id: 'work_abroad_tips', name: 'Work Abroad Tips' },
+                { id: 'digital_nomad_guide', name: 'Digital Nomad Guide' },
+                { id: 'relocation_plan', name: 'Relocation Plan' },
+                { id: 'expat_guide', name: 'Expat Guide' }
+            ],
+            science: [
+                { id: 'hypothesis', name: 'Hypothesis' },
+                { id: 'experiment', name: 'Experiment' },
+                { id: 'formula', name: 'Formula' },
+                { id: 'equation', name: 'Equation' },
+                { id: 'diagram', name: 'Diagram' },
+                { id: 'graph', name: 'Graph' },
+                { id: 'table', name: 'Table' },
+                { id: 'chart', name: 'Chart' },
+                { id: 'data_log', name: 'Data Log' },
+                { id: 'observation', name: 'Observation' },
+                { id: 'lab_report', name: 'Lab Report' },
+                { id: 'research_note', name: 'Research Note' },
+                { id: 'prototype', name: 'Prototype' },
+                { id: 'model', name: 'Model' },
+                { id: 'simulation', name: 'Simulation' },
+                { id: 'algorithm', name: 'Algorithm' },
+                { id: 'framework', name: 'Framework' },
+                { id: 'theory', name: 'Theory' },
+                { id: 'principle', name: 'Principle' },
+                { id: 'concept_map', name: 'Concept Map' },
+                { id: 'classification', name: 'Classification' },
+                { id: 'taxonomy', name: 'Taxonomy' },
+                { id: 'timeline', name: 'Timeline' },
+                { id: 'evolution_chart', name: 'Evolution Chart' },
+                { id: 'physics_problem', name: 'Physics Problem' },
+                { id: 'chemistry_reaction', name: 'Chemistry Reaction' },
+                { id: 'biology_notes', name: 'Biology Notes' },
+                { id: 'genetics_chart', name: 'Genetics Chart' },
+                { id: 'dna_sequence', name: 'DNA Sequence' },
+                { id: 'molecule_diagram', name: 'Molecule Diagram' },
+                { id: 'astronomy_map', name: 'Astronomy Map' },
+                { id: 'space_mission', name: 'Space Mission' },
+                { id: 'rocket_plan', name: 'Rocket Plan' },
+                { id: 'satellite_log', name: 'Satellite Log' },
+                { id: 'climate_report', name: 'Climate Report' },
+                { id: 'weather_data', name: 'Weather Data' },
+                { id: 'earthquake_log', name: 'Earthquake Log' },
+                { id: 'volcano_report', name: 'Volcano Report' },
+                { id: 'oceanography_notes', name: 'Oceanography Notes' },
+                { id: 'robotics_plan', name: 'Robotics Plan' },
+                { id: 'ai_model', name: 'AI Model' },
+                { id: 'nanotech_idea', name: 'Nanotech Idea' },
+                { id: 'biotech_plan', name: 'Biotech Plan' },
+                { id: 'medical_study', name: 'Medical Study' },
+                { id: 'vaccine_report', name: 'Vaccine Report' },
+                { id: 'cure_research', name: 'Cure Research' },
+                { id: 'innovation_idea', name: 'Innovation Idea' },
+                { id: 'patent_draft', name: 'Patent Draft' },
+                { id: 'lab_checklist', name: 'Lab Checklist' },
+                { id: 'future_trends', name: 'Future Trends' }
+            ],
+            writing: [
+                { id: 'blog_post', name: 'Blog Post' },
+                { id: 'article', name: 'Article' },
+                { id: 'essay', name: 'Essay' },
+                { id: 'report', name: 'Report' },
+                { id: 'summary', name: 'Summary' },
+                { id: 'outline', name: 'Outline' },
+                { id: 'draft', name: 'Draft' },
+                { id: 'story_prompt', name: 'Story Prompt' },
+                { id: 'short_story', name: 'Short Story' },
+                { id: 'novel_outline', name: 'Novel Outline' },
+                { id: 'chapter_plan', name: 'Chapter Plan' },
+                { id: 'scene', name: 'Scene' },
+                { id: 'dialogue', name: 'Dialogue' },
+                { id: 'monologue', name: 'Monologue' },
+                { id: 'script', name: 'Script' },
+                { id: 'screenplay', name: 'Screenplay' },
+                { id: 'play_script', name: 'Play Script' },
+                { id: 'poem', name: 'Poem' },
+                { id: 'haiku', name: 'Haiku' },
+                { id: 'limerick', name: 'Limerick' },
+                { id: 'song_lyrics', name: 'Song Lyrics' },
+                { id: 'rap_verse', name: 'Rap Verse' },
+                { id: 'speech', name: 'Speech' },
+                { id: 'toast', name: 'Toast' },
+                { id: 'quote', name: 'Quote' },
+                { id: 'caption', name: 'Caption' },
+                { id: 'tagline', name: 'Tagline' },
+                { id: 'headline', name: 'Headline' },
+                { id: 'title', name: 'Title' },
+                { id: 'subheading', name: 'Subheading' },
+                { id: 'introduction', name: 'Introduction' },
+                { id: 'conclusion', name: 'Conclusion' },
+                { id: 'hook', name: 'Hook' },
+                { id: 'call_to_action', name: 'Call to Action' },
+                { id: 'newsletter', name: 'Newsletter' },
+                { id: 'email_draft', name: 'Email Draft' },
+                { id: 'press_release', name: 'Press Release' },
+                { id: 'whitepaper', name: 'Whitepaper' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'ebook', name: 'Ebook' },
+                { id: 'guide', name: 'Guide' },
+                { id: 'tutorial', name: 'Tutorial' },
+                { id: 'manual', name: 'Manual' },
+                { id: 'faq', name: 'FAQ' },
+                { id: 'glossary', name: 'Glossary' },
+                { id: 'index', name: 'Index' },
+                { id: 'preface', name: 'Preface' },
+                { id: 'foreword', name: 'Foreword' },
+                { id: 'acknowledgment', name: 'Acknowledgment' },
+                { id: 'bibliography', name: 'Bibliography' }
+            ],
+            social: [
+                { id: 'post', name: 'Post' },
+                { id: 'caption', name: 'Caption' },
+                { id: 'hashtags', name: 'Hashtags' },
+                { id: 'story', name: 'Story' },
+                { id: 'reel', name: 'Reel' },
+                { id: 'short_video', name: 'Short Video' },
+                { id: 'tiktok_script', name: 'TikTok Script' },
+                { id: 'youtube_script', name: 'YouTube Script' },
+                { id: 'thumbnail', name: 'Thumbnail' },
+                { id: 'channel_bio', name: 'Channel Bio' },
+                { id: 'profile_bio', name: 'Profile Bio' },
+                { id: 'tweet', name: 'Tweet' },
+                { id: 'thread', name: 'Thread' },
+                { id: 'poll', name: 'Poll' },
+                { id: 'meme', name: 'Meme' },
+                { id: 'challenge', name: 'Challenge' },
+                { id: 'trend_idea', name: 'Trend Idea' },
+                { id: 'engagement_post', name: 'Engagement Post' },
+                { id: 'q_a', name: 'Q&A' },
+                { id: 'ama', name: 'AMA' },
+                { id: 'shoutout', name: 'Shoutout' },
+                { id: 'collaboration', name: 'Collaboration' },
+                { id: 'influencer_brief', name: 'Influencer Brief' },
+                { id: 'brand_deal', name: 'Brand Deal' },
+                { id: 'review_post', name: 'Review Post' },
+                { id: 'testimonial', name: 'Testimonial' },
+                { id: 'unboxing_script', name: 'Unboxing Script' },
+                { id: 'reaction_post', name: 'Reaction Post' },
+                { id: 'giveaway_post', name: 'Giveaway Post' },
+                { id: 'contest_post', name: 'Contest Post' },
+                { id: 'announcement', name: 'Announcement' },
+                { id: 'launch_post', name: 'Launch Post' },
+                { id: 'promo_post', name: 'Promo Post' },
+                { id: 'discount_post', name: 'Discount Post' },
+                { id: 'reminder_post', name: 'Reminder Post' },
+                { id: 'event_post', name: 'Event Post' },
+                { id: 'story_highlight', name: 'Story Highlight' },
+                { id: 'carousel', name: 'Carousel' },
+                { id: 'infographic', name: 'Infographic' },
+                { id: 'video_idea', name: 'Video Idea' },
+                { id: 'livestream_script', name: 'Livestream Script' },
+                { id: 'webinar_script', name: 'Webinar Script' },
+                { id: 'podcast_script', name: 'Podcast Script' },
+                { id: 'podcast_outline', name: 'Podcast Outline' },
+                { id: 'interview_script', name: 'Interview Script' },
+                { id: 'community_post', name: 'Community Post' },
+                { id: 'comment_reply', name: 'Comment Reply' },
+                { id: 'dm_script', name: 'DM Script' },
+                { id: 'outreach_message', name: 'Outreach Message' },
+                { id: 'feedback_request', name: 'Feedback Request' }
+            ],
+            agency: [
+                { id: 'client_proposal', name: 'Client Proposal' },
+                { id: 'service_package', name: 'Service Package' },
+                { id: 'marketing_plan', name: 'Marketing Plan' },
+                { id: 'brand_strategy', name: 'Brand Strategy' },
+                { id: 'campaign_brief', name: 'Campaign Brief' },
+                { id: 'social_media_calendar', name: 'Social Media Calendar' },
+                { id: 'client_report', name: 'Client Report' },
+                { id: 'market_research', name: 'Market Research' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'pitch_deck', name: 'Pitch Deck' },
+                { id: 'ad_copy', name: 'Ad Copy' },
+                { id: 'contract_template', name: 'Contract Template' },
+                { id: 'workflow_sop', name: 'Workflow SOP' },
+                { id: 'pricing_model', name: 'Pricing Model' },
+                { id: 'competitor_analysis', name: 'Competitor Analysis' },
+                { id: 'kpi_dashboard', name: 'KPI Dashboard' },
+                { id: 'creative_brief', name: 'Creative Brief' },
+                { id: 'email_outreach', name: 'Email Outreach' },
+                { id: 'lead_magnet', name: 'Lead Magnet' },
+                { id: 'onboarding_guide', name: 'Onboarding Guide' }
+            ],
+
+            blogger: [
+                { id: 'blog_outline', name: 'Blog Outline' },
+                { id: 'blog_post_draft', name: 'Blog Post Draft' },
+                { id: 'headline_ideas', name: 'Headline Ideas' },
+                { id: 'seo_keywords', name: 'SEO Keywords' },
+                { id: 'content_calendar', name: 'Content Calendar' },
+                { id: 'affiliate_review', name: 'Affiliate Review' },
+                { id: 'sponsored_post', name: 'Sponsored Post' },
+                { id: 'listicle', name: 'Listicle' },
+                { id: 'how_to_guide', name: 'How-To Guide' },
+                { id: 'personal_story', name: 'Personal Story' },
+                { id: 'evergreen_article', name: 'Evergreen Article' },
+                { id: 'blog_series_plan', name: 'Blog Series Plan' },
+                { id: 'guest_post_pitch', name: 'Guest Post Pitch' },
+                { id: 'traffic_growth_plan', name: 'Traffic Growth Plan' },
+                { id: 'newsletter_draft', name: 'Newsletter Draft' },
+                { id: 'engagement_strategy', name: 'Engagement Strategy' }
+            ],
+
+            youtube: [
+                { id: 'video_script', name: 'Video Script' },
+                { id: 'channel_intro', name: 'Channel Intro' },
+                { id: 'content_calendar', name: 'Content Calendar' },
+                { id: 'hook_ideas', name: 'Hook Ideas' },
+                { id: 'tutorial_script', name: 'Tutorial Script' },
+                { id: 'product_review', name: 'Product Review' },
+                { id: 'vlog_outline', name: 'Vlog Outline' },
+                { id: 'shorts_script', name: 'Shorts Script' },
+                { id: 'thumbnail_text', name: 'Thumbnail Text' },
+                { id: 'call_to_action', name: 'Call-to-Action' },
+                { id: 'video_series_plan', name: 'Video Series Plan' },
+                { id: 'youtube_seo_tags', name: 'YouTube SEO Tags' },
+                { id: 'community_post', name: 'Community Post' },
+                { id: 'ad_script', name: 'Ad Script' },
+                { id: 'collab_proposal', name: 'Collab Proposal' }
+            ],
+
+            article: [
+                { id: 'research_outline', name: 'Research Outline' },
+                { id: 'topic_ideas', name: 'Topic Ideas' },
+                { id: 'headline_variations', name: 'Headline Variations' },
+                { id: 'long_form_draft', name: 'Long-Form Draft' },
+                { id: 'op_ed_draft', name: 'Op-Ed Draft' },
+                { id: 'news_article', name: 'News Article' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'whitepaper', name: 'Whitepaper' },
+                { id: 'industry_analysis', name: 'Industry Analysis' },
+                { id: 'thought_leadership', name: 'Thought Leadership' },
+                { id: 'seo_article', name: 'SEO Article' },
+                { id: 'fact_check_list', name: 'Fact Check List' },
+                { id: 'content_brief', name: 'Content Brief' },
+                { id: 'editorial_review', name: 'Editorial Review' }
+            ],
+
+            coding: [
+                { id: 'project_plan', name: 'Project Plan' },
+                { id: 'code_snippet', name: 'Code Snippet' },
+                { id: 'bug_fix', name: 'Bug Fix' },
+                { id: 'api_request', name: 'API Request' },
+                { id: 'script_generator', name: 'Script Generator' },
+                { id: 'function_template', name: 'Function Template' },
+                { id: 'documentation', name: 'Documentation' },
+                { id: 'test_cases', name: 'Test Cases' },
+                { id: 'database_schema', name: 'Database Schema' },
+                { id: 'app_idea', name: 'App Idea' },
+                { id: 'algorithm_draft', name: 'Algorithm Draft' },
+                { id: 'code_review_notes', name: 'Code Review Notes' },
+                { id: 'automation_script', name: 'Automation Script' },
+                { id: 'debugging_guide', name: 'Debugging Guide' },
+                { id: 'system_design', name: 'System Design' }
+            ],
+
+            freelancer: [
+                { id: 'portfolio_page', name: 'Portfolio Page' },
+                { id: 'service_offer', name: 'Service Offer' },
+                { id: 'proposal_template', name: 'Proposal Template' },
+                { id: 'client_brief', name: 'Client Brief' },
+                { id: 'contract_draft', name: 'Contract Draft' },
+                { id: 'pricing_sheet', name: 'Pricing Sheet' },
+                { id: 'communication_guide', name: 'Communication Guide' },
+                { id: 'task_checklist', name: 'Task Checklist' },
+                { id: 'invoicing_template', name: 'Invoicing Template' },
+                { id: 'feedback_request', name: 'Feedback Request' },
+                { id: 'productivity_plan', name: 'Productivity Plan' },
+                { id: 'upsell_offer', name: 'Upsell Offer' },
+                { id: 'delivery_note', name: 'Delivery Note' },
+                { id: 'revision_guide', name: 'Revision Guide' },
+                { id: 'client_report', name: 'Client Report' }
+            ],
+
+            ecommerce: [
+                { id: 'product_description', name: 'Product Description' },
+                { id: 'storefront_copy', name: 'Storefront Copy' },
+                { id: 'category_page', name: 'Category Page' },
+                { id: 'seo_keywords', name: 'SEO Keywords' },
+                { id: 'sales_funnel', name: 'Sales Funnel' },
+                { id: 'email_campaign', name: 'Email Campaign' },
+                { id: 'customer_review_reply', name: 'Customer Review Reply' },
+                { id: 'landing_page', name: 'Landing Page' },
+                { id: 'ad_copy', name: 'Ad Copy' },
+                { id: 'pricing_strategy', name: 'Pricing Strategy' },
+                { id: 'upsell_script', name: 'Upsell Script' },
+                { id: 'faq_page', name: 'FAQ Page' },
+                { id: 'social_proof_pack', name: 'Social Proof Pack' },
+                { id: 'loyalty_program', name: 'Loyalty Program' },
+                { id: 'return_policy', name: 'Return Policy' },
+                { id: 'banner_text', name: 'Banner Text' },
+                { id: 'checkout_page_copy', name: 'Checkout Page Copy' }
+            ],
+
+            content_creator: [
+                { id: 'content_plan', name: 'Content Plan' },
+                { id: 'post_ideas', name: 'Post Ideas' },
+                { id: 'story_script', name: 'Story Script' },
+                { id: 'reels_script', name: 'Reels Script' },
+                { id: 'content_calendar', name: 'Content Calendar' },
+                { id: 'viral_hook', name: 'Viral Hook' },
+                { id: 'ad_script', name: 'Ad Script' },
+                { id: 'collab_request', name: 'Collab Request' },
+                { id: 'engagement_replies', name: 'Engagement Replies' },
+                { id: 'hashtag_bank', name: 'Hashtag Bank' },
+                { id: 'caption_pack', name: 'Caption Pack' },
+                { id: 'brand_deal_proposal', name: 'Brand Deal Proposal' },
+                { id: 'cross_platform_strategy', name: 'Cross-Platform Strategy' },
+                { id: 'trend_adaptation', name: 'Trend Adaptation' },
+                { id: 'community_guide', name: 'Community Guide' }
+            ],
+
+            podcaster: [
+                { id: 'episode_outline', name: 'Episode Outline' },
+                { id: 'show_notes', name: 'Show Notes' },
+                { id: 'intro_script', name: 'Intro Script' },
+                { id: 'interview_questions', name: 'Interview Questions' },
+                { id: 'outro_script', name: 'Outro Script' },
+                { id: 'ad_read', name: 'Ad Read' },
+                { id: 'episode_description', name: 'Episode Description' },
+                { id: 'podcast_trailer', name: 'Podcast Trailer' },
+                { id: 'guest_pitch', name: 'Guest Pitch' },
+                { id: 'content_calendar', name: 'Content Calendar' },
+                { id: 'listener_faq', name: 'Listener FAQ' },
+                { id: 'social_snippets', name: 'Social Snippets' },
+                { id: 'transcription_notes', name: 'Transcription Notes' },
+                { id: 'podcast_seo', name: 'Podcast SEO' },
+                { id: 'monetization_plan', name: 'Monetization Plan' }
+            ],
+
+            teacher: [
+                { id: 'lesson_plan', name: 'Lesson Plan' },
+                { id: 'course_outline', name: 'Course Outline' },
+                { id: 'teaching_script', name: 'Teaching Script' },
+                { id: 'learning_module', name: 'Learning Module' },
+                { id: 'quiz_template', name: 'Quiz Template' },
+                { id: 'case_study', name: 'Case Study' },
+                { id: 'classroom_activity', name: 'Classroom Activity' },
+                { id: 'study_notes', name: 'Study Notes' },
+                { id: 'homework_pack', name: 'Homework Pack' },
+                { id: 'assessment_test', name: 'Assessment Test' },
+                { id: 'student_feedback_form', name: 'Student Feedback Form' },
+                { id: 'teaching_aid', name: 'Teaching Aid' },
+                { id: 'workshop_plan', name: 'Workshop Plan' },
+                { id: 'research_summary', name: 'Research Summary' },
+                { id: 'learning_guide', name: 'Learning Guide' },
+                { id: 'resource_list', name: 'Resource List' }
+            ],
+
+            designer: [
+                { id: 'branding_guide', name: 'Branding Guide' },
+                { id: 'logo_brief', name: 'Logo Brief' },
+                { id: 'color_palette', name: 'Color Palette' },
+                { id: 'typography_pack', name: 'Typography Pack' },
+                { id: 'ui_kit', name: 'UI Kit' },
+                { id: 'ux_flow', name: 'UX Flow' },
+                { id: 'wireframe', name: 'Wireframe' },
+                { id: 'mockup', name: 'Mockup' },
+                { id: 'ad_banner', name: 'Ad Banner' },
+                { id: 'icon_pack', name: 'Icon Pack' },
+                { id: 'infographic', name: 'Infographic' },
+                { id: 'poster_design', name: 'Poster Design' },
+                { id: 'social_media_template', name: 'Social Media Template' },
+                { id: 'presentation_deck', name: 'Presentation Deck' },
+                { id: 'model_3d', name: '3D Model' },
+                { id: 'animation_plan', name: 'Animation Plan' },
+                { id: 'motion_graphic', name: 'Motion Graphic' },
+                { id: 'style_guide', name: 'Style Guide' }
+            ],
+
+            startup: [
+                { id: 'pitch_deck', name: 'Pitch Deck' },
+                { id: 'business_plan', name: 'Business Plan' },
+                { id: 'product_roadmap', name: 'Product Roadmap' },
+                { id: 'market_analysis', name: 'Market Analysis' },
+                { id: 'revenue_model', name: 'Revenue Model' },
+                { id: 'investor_update', name: 'Investor Update' },
+                { id: 'team_onboarding', name: 'Team Onboarding' },
+                { id: 'go_to_market_strategy', name: 'Go-To-Market Strategy' },
+                { id: 'vision_statement', name: 'Vision Statement' },
+                { id: 'elevator_pitch', name: 'Elevator Pitch' },
+                { id: 'growth_hacking_plan', name: 'Growth Hacking Plan' },
+                { id: 'competitive_landscape', name: 'Competitive Landscape' },
+                { id: 'fundraising_proposal', name: 'Fundraising Proposal' },
+                { id: 'scaling_plan', name: 'Scaling Plan' },
+                { id: 'partnership_proposal', name: 'Partnership Proposal' }
+            ],
+
+            author: [
+                { id: 'book_outline', name: 'Book Outline' },
+                { id: 'chapter_draft', name: 'Chapter Draft' },
+                { id: 'character_profile', name: 'Character Profile' },
+                { id: 'world_building_notes', name: 'World-Building Notes' },
+                { id: 'research_pack', name: 'Research Pack' },
+                { id: 'dialogue_script', name: 'Dialogue Script' },
+                { id: 'plot_twist_ideas', name: 'Plot Twist Ideas' },
+                { id: 'editing_checklist', name: 'Editing Checklist' },
+                { id: 'book_proposal', name: 'Book Proposal' },
+                { id: 'query_letter', name: 'Query Letter' },
+                { id: 'marketing_plan', name: 'Marketing Plan' },
+                { id: 'back_cover_copy', name: 'Back Cover Copy' },
+                { id: 'author_bio', name: 'Author Bio' },
+                { id: 'blog_post_tie_in', name: 'Blog Post Tie-In' },
+                { id: 'audiobook_script', name: 'Audiobook Script' }
+            ],
+
+            social_media: [
+                { id: 'content_calendar', name: 'Content Calendar' },
+                { id: 'campaign_brief', name: 'Campaign Brief' },
+                { id: 'post_copy', name: 'Post Copy' },
+                { id: 'caption_variations', name: 'Caption Variations' },
+                { id: 'hashtag_strategy', name: 'Hashtag Strategy' },
+                { id: 'ad_copy', name: 'Ad Copy' },
+                { id: 'engagement_plan', name: 'Engagement Plan' },
+                { id: 'analytics_report', name: 'Analytics Report' },
+                { id: 'trend_analysis', name: 'Trend Analysis' },
+                { id: 'meme_script', name: 'Meme Script' },
+                { id: 'influencer_outreach', name: 'Influencer Outreach' },
+                { id: 'giveaway_plan', name: 'Giveaway Plan' },
+                { id: 'story_script', name: 'Story Script' },
+                { id: 'crisis_response', name: 'Crisis Response' },
+                { id: 'retargeting_copy', name: 'Retargeting Copy' },
+                { id: 'comment_templates', name: 'Comment Templates' },
+                { id: 'cross_platform_guide', name: 'Cross-Platform Guide' }
+            ]
+        };
+    </script>
+    <script>
+        // DOM Elements
+        const generateButton = document.getElementById('generateButton');
+        const copyButton = document.getElementById('copyButton');
+        const promptOutput = document.getElementById('promptOutput');
+        const promptOutputCard = document.getElementById('promptOutputCard');
+        const copyNotification = document.getElementById('copyNotification');
+        const variationCounter = document.getElementById('variationCounter');
+        const currentVariationSpan = document.getElementById('currentVariation');
+        const totalVariationsSpan = document.getElementById('totalVariations');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const expandButton = document.getElementById('expandButton');
+        const mainCategorySelect = document.getElementById('mainCategory');
+        const subcategoryBtn = document.getElementById('subcategoryButton');
+        const subcategoryContent = document.getElementById('subcategoryContent');
+        const subcategoryText = document.getElementById('selectedSubcategory');
+        const subcategorySearch = document.getElementById('subcategorySearch');
+        const subcategoryList = document.getElementById('subcategoryList');
+        const promptOutputContainer = document.getElementById('promptOutputContainer');
+
+        // Variable to store the selected subcategory id
+        let selectedSubcategoryId = null;
+        // Variable to store the JSON data
+        let promptData = null;
+        // Variable to track if data is loaded
+        let dataLoaded = false;
+        // Variable to store generated prompts
+        let generatedPrompts = [];
+        // Variable to track current prompt index
+        let currentPromptIndex = 0;
+
+        // Fetch the JSON data when the page loads
+        fetch('promptscript.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                promptData = data;
+                dataLoaded = true;
+                console.log("Prompt data loaded successfully");
+            })
+            .catch(error => {
+                console.error('Error loading prompt data:', error);
+                // Create fallback data if JSON fails to load
+                promptData = {
+                    templates: [
+                        {
+                            categoryId: "business",
+                            subcategoryId: "resume",
+                            variations: [
+                                "You are a Professional Resume Writer. Act as an expert in resume writing. Your task is to create a compelling resume for a [job position] with [number] years of experience. Follow these steps: 1. Start with a strong summary statement highlighting key qualifications. 2. List relevant work experience with quantifiable achievements. 3. Include education and certifications. 4. Add relevant skills and keywords. 5. Ensure the resume is ATS-friendly and tailored to the job description."
+                            ]
+                        },
+                        {
+                            categoryId: "technology",
+                            subcategoryId: "script",
+                            variations: [
+                                "You are a Senior Developer. Act as an expert in [programming language]. Your task is to write a script that [description of what the script should do]. Follow these steps: 1. Define the requirements and input parameters. 2. Outline the main functions and their logic. 3. Write efficient, well-commented code. 4. Include error handling and edge cases. 5. Provide usage examples and documentation."
+                            ]
+                        },
+                        {
+                            categoryId: "marketing",
+                            subcategoryId: "ad_copy",
+                            variations: [
+                                "You are a Copywriting Specialist. Act as an expert in marketing copy. Your task is to create compelling ad copy for [product/service] targeting [target audience]. Follow these steps: 1. Start with a strong headline that grabs attention. 2. Highlight the key benefits and unique selling points. 3. Address pain points and offer solutions. 4. Include a clear call to action. 5. Ensure the tone is consistent with the brand voice."
+                            ]
+                        }
+                    ]
+                };
+                dataLoaded = true;
+                console.log("Using fallback prompt data");
+            });
+
+        // Function to populate subcategories from the categories object
+        function populateSubcategories(categoryId) {
+            // Clear the current list and search
+            subcategoryList.innerHTML = '';
+            subcategorySearch.value = '';
+            selectedSubcategoryId = null;
+            subcategoryText.textContent = 'Select a subcategory';
+            if (!categories || !categories[categoryId]) {
+                return;
+            }
+            const subcategories = categories[categoryId];
+            subcategories.forEach(subcategory => {
+                const div = document.createElement('div');
+                div.textContent = subcategory.name;
+                div.dataset.id = subcategory.id;
+                div.addEventListener('click', function () {
+                    selectedSubcategoryId = subcategory.id;
+                    subcategoryText.textContent = subcategory.name;
+                    subcategoryContent.classList.add('hidden');
+                    // Clear previous selections
+                    [...subcategoryList.children].forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                    // Highlight selected item
+                    this.classList.add('selected');
+                });
+                subcategoryList.appendChild(div);
+            });
+        }
+
+        // Function to filter subcategories
+        function filterSubcategories() {
+            const searchTerm = subcategorySearch.value.toLowerCase();
+            const items = subcategoryList.querySelectorAll('div');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Event listeners
+        mainCategorySelect.addEventListener('change', function () {
+            populateSubcategories(this.value);
+        });
+
+        subcategoryBtn.addEventListener('click', function () {
+            subcategoryContent.classList.toggle('hidden');
+        });
+
+        subcategorySearch.addEventListener('input', filterSubcategories);
+
+        generateButton.addEventListener('click', function () {
+            const categoryId = mainCategorySelect.value;
+            if (!categoryId || !selectedSubcategoryId) {
+                alert('Please select both a main category and a subcategory.');
+                return;
+            }
+
+            // Check if data is loaded
+            if (!dataLoaded) {
+                promptOutputContainer.innerHTML = '<div class="text-yellow-500 text-center py-8">Loading prompt data, please try again in a moment...</div>';
+                return;
+            }
+
+            if (!promptData || !promptData.templates) {
+                promptOutputContainer.innerHTML = '<div class="text-red-500 text-center py-8">Error loading templates. Please try again later.</div>';
+                return;
+            }
+
+            // Find the matching template
+            const template = promptData.templates.find(t =>
+                t.categoryId === categoryId && t.subcategoryId === selectedSubcategoryId
+            );
+
+            if (template && template.variations && template.variations.length > 0) {
+                // Store the generated prompts
+                generatedPrompts = template.variations.slice(0, 5);
+                currentPromptIndex = 0;
+
+                // Create the prompt navigator UI
+                createPromptNavigator();
+
+                // Display the first prompt
+                displayCurrentPrompt();
+            } else {
+                console.error("Template not found for category:", categoryId, "subcategory:", selectedSubcategoryId);
+                promptOutputContainer.innerHTML = '<div class="text-red-500 text-center py-8">No templates found for this subcategory. Please check the JSON file.</div>';
+            }
+        });
+
+        // Function to create the prompt navigator UI
+        function createPromptNavigator() {
+            // Clear the output container
+            promptOutputContainer.innerHTML = '';
+
+            // Create the navigator container
+            const navigatorContainer = document.createElement('div');
+            navigatorContainer.className = 'prompt-navigator';
+
+            // Create the left arrow button
+            const leftArrow = document.createElement('button');
+            leftArrow.className = 'prompt-nav-button';
+            leftArrow.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            leftArrow.id = 'prevPrompt';
+            leftArrow.disabled = currentPromptIndex === 0;
+
+            // Create the prompt counter
+            const counter = document.createElement('div');
+            counter.className = 'prompt-counter';
+            counter.textContent = `${currentPromptIndex + 1} of ${generatedPrompts.length}`;
+            counter.id = 'promptCounter';
+
+            // Create the right arrow button
+            const rightArrow = document.createElement('button');
+            rightArrow.className = 'prompt-nav-button';
+            rightArrow.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            rightArrow.id = 'nextPrompt';
+            rightArrow.disabled = currentPromptIndex === generatedPrompts.length - 1;
+
+            // Create the prompt display container
+            const displayContainer = document.createElement('div');
+            displayContainer.className = 'prompt-display-container';
+            displayContainer.id = 'promptDisplayContainer';
+
+            // Append elements to navigator container
+            navigatorContainer.appendChild(leftArrow);
+            navigatorContainer.appendChild(counter);
+            navigatorContainer.appendChild(rightArrow);
+
+            // Append navigator and display container to output container
+            promptOutputContainer.appendChild(navigatorContainer);
+            promptOutputContainer.appendChild(displayContainer);
+
+            // Add event listeners for navigation buttons
+            leftArrow.addEventListener('click', function () {
+                if (currentPromptIndex > 0) {
+                    currentPromptIndex--;
+                    displayCurrentPrompt();
+                    updateNavigationButtons();
+                }
+            });
+
+            rightArrow.addEventListener('click', function () {
+                if (currentPromptIndex < generatedPrompts.length - 1) {
+                    currentPromptIndex++;
+                    displayCurrentPrompt();
+                    updateNavigationButtons();
+                }
+            });
+        }
+
+        // Function to update navigation buttons state
+        function updateNavigationButtons() {
+            const prevButton = document.getElementById('prevPrompt');
+            const nextButton = document.getElementById('nextPrompt');
+            const counter = document.getElementById('promptCounter');
+
+            if (prevButton) {
+                prevButton.disabled = currentPromptIndex === 0;
+            }
+
+            if (nextButton) {
+                nextButton.disabled = currentPromptIndex === generatedPrompts.length - 1;
+            }
+
+            if (counter) {
+                counter.textContent = `${currentPromptIndex + 1} of ${generatedPrompts.length}`;
+            }
+        }
+
+        // Function to display the current prompt
+        function displayCurrentPrompt() {
+            const displayContainer = document.getElementById('promptDisplayContainer');
+            if (!displayContainer) return;
+
+            // Clear the display container
+            displayContainer.innerHTML = '';
+
+            // Create a prompt card for the current prompt
+            const card = createPromptCard(generatedPrompts[currentPromptIndex], currentPromptIndex);
+            displayContainer.appendChild(card);
+
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        // Function to create a prompt card
+        function createPromptCard(promptText, index) {
+            const card = document.createElement('div');
+            card.className = 'prompt-output-card';
+            card.innerHTML = `
+                <div class="shine-effect"></div>
+                <div class="corner-shine top-left"></div>
+                <div class="corner-shine top-right"></div>
+                <div class="corner-shine bottom-right"></div>
+                <div class="corner-shine bottom-left"></div>
+                <div class="font-mono text-sm">${promptText}</div>
+            `;
+
+            // Add the generated class for animation
+            card.classList.add('generated');
+
+            // Create a copy button for this card
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button-enhanced text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-150 ease-in-out flex items-center mt-4';
+            copyButton.innerHTML = '<i class="fas fa-copy mr-2"></i> Copy';
+            copyButton.addEventListener('click', function () {
+                navigator.clipboard.writeText(promptText).then(() => {
+                    // Show notification
+                    copyNotification.classList.add('show');
+                    // Update button appearance
+                    copyButton.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+                    copyButton.classList.add('copied');
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        copyNotification.classList.remove('show');
+                        copyButton.innerHTML = '<i class="fas fa-copy mr-2"></i> Copy';
+                        copyButton.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+
+            card.appendChild(copyButton);
+            return card;
+        }
+
+        // Close the subcategory dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.subcategory-dropdown')) {
+                subcategoryContent.classList.add('hidden');
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Success Stories Carousel
+        const carouselTrack = document.querySelector('.carousel-track');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        const prevButton = document.getElementById('prevStory');
+        const nextButton = document.getElementById('nextStory');
+
+        // Sample Prompt Generator
+        const samplePromptBtn = document.getElementById('samplePromptBtn');
+        const samplePromptOutput = document.getElementById('samplePromptOutput');
+        const samplePromptText = samplePromptOutput.querySelector('p');
+
+        // Copy prompt buttons
+        const copyPromptButtons = document.querySelectorAll('.copy-prompt-btn');
+
+        // Current variation tracking
+        let currentVariation = 1;
+        let totalVariations = 5;
+        let isExpanded = false;
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        // Function to update carousel position
+        function updateCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Update dots
+            carouselDots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-gray-300');
+                    dot.classList.add('bg-purple-600');
+                } else {
+                    dot.classList.remove('bg-purple-600');
+                    dot.classList.add('bg-gray-300');
+                }
+            });
+        }
+
+        // Dot navigation
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Previous button
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        // Next button
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        // Auto-rotate carousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+
+        // Sample prompts
+        const samplePrompts = [
+            {
+                task: "Develop a comprehensive social media campaign",
+                context: "For a new eco-friendly product launch targeting millennials",
+                persona: "Marketing Strategist",
+                format: "Platform-specific strategy with content pillars",
+                tone: "Professional",
+                exemplars: "Examples of successful eco-friendly product launches"
+            },
+            {
+                task: "Create a detailed lesson plan",
+                context: "For teaching high school students about renewable energy",
+                persona: "Instructional Designer",
+                format: "Structured plan with learning objectives and activities",
+                tone: "Academic but accessible",
+                exemplars: "Sample lesson plans on similar topics"
+            },
+            {
+                task: "Generate a character profile",
+                context: "For a protagonist in a sci-fi adventure novel",
+                persona: "Creative Writing Coach",
+                format: "Detailed profile with backstory and motivations",
+                tone: "Creative and inspiring",
+                exemplars: "Examples of well-developed fictional characters"
+            }
+        ];
+
+        samplePromptBtn.addEventListener('click', () => {
+            // Get a random sample prompt
+            const randomIndex = Math.floor(Math.random() * samplePrompts.length);
+            const selectedPrompt = samplePrompts[randomIndex];
+
+            // Build a natural paragraph prompt
+            let paragraphPrompt = `As a ${selectedPrompt.persona}, ${selectedPrompt.task.toLowerCase()} for ${selectedPrompt.context.split('for ')[1] || selectedPrompt.context}. `;
+            paragraphPrompt += `The content should be written in a ${selectedPrompt.tone.toLowerCase()} tone and formatted as ${selectedPrompt.format.toLowerCase()}. `;
+            if (selectedPrompt.exemplars) {
+                paragraphPrompt += `You may refer to these exemplars: ${selectedPrompt.exemplars.toLowerCase()}.`;
+            }
+
+            // Display the prompt
+            samplePromptText.textContent = paragraphPrompt;
+            samplePromptOutput.classList.remove('hidden');
+
+            // Add animation
+            samplePromptOutput.classList.add('fade-in');
+
+            // Update button text
+            samplePromptBtn.textContent = 'Generate Another';
+        });
+
+        // Contact form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // In a real application, you would send this data to a server
+            // For this example, we'll just show a success message
+
+            // Show success message
+            formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+            formMessage.classList.remove('hidden');
+
+            // Reset form
+            contactForm.reset();
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Copy prompt buttons for sample prompts
+        copyPromptButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const promptCard = button.closest('.category-card');
+                const promptText = promptCard.querySelector('.bg-gray-50').textContent;
+
+                // Copy to clipboard
+                navigator.clipboard.writeText(promptText).then(() => {
+                    // Show notification
+                    copyNotification.classList.add('show');
+
+                    // Update button appearance
+                    button.innerHTML = '<i class="fas fa-check mr-1"></i> Copied!';
+                    button.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                    button.classList.add('bg-green-200');
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        copyNotification.classList.remove('show');
+                        button.innerHTML = '<i class="fas fa-copy mr-1"></i> Copy Prompt';
+                        button.classList.remove('bg-green-200');
+                        button.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
