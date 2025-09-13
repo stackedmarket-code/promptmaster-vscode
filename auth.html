@@ -208,6 +208,47 @@
         .cancel-btn:hover {
             background: #666;
         }
+        
+        /* Password Reset Page Styles */
+        .reset-password-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .reset-password-page.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .reset-password-page h2 {
+            color: var(--gold1);
+            margin-bottom: 30px;
+        }
+        
+        .password-requirements {
+            color: #aaa;
+            font-size: 0.8em;
+            text-align: left;
+            width: 70%;
+            margin: 0 auto 20px;
+        }
+        
+        .password-requirements ul {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -243,6 +284,24 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Password Reset Page (Hidden by default) -->
+        <div class="reset-password-page" id="reset-password-page">
+            <h2>Create New Password</h2>
+            <form id="new-password-form">
+                <input type="password" id="new-password" placeholder="New Password" required>
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                <div class="password-requirements">
+                    Password must:
+                    <ul>
+                        <li>Be at least 8 characters long</li>
+                        <li>Contain at least one uppercase letter</li>
+                        <li>Contain at least one number</li>
+                    </ul>
+                </div>
+                <button type="submit">Change Password</button>
+            </form>
+        </div>
     </div>
     <div class="notification" id="notification"></div>
     <script>
@@ -257,12 +316,42 @@
         const cancelResetBtn = document.getElementById("cancel-reset");
         const resetPasswordBtn = document.getElementById("reset-password-btn");
         const resetEmailInput = document.getElementById("reset-email");
+        const resetPasswordPage = document.getElementById("reset-password-page");
+        const newPasswordForm = document.getElementById("new-password-form");
+        const newPasswordInput = document.getElementById("new-password");
+        const confirmPasswordInput = document.getElementById("confirm-password");
         
         function showNotification(msg, type = "") {
             notification.textContent = msg;
             notification.className = `notification ${type} show`;
             setTimeout(() => notification.classList.remove("show"), 3000);
         }
+        
+        // Check if user accessed via password reset link
+        window.addEventListener('load', async () => {
+            const hash = window.location.hash;
+            if (hash && hash.includes('type=recovery')) {
+                // Extract the access token from the URL
+                const urlParams = new URLSearchParams(hash.substring(1));
+                const accessToken = urlParams.get('access_token');
+                
+                if (accessToken) {
+                    // Set the session with the access token
+                    const { error } = await sb.auth.setSession({
+                        access_token: accessToken,
+                        refresh_token: urlParams.get('refresh_token')
+                    });
+                    
+                    if (error) {
+                        showNotification(error.message);
+                        return;
+                    }
+                    
+                    // Show the password reset page
+                    resetPasswordPage.classList.add("active");
+                }
+            }
+        });
         
         signupForm.addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -321,7 +410,9 @@
             }
             
             try {
-                const { error } = await sb.auth.resetPasswordForEmail(email);
+                const { error } = await sb.auth.resetPasswordForEmail(email, {
+                    redirectTo: window.location.href + '#type=recovery'
+                });
                 if (error) {
                     showNotification(error.message);
                     return;
@@ -332,6 +423,56 @@
             } catch (err) {
                 showNotification("An error occurred. Please try again.");
             }
+        });
+        
+        // New password form submission
+        newPasswordForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            const newPassword = newPasswordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            // Validate passwords match
+            if (newPassword !== confirmPassword) {
+                showNotification("Passwords do not match");
+                return;
+            }
+            
+            // Validate password strength
+            if (newPassword.length < 8) {
+                showNotification("Password must be at least 8 characters long");
+                return;
+            }
+            
+            if (!/[A-Z]/.test(newPassword)) {
+                showNotification("Password must contain at least one uppercase letter");
+                return;
+            }
+            
+            if (!/[0-9]/.test(newPassword)) {
+                showNotification("Password must contain at least one number");
+                return;
+            }
+            
+            // Update the user's password
+            const { error } = await sb.auth.updateUser({
+                password: newPassword
+            });
+            
+            if (error) {
+                showNotification(error.message);
+                return;
+            }
+            
+            showNotification("Password updated successfully!", "success");
+            
+            // Redirect back to the main auth form after a delay
+            setTimeout(() => {
+                resetPasswordPage.classList.remove("active");
+                newPasswordForm.reset();
+                // Clear the URL hash
+                history.pushState("", document.title, window.location.pathname);
+            }, 1500);
         });
     </script>
 </body>
