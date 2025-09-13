@@ -411,7 +411,7 @@
             
             try {
                 const { error } = await sb.auth.resetPasswordForEmail(email, {
-                    redirectTo: 'http://localhost:3000/auth.html#type=recovery'
+                    redirectTo: 'https://promptmaster-vscode.vercel.app/auth.html#type=recovery'
                 });
                 if (error) {
                     showNotification(error.message);
