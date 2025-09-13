@@ -96,7 +96,8 @@
         }
         /* Hide login fields when collapsed */
         .login form input,
-        .login form button {
+        .login form button,
+        .login .forgot-password {
             opacity: 0;
             pointer-events: none;
             transition: opacity .4s ease;
@@ -106,7 +107,8 @@
             transform: translateY(-500px);
         }
         #chk:checked ~ .login form input,
-        #chk:checked ~ .login form button {
+        #chk:checked ~ .login form button,
+        #chk:checked ~ .login .forgot-password {
             opacity: 1;
             pointer-events: auto;
         }
@@ -135,6 +137,77 @@
         .notification.success {
             background: #4CAF50;
         }
+        
+        /* Forgot Password Styles */
+        .forgot-password {
+            color: var(--gold1);
+            font-size: 0.9em;
+            text-align: center;
+            margin: 10px auto;
+            cursor: pointer;
+            text-decoration: underline;
+            width: 70%;
+            transition: color 0.2s;
+        }
+        .forgot-password:hover {
+            color: var(--gold2);
+        }
+        
+        .reset-password-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .reset-password-container.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .reset-password-form {
+            width: 80%;
+            text-align: center;
+        }
+        
+        .reset-password-form h3 {
+            color: var(--gold1);
+            margin-bottom: 20px;
+        }
+        
+        .reset-password-form input {
+            margin-bottom: 15px;
+        }
+        
+        .reset-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+            margin: 0 auto;
+        }
+        
+        .reset-buttons button {
+            width: 48%;
+            margin: 0;
+        }
+        
+        .cancel-btn {
+            background: #555;
+        }
+        
+        .cancel-btn:hover {
+            background: #666;
+        }
     </style>
 </head>
 <body>
@@ -156,63 +229,109 @@
                 <input type="password" id="login-password" placeholder="Password" required>
                 <button type="submit">Login</button>
             </form>
+            <div class="forgot-password" id="forgot-password-link">Forgot Password?</div>
+            
+            <!-- Reset Password Container -->
+            <div class="reset-password-container" id="reset-password-container">
+                <div class="reset-password-form">
+                    <h3>Reset Password</h3>
+                    <input type="email" id="reset-email" placeholder="Enter your email" required>
+                    <div class="reset-buttons">
+                        <button type="button" class="cancel-btn" id="cancel-reset">Cancel</button>
+                        <button type="button" id="reset-password-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="notification" id="notification"></div>
-
     <script>
         const SUPABASE_URL = 'https://puyqqmggicdegotsxohf.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1eXFxbWdnaWNkZWdvdHN4b2hmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzOTY5MzYsImV4cCI6MjA3MTk3MjkzNn0.vWtyVzkL1oA8GIJUyhhz5FP4Ql5G5CfN1-Zi3nffJP4';
         const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
         const signupForm = document.getElementById("signup-form");
         const loginForm = document.getElementById("login-form");
         const notification = document.getElementById("notification");
-
+        const forgotPasswordLink = document.getElementById("forgot-password-link");
+        const resetPasswordContainer = document.getElementById("reset-password-container");
+        const cancelResetBtn = document.getElementById("cancel-reset");
+        const resetPasswordBtn = document.getElementById("reset-password-btn");
+        const resetEmailInput = document.getElementById("reset-email");
+        
         function showNotification(msg, type = "") {
             notification.textContent = msg;
             notification.className = `notification ${type} show`;
             setTimeout(() => notification.classList.remove("show"), 3000);
         }
-
+        
         signupForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             const fullName = document.getElementById("signup-name").value;
             const email = document.getElementById("signup-email").value;
             const pass = document.getElementById("signup-password").value;
-
             const { error } = await sb.auth.signUp({
                 email,
                 password: pass,
                 options: { data: { full_name: fullName } }
             });
-
             if (error) {
                 showNotification(error.message);
                 return;
             }
-
             showNotification("Account created. Check your email.", "success");
             setTimeout(() => {
                 document.getElementById("chk").checked = false;
                 signupForm.reset();
             }, 1400);
         });
-
+        
         loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             const email = document.getElementById("login-email").value;
             const pass = document.getElementById("login-password").value;
-
             const { error } = await sb.auth.signInWithPassword({ email, password: pass });
-
             if (error) {
                 showNotification(error.message);
                 return;
             }
-
             showNotification("Login successful!", "success");
             setTimeout(() => window.location.href = "premium-workspace.html", 1200);
+        });
+        
+        // Forgot password functionality
+        forgotPasswordLink.addEventListener("click", () => {
+            resetPasswordContainer.classList.add("active");
+            // Pre-fill with login email if available
+            const loginEmail = document.getElementById("login-email").value;
+            if (loginEmail) {
+                resetEmailInput.value = loginEmail;
+            }
+        });
+        
+        cancelResetBtn.addEventListener("click", () => {
+            resetPasswordContainer.classList.remove("active");
+            resetEmailInput.value = "";
+        });
+        
+        resetPasswordBtn.addEventListener("click", async () => {
+            const email = resetEmailInput.value;
+            if (!email) {
+                showNotification("Please enter your email address");
+                return;
+            }
+            
+            try {
+                const { error } = await sb.auth.resetPasswordForEmail(email);
+                if (error) {
+                    showNotification(error.message);
+                    return;
+                }
+                showNotification("Password reset email sent. Check your inbox.", "success");
+                resetPasswordContainer.classList.remove("active");
+                resetEmailInput.value = "";
+            } catch (err) {
+                showNotification("An error occurred. Please try again.");
+            }
         });
     </script>
 </body>
